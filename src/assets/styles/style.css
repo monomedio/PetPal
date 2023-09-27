@@ -11,6 +11,12 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    font-family: "Roboto", sans-serif;
+
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
@@ -41,8 +47,97 @@ h6 {
     overflow-wrap: break-word;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 /* #root,
 #__next {
     isolation: isolate;
 } */
 /* DEFAULTS TO MAKE CSS AND YOUR LIFE EASIER */
+
+header {
+    width: 100%;
+    height: 64px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+#header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 0 106px 0 106px;
+}
+
+#header-logo {
+    width: 118px;
+}
+
+#header-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #177791;
+    font-weight: 700;
+
+    padding: 12px;
+}
+
+.nav-link:hover {
+    border-radius: 4px;
+    background-color: #177791;
+    color: #fff;
+}
+
+#signup {
+    border-radius: 18px;
+    border: 1px solid #E9724C;
+
+    color: #E9724C;
+    font-weight: 700;
+    padding: 6.5px 25px;
+}
+
+#login {
+    border-radius: 18px;
+    border: 1px solid #E9724C;
+    background-color: #E9724C;
+
+    color: #fff;
+    font-weight: 700;
+    padding: 6.5px 25px;
+}
+
+footer {
+    width: 100%;
+    height: 130px;
+
+    background: #177791;
+}
+
+#footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 106px;
+}
+
+#copyright {
+    color: #97DCEF;
+}
+
+main {
+    flex: 1;
+}
