@@ -8,7 +8,7 @@ PetPal is a modern web solution to connecting pet seekers with animal shelters n
 
 ## Hi-Fidelity Prototype
 
-View the interactive mockup on Figma: https://www.figma.com/file/ZKIdWAghaEeyAz2GkyuE6M/PetPal-Prototype?type=design&node-id=33%3A2&mode=design&t=0D3J9f4paZh4kcy2-1
+View the interactive mockup on [Figma](https://www.figma.com/file/ZKIdWAghaEeyAz2GkyuE6M/PetPal-Prototype?type=design&node-id=33%3A2&mode=design&t=0D3J9f4paZh4kcy2-1).
 
 ## File Structure
 
