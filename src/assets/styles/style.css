@@ -52,11 +52,7 @@ body {
     overflow-x: hidden;
 }
 
-/* #root,
-#__next {
-    isolation: isolate;
-} */
-/* DEFAULTS TO MAKE CSS AND YOUR LIFE EASIER */
+/* CUSTOM CSS */
 
 header {
     width: 100%;
@@ -101,21 +97,31 @@ a {
     color: #fff;
 }
 
-#signup {
+.button-outline {
     border-radius: 18px;
     border: 1px solid #E9724C;
+    background-color: white;
 
     color: #E9724C;
     font-weight: 700;
     padding: 6.5px 25px;
 }
 
-#login {
+.button-fill {
     border-radius: 18px;
     border: 1px solid #E9724C;
     background-color: #E9724C;
 
     color: #fff;
+    font-weight: 700;
+    padding: 6.5px 25px;
+}
+
+.button-dark {
+    border-radius: 18px;
+    background-color: #1E1E1E;
+
+    color: #FFBDA8;
     font-weight: 700;
     padding: 6.5px 25px;
 }
@@ -140,4 +146,13 @@ footer {
 
 main {
     flex: 1;
+}
+
+.teal {
+    background-color: #177791;
+}
+
+.container {
+    border-radius: 2rem;
+
 }
