@@ -101,11 +101,6 @@ a:visited {
     color: #fff;
 }
 
-#divider {
-    font-size: 16px;
-    font-weight: 700;
-}
-
 #profile-button {
     display: flex;
     align-items: center;
@@ -116,6 +111,10 @@ a:visited {
     font-weight: 700;
     border: 0;
     padding: 0 12px;
+}
+
+#profile-button:hover {
+    color: #97dcef;
 }
 
 #profile-pic {
