@@ -60,11 +60,12 @@ header {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
+a,
 a:hover,
 a:active,
 a:focus,
 a:visited {
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 #header-container {
@@ -91,12 +92,11 @@ a:visited {
 .nav-link {
     color: #177791;
     font-weight: 700;
-
+    border-radius: 4px;
     padding: 12px;
 }
 
 .nav-link:hover {
-    border-radius: 4px;
     background-color: #177791;
     color: #fff;
 }
@@ -140,6 +140,11 @@ a:visited {
     color: #fff;
     font-weight: 700;
     padding: 6.5px 25px;
+    transition: 0.15s;
+}
+
+.button-fill:hover {
+    filter: brightness(85%);
 }
 
 .button-dark {
@@ -151,13 +156,13 @@ a:visited {
     padding: 6.5px 25px;
 }
 
-.search-bar{
+.search-bar {
     border: 1px #177791 solid;
     background: white;
     border-radius: 20px;
     width: 8rem;
     height: 2rem;
-    }
+}
 
 .search-width {
     width: 300px;
@@ -184,8 +189,12 @@ footer {
     height: 100%;
 }
 
-#footer-nav-container .nav-link {
+#footer-nav .nav-link {
     color: #fff;
+}
+
+#footer-nav .nav-link:hover {
+    color: #97dcef;
 }
 
 #footer-nav {
@@ -218,7 +227,7 @@ main {
 /* ------login page----- */
 
 .login-background {
-    background-color: #FFBDA8;
+    background-color: #ffbda8;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -231,18 +240,17 @@ main {
 }
 
 .login-background-grid-item {
-    background-color: #FFBDA8;
+    background-color: #ffbda8;
     text-align: center;
     display: grid;
     align-self: center;
     justify-self: center;
-
 }
 
 .login-container {
     width: 100%;
     height: calc(100vh - 200px);
-    margin-top: 16px; 
+    margin-top: 16px;
     margin-bottom: 16px;
     background-color: white;
     border-radius: 18px;
@@ -251,9 +259,9 @@ main {
     align-items: center;
 }
 
-.login-title{
+.login-title {
     display: flex;
-    color: #1E1E1E;
+    color: #1e1e1e;
     text-align: center;
     font-family: Roboto Slab;
     font-size: 40px;
@@ -261,12 +269,11 @@ main {
     font-weight: 700;
     line-height: normal;
     margin-top: 45px;
-    
 }
 
 .login-subtitle {
     display: flex;
-    color: #1E1E1E;
+    color: #1e1e1e;
     text-align: center;
     font-family: Roboto;
     font-size: 18px;
@@ -276,11 +283,11 @@ main {
     margin-top: 30.61px;
 }
 
-.form-grid{
+.form-grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0px;
-    height: 100%
+    height: 100%;
 }
 
 .pawprint-image {
@@ -288,21 +295,20 @@ main {
     align-self: center;
 }
 
-
 .login-email-text {
-    color: #1E1E1E;
+    color: #1e1e1e;
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-top:30.99px;
+    margin-top: 30.99px;
     justify-self: start;
     padding-left: 21.04px;
 }
 
 .login-password-text {
-    color: #1E1E1E;
+    color: #1e1e1e;
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
@@ -313,11 +319,10 @@ main {
     padding-left: 21.04px;
 }
 
-
 .login-username {
     width: 100%;
     height: 43.973px;
-    margin-top: 16px; 
+    margin-top: 16px;
     background-color: white;
     border-radius: 18px;
     display: flex;
@@ -327,14 +332,13 @@ main {
 
     border-radius: 20px;
     border: 1px solid #177791;
-    background: #FFF;
+    background: #fff;
 }
-
 
 .login-password {
     width: 472.783px;
     height: 43.973px;
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-bottom: 31.15px;
     background-color: white;
     border-radius: 18px;
@@ -345,13 +349,13 @@ main {
 
     border-radius: 20px;
     border: 1px solid #177791;
-    background: #FFF;
+    background: #fff;
 }
 
-.login-button{
+.login-button {
     border-radius: 18px;
-    border: 1px solid #E9724C;
-    background-color: #E9724C;
+    border: 1px solid #e9724c;
+    background-color: #e9724c;
 
     color: #fff;
     font-weight: 700;
@@ -363,14 +367,12 @@ main {
     justify-self: center;
     align-self: center;
     margin-bottom: 20px;
-
 }
 
-.login-button:hover{
-    border: 1px solid #E9724C;
+.login-button:hover {
+    border: 1px solid #e9724c;
     background-color: #fff;
-    color: #E9724C;
-
+    color: #e9724c;
 }
 
 /* ------login page----- */
@@ -385,19 +387,19 @@ main {
     object-fit: cover;
 }
 
-.padding-v{
+.padding-v {
     padding: 2rem 0;
 }
 
-.padding-h{
+.padding-h {
     padding: 0 100px;
 }
 
-.margin-v{
+.margin-v {
     margin: 2rem 0;
 }
 
-.margin-h{
+.margin-h {
     margin: 0 100px;
 }
 
@@ -405,7 +407,7 @@ main {
     font-size: 40px;
     font-family: "Roboto Slab";
     font-weight: 900;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .important-p {
@@ -414,7 +416,7 @@ main {
     font-weight: 400;
 }
 .carousel-item img {
-    width: calc(100%/4);
+    width: calc(100% / 4);
     height: 22rem;
     border-radius: 2rem;
     object-fit: cover;
@@ -425,9 +427,9 @@ main {
 }
 
 .light-yellow-box {
-    background-color: #FFE7B5;
+    background-color: #ffe7b5;
 }
 
-#apply{
+#apply {
     width: fit-content;
 }
