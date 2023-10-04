@@ -101,11 +101,6 @@ a:visited {
     color: #fff;
 }
 
-#divider {
-    font-size: 16px;
-    font-weight: 700;
-}
-
 #profile-button {
     display: flex;
     align-items: center;
@@ -116,6 +111,10 @@ a:visited {
     font-weight: 700;
     border: 0;
     padding: 0 12px;
+}
+
+#profile-button:hover {
+    color: #97dcef;
 }
 
 #profile-pic {
@@ -232,15 +231,16 @@ main {
 }
 
 .login-background-grid-item {
-    background-color: #FFBDA8; /* Adds a background color for visibility */
-    text-align: center; /* Centers the text inside each item */
+    background-color: #FFBDA8;
+    text-align: center;
     display: grid;
     align-self: center;
     justify-self: center;
+
 }
 
 .login-container {
-    width: 541px;
+    width: 100%;
     height: calc(100vh - 200px);
     margin-top: 16px; 
     margin-bottom: 16px;
@@ -315,7 +315,7 @@ main {
 
 
 .login-username {
-    width: 472.783px;
+    width: 100%;
     height: 43.973px;
     margin-top: 16px; 
     background-color: white;
@@ -329,8 +329,6 @@ main {
     border: 1px solid #177791;
     background: #FFF;
 }
-
-
 
 
 .login-password {
@@ -374,6 +372,7 @@ main {
     color: #E9724C;
 
 }
+
 /* ------login page----- */
 
 /* Pet details page */
