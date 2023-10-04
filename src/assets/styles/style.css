@@ -156,3 +156,41 @@ main {
     border-radius: 2rem;
 
 }
+
+.padding-v{
+    padding: 2rem 0;
+}
+
+.padding-h{
+    padding: 0 100px;
+}
+
+.margin-v{
+    margin: 2rem 0;
+}
+
+.margin-h{
+    margin: 0 100px;
+}
+
+.heading-slab {
+    font-size: 40px;
+    font-family: "Roboto Slab";
+    font-weight: 900;
+    word-wrap: break-word
+}
+
+.important-p {
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+/* Pet details page */
+.circle-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+}
