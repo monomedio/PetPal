@@ -8,8 +8,10 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto"
         />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/styles/style.css" />
     </head>
+    
     <body>
         <header>
             <div id="header-container">
@@ -22,7 +24,7 @@
                 </nav>
             </div>
         </header>
-        <main class="login-background">
+        <main class="login-background container">
 
             <div class="login-background-grid-item">
                 <img src="../assets/images/pink-pawprint.svg" alt="Pink pawprint" class="pawprint-image">
@@ -37,20 +39,20 @@
                         Our furry friends have missed you!
                     </div>
     
-                    <form action="" method="post" class="form-grid">
-                        <label for="login-username" class="login-email-text">Email:*</label>
-                        <input type="text" id="login-username" name="login-username" class ="login-username" placeholder="example@gmail.com" required>
+                    <form action="" method="post" class="form-grid container">
+          
+                        <label for="login-username" class=" login-email-text">Email:*</label>
+                        <input type="text" id="login-username" name="login-username" class ="form-control login-username" placeholder="example@gmail.com" required>
                         <label for="login-password" class="login-password-text">Password:*</label>
-                        <input type="text" id="login-password" name="login-password" class ="login-password" placeholder="****************" ":required>
+                        <input type="text" id="login-password" name="login-password" class ="form-control login-password" placeholder="****************" ":required>
+                    
                         <input type="submit" value="Login" class="login-button">
                     </form>
-    
                 </div>
             </div>
             <div class="login-background-grid-item">
                 <img src="../assets/images/pink-pawprint.svg" alt="Pink pawprint" class="pawprint-image">
             </div>
-            
         </main>
 
         <footer>
