@@ -60,6 +60,13 @@ header {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
+a:hover,
+a:active,
+a:focus,
+a:visited {
+    text-decoration: none !important;
+}
+
 #header-container {
     display: flex;
     justify-content: space-between;
@@ -70,7 +77,8 @@ header {
     padding: 0 106px 0 106px;
 }
 
-#header-logo {
+#header-logo,
+#footer-logo {
     width: 118px;
 }
 
@@ -78,10 +86,6 @@ header {
     display: flex;
     align-items: center;
     gap: 2rem;
-}
-
-a {
-    text-decoration: none;
 }
 
 .nav-link {
@@ -97,20 +101,42 @@ a {
     color: #fff;
 }
 
+#divider {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#profile-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: #fff;
+    color: #177791;
+    font-weight: 700;
+    border: 0;
+    padding: 0 12px;
+}
+
+#profile-pic {
+    height: 40px;
+    border-radius: 50%;
+}
+
 .button-outline {
     border-radius: 18px;
-    border: 1px solid #E9724C;
+    border: 1px solid #e9724c;
     background-color: white;
 
-    color: #E9724C;
+    color: #e9724c;
     font-weight: 700;
     padding: 6.5px 25px;
 }
 
 .button-fill {
     border-radius: 18px;
-    border: 1px solid #E9724C;
-    background-color: #E9724C;
+    border: 1px solid #e9724c;
+    background-color: #e9724c;
 
     color: #fff;
     font-weight: 700;
@@ -119,29 +145,51 @@ a {
 
 .button-dark {
     border-radius: 18px;
-    background-color: #1E1E1E;
+    background-color: #1e1e1e;
 
-    color: #FFBDA8;
+    color: #ffbda8;
     font-weight: 700;
     padding: 6.5px 25px;
 }
 
 footer {
     width: 100%;
-    height: 130px;
-
     background: #177791;
 }
 
 #footer-container {
     display: flex;
     flex-direction: column;
+
     align-items: center;
-    padding: 30px 106px;
+    padding: 30px 106px 10px;
+}
+
+#footer-nav-container {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+}
+
+#footer-nav-container .nav-link {
+    color: #fff;
+}
+
+#footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+#footer-logo {
+    filter: brightness(0) invert(1);
 }
 
 #copyright {
-    color: #97DCEF;
+    color: #97dcef;
+    text-align: center;
 }
 
 main {
@@ -154,5 +202,4 @@ main {
 
 .container {
     border-radius: 2rem;
-
 }
