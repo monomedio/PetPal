@@ -57,7 +57,7 @@ body {
 :root {
     --primary-color: #177791;
     --primary-color-dark: #97dcef;
-    --secondary-color: #E9724C;
+    --secondary-color: #e9724c;
 }
 
 header {
@@ -120,12 +120,27 @@ a:visited {
 }
 
 #profile-button:hover {
-    color: var(--primary-color-dark)
+    color: var(--primary-color-dark);
 }
 
 #profile-pic {
     height: 40px;
     border-radius: 50%;
+}
+
+.dropdown-menu .dropdown-item {
+    font-weight: 700;
+    /* --bs-dropdown-link-active-color: var(--primary-color); */
+    --bs-dropdown-link-active-bg: #fff;
+    --bs-dropdown-link-hover-color: var(--primary-color);
+}
+
+.dropdown-menu li:last-child .dropdown-item {
+    --bs-dropdown-link-color: grey;
+}
+
+.dropdown-menu li:last-child .dropdown-item:hover {
+    --bs-dropdown-link-hover-color: var(--primary-color);
 }
 
 .button-outline {
@@ -200,7 +215,7 @@ footer {
 }
 
 #footer-nav .nav-link:hover {
-    color: var(--primary-color-dark)
+    color: var(--primary-color-dark);
 }
 
 #footer-nav {
