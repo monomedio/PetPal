@@ -133,6 +133,7 @@ a:visited {
     /* --bs-dropdown-link-active-color: var(--primary-color); */
     --bs-dropdown-link-active-bg: #fff;
     --bs-dropdown-link-hover-color: var(--primary-color);
+    --bs-dropdown-link-hover-bg: #fff;
 }
 
 .dropdown-menu li:last-child .dropdown-item {
