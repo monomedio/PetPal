@@ -151,6 +151,18 @@ a:visited {
     padding: 6.5px 25px;
 }
 
+.search-bar{
+    border: 1px #177791 solid;
+    background: white;
+    border-radius: 20px;
+    width: 8rem;
+    height: 2rem;
+    }
+
+.search-width {
+    width: 300px;
+}
+
 footer {
     width: 100%;
     background: #177791;
@@ -362,3 +374,60 @@ main {
 }
 
 /* ------login page----- */
+
+/* Pet details page */
+.circle-image {
+    height: 18vw;
+    width: 18vw;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    object-fit: cover;
+}
+
+.padding-v{
+    padding: 2rem 0;
+}
+
+.padding-h{
+    padding: 0 100px;
+}
+
+.margin-v{
+    margin: 2rem 0;
+}
+
+.margin-h{
+    margin: 0 100px;
+}
+
+.heading-slab {
+    font-size: 40px;
+    font-family: "Roboto Slab";
+    font-weight: 900;
+    word-wrap: break-word
+}
+
+.important-p {
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: 400;
+}
+.carousel-item img {
+    width: calc(100%/4);
+    height: 22rem;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+
+.rounded-item {
+    border-radius: 2rem;
+}
+
+.light-yellow-box {
+    background-color: #FFE7B5;
+}
+
+#apply{
+    width: fit-content;
+}
