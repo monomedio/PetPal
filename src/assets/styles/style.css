@@ -199,6 +199,11 @@ main {
     background-color: #177791;
 }
 
+.light-pink {
+    background-color: #FFBDA8;
+
+}
+
 .container {
     border-radius: 2rem;
 }
@@ -268,7 +273,8 @@ main {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0px;
-    height: 100%
+    height: 100%;
+    width: 100%;
 }
 
 .pawprint-image {
@@ -277,14 +283,14 @@ main {
 }
 
 
-.login-email-text {
+.login-email-text, .create-pet-name-text {
     color: #1E1E1E;
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-top:30.99px;
+    margin-top: 30.99px;
     justify-self: start;
     padding-left: 21.04px;
 }
@@ -302,39 +308,39 @@ main {
 }
 
 
-.login-username {
+.login-username, 
+.login-password{
     width: 100%;
-    height: 43.973px;
-    margin-top: 16px; 
-    background-color: white;
+    height: 55%;
+    margin-top: 10%; 
+    padding-left: 5%;
+    border-radius: 20px;
     border-radius: 18px;
+    border: 1px solid #177791;
+    padding-left: 10%;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 21.04px;
-
-    border-radius: 20px;
-    border: 1px solid #177791;
     background: #FFF;
 }
 
 
-.login-password {
-    width: 472.783px;
-    height: 43.973px;
-    margin-top: 10px; 
+/* .login-password, .create-pet-chars-input{
+    width: 100%;
+    height: 55%;
+    margin-top: 16px; 
     margin-bottom: 31.15px;
     background-color: white;
     border-radius: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 21.04px;
-
+    padding-left: 10%;
     border-radius: 20px;
     border: 1px solid #177791;
     background: #FFF;
-}
+} */
 
 .login-button{
     border-radius: 18px;
@@ -362,3 +368,171 @@ main {
 }
 
 /* ------login page----- */
+
+/* -------pet-creation------- */
+.pet-creation-title {
+    color: #000;
+    font-family: 'Pacifico', cursive;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+
+}
+
+.frame {
+	width: 80%;
+	height: 400px;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: linear-gradient(to top right, #E9724C 0%, #FFBDA8 100%);
+	color: #333;
+	font-family: Roboto;
+    margin-bottom: 20px;
+
+
+}
+
+.center {
+	width: 80%;
+	height: 80%;
+	box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+}
+
+.title {
+	width: 100%;
+	height: 10%;
+	border-bottom: 1px solid #999;
+	text-align: center;
+}
+
+h1 {
+	font-size: 16px;
+	font-weight: 300;
+	color: #666;
+}
+
+.add-photo {
+	width: 30%;
+	height: 30%;
+	border: 1px dashed #177791;
+	display: flex;
+	align-items: center; 
+	justify-content: center;
+    position: relative; 
+}
+
+.upload-icon {
+	margin: 5px;
+	width: 80%;
+	height: 80%;
+}
+
+.upload-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+    cursor: pointer;
+}
+
+.upload-button {
+    border: 1px solid #177791;
+    background-color: #177791;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 30%;
+	height: 12%;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    border: 1px solid #97DCEF;
+    background-color: #fff;
+    color: #97DCEF;
+}
+
+.pet-create-form-grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0px;
+    height: 100%;
+}
+
+.create-pet-name-input, 
+.create-pet-chars-input, 
+.create-pet-sex-input,
+.create-pet-age-input, 
+.create-pet-size-input, 
+.create-pet-med-hist-input, 
+.create-pet-SNR-input, 
+.create-pet-shelter-input, 
+.create-pet-address-input,
+.create-pet-contact-input, 
+.create-pet-date-input{
+    width: 100%;
+    height: 55%;
+    margin-bottom: 1%; 
+    padding-left: 5%;
+    border-radius: 20px;
+    border-radius: 18px;
+    border: 1px solid #177791;
+    padding-left: 10%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFF;
+}
+
+.create-pet-description-input {
+    width: 100%;
+    height: 55%;
+    margin-bottom: 1%; 
+    padding-left: 5%;
+    border-radius: 20px;
+    border-radius: 18px;
+    border: 1px solid #177791;
+    padding-left: 10%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFF;
+}
+
+
+.add-pet{
+    border: 1px solid #177791;
+    background-color: #177791;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 80%;
+	height: 50px;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.add-pet:hover {
+    border: 1px solid #97DCEF;
+    background-color: #fff;
+    color: #97DCEF;
+}
