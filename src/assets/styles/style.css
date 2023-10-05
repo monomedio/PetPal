@@ -484,12 +484,13 @@ main {
 /* -------pet-creation------- */
 .pet-creation-title {
     color: #000;
-    font-family: 'Pacifico', cursive;
+    font-family: Roboto Slab;
     font-size: 80px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     margin-top: 20px;
+    margin-bottom: 20px;
 
 }
 
@@ -505,6 +506,10 @@ main {
 }
 .light-pink{
     background-color: #FFBDA8;
+}
+
+.light-blue{
+    background-color: #97dcef
 }
 
 .center {
@@ -558,8 +563,8 @@ h1 {
 }
 
 .upload-button {
-    border: 1px solid #177791;
-    background-color: #177791;
+    border: 1px solid #E9724C;
+    background-color: #E9724C;
     color: #fff;
     font-weight: 700;
     font-size: 14px; 
@@ -573,9 +578,9 @@ h1 {
 }
 
 .upload-button:hover {
-    border: 1px solid #97DCEF;
+    border: 1px solid #FFBDA8;
     background-color: #fff;
-    color: #97DCEF;
+    color: #FFBDA8;
 }
 
 .pet-create-form-grid{
@@ -630,6 +635,39 @@ h1 {
 
 
 .add-pet{
+    border: 1px solid #E9724C;
+    background-color: #E9724C;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 80%;
+	height: 50px;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.add-pet:hover {
+    border: 1px solid #FFBDA8;
+    background-color: #fff;
+    color: #FFBDA8;
+}
+
+.frame-update-pet {
+    width: 80%;
+	height: 400px;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: linear-gradient(to top right, #177791 0%, #97DCEF 100%);
+	color: #333;
+	font-family: Roboto;
+    margin-bottom: 20px;
+}
+
+
+.modify-pet{
     border: 1px solid #177791;
     background-color: #177791;
     color: #fff;
@@ -645,6 +683,28 @@ h1 {
 }
 
 .add-pet:hover {
+    border: 1px solid #FFBDA8;
+    background-color: #fff;
+    color: #FFBDA8;
+}
+
+
+.upload-button-modify {
+    border: 1px solid #177791;
+    background-color: #177791;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 30%;
+	height: 12%;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.upload-button-modify:hover {
     border: 1px solid #97DCEF;
     background-color: #fff;
     color: #97DCEF;
