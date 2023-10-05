@@ -246,6 +246,19 @@ main {
     border-radius: 2rem;
 }
 
+/* -------login------- */
+
+.frame-login {
+	width: 100%;
+	height: 80%;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: linear-gradient(to top right, #E9724C 0%, #FFBDA8 100%);
+	color: #333;
+	font-family: Roboto;
+    margin-bottom: 20px;
+}
+
 .login-background {
     background-color: #FFBDA8;
     flex-direction: column;
@@ -269,15 +282,20 @@ main {
 }
 
 .login-container {
-    width: 100%;
+	width: 80%;
+	/* height: 80%; */
+	box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
     height: calc(100vh - 200px);
     margin-top: 16px; 
     margin-bottom: 16px;
     background-color: white;
     border-radius: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* display: grid; */
 }
 
 .login-title{
@@ -291,6 +309,11 @@ main {
     line-height: normal;
     margin-top: 45px;
     
+}
+
+.login-cat-image{
+    width: 5%;      /* 50% of its container's width */
+    height: auto;   /* maintain aspect ratio */
 }
 
 .login-subtitle {
@@ -309,8 +332,8 @@ main {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0px;
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
 }
 
 .pawprint-image {
@@ -319,7 +342,7 @@ main {
 }
 
 
-.login-email-text, .create-pet-name-text {
+.create-pet-name-text {
     color: #1E1E1E;
     font-family: Roboto;
     font-size: 16px;
@@ -331,52 +354,35 @@ main {
     padding-left: 21.04px;
 }
 
-.login-password-text {
+.login-email-text, .login-password-text {
+    width: 50%;
     color: #1E1E1E;
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-top: 34.07px;
+    margin-top: 5px;
     justify-self: start;
-    padding-left: 21.04px;
+    padding-left: 10px;
 }
 
 
 .login-username, 
 .login-password{
     width: 100%;
-    height: 55%;
-    margin-top: 10%; 
-    padding-left: 5%;
+    height: 30%;
+    margin-top: 5px; 
+    padding-left: 10px;
     border-radius: 20px;
     border-radius: 18px;
     border: 1px solid #177791;
-    padding-left: 10%;
     background-color: white;
-    display: flex;
     flex-direction: column;
-    align-items: center;
     background: #FFF;
+    align-self: center;
+    justify-self: center;
 }
-
-
-/* .login-password, .create-pet-chars-input{
-    width: 100%;
-    height: 55%;
-    margin-top: 16px; 
-    margin-bottom: 31.15px;
-    background-color: white;
-    border-radius: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 10%;
-    border-radius: 20px;
-    border: 1px solid #177791;
-    background: #FFF;
-} */
 
 .login-button{
     border-radius: 18px;
@@ -387,20 +393,32 @@ main {
     font-weight: 700;
     padding: 6.5px 25px;
 
-    width: 165.806px;
-    height: 43.973px;
-
-    justify-self: center;
-    align-self: center;
+    width: 25%;
+    height: 10%;
+    
     margin-bottom: 20px;
-
 }
+
+
 
 .login-button:hover{
     border: 1px solid #E9724C;
     background-color: #fff;
     color: #E9724C;
 
+}
+
+.login-rotate-image-20 {
+    transform: rotate(20deg);
+}
+
+.login-rotate-image-neg-20 {
+    transform: rotate(-20deg);
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 /* ------login page----- */
