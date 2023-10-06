@@ -439,3 +439,7 @@ main {
 #apply {
     width: fit-content;
 }
+
+.light-blue {
+    background-color: var(--primary-color-dark);
+}
