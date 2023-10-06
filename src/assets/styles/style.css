@@ -524,6 +524,351 @@ main {
 #apply {
     width: fit-content;
 }
+/* Shelter Details Page */
+
+.light-blue {
+    background-color: var(--primary-color-dark);
+}
+
+.body-bold {
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: 700;
+}
+
+.card {
+    border-radius: 2rem;
+}
+
+.no-margins{
+    margin: 0 auto;
+}
+
+/* Account update page styling */
+.account-overview {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.summary-profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-summary-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.profile-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-summary p {
+    margin-bottom: 0;
+}
+
+.profile-summary-name {
+    font-family: "Roboto Slab";
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.profile-summary-email {
+    color: grey;
+}
+
+.profile-summary-card {
+    background-color: #fff;
+}
+
+
+/* -------pet-creation------- */
+.pet-creation-title {
+    color: #000;
+    font-family: Roboto Slab;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.frame {
+	width: 80%;
+	height: 400px;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: linear-gradient(to top right, #E9724C 0%, #FFBDA8 100%);
+	color: #333;
+	font-family: Roboto;
+    margin-bottom: 20px;
+}
+.light-pink{
+    background-color: #FFBDA8;
+}
+
+.light-blue{
+    background-color: #97dcef
+}
+
+.center {
+	width: 80%;
+	height: 80%;
+	box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+}
+
+.title {
+	width: 100%;
+	height: 10%;
+	border-bottom: 1px solid #999;
+	text-align: center;
+}
+
+h1 {
+	font-size: 16px;
+	font-weight: 300;
+	color: #666;
+}
+
+.add-photo {
+	width: 30%;
+	height: 30%;
+	border: 1px dashed #177791;
+	display: flex;
+	align-items: center; 
+	justify-content: center;
+    position: relative; 
+}
+
+.upload-icon {
+	margin: 5px;
+	width: 80%;
+	height: 80%;
+}
+
+.upload-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+    cursor: pointer;
+}
+
+.upload-button {
+    border: 1px solid #E9724C;
+    background-color: #E9724C;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 30%;
+	height: 12%;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    border: 1px solid #FFBDA8;
+    background-color: #fff;
+    color: #FFBDA8;
+}
+
+.pet-create-form-grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0px;
+    height: 100%;
+}
+
+.create-pet-name-input, 
+.create-pet-chars-input, 
+.create-pet-sex-input,
+.create-pet-age-input, 
+.create-pet-size-input, 
+.create-pet-med-hist-input, 
+.create-pet-SNR-input, 
+.create-pet-shelter-input, 
+.create-pet-address-input,
+.create-pet-contact-input, 
+.create-pet-date-input{
+    width: 100%;
+    height: 55%;
+    margin-bottom: 7px;; 
+    padding-left: 5%;
+    border-radius: 20px;
+    border-radius: 18px;
+    border: 1px solid #177791;
+    padding-left: 10%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFF;
+}
+
+.create-pet-description-input {
+    width: 100%;
+    height: 55%;
+    margin-bottom: 1%; 
+    padding-left: 5%;
+    border-radius: 20px;
+    border-radius: 18px;
+    border: 1px solid #177791;
+    padding-left: 10%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFF;
+}
+
+
+.add-pet{
+    border: 1px solid #E9724C;
+    background-color: #E9724C;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 80%;
+	height: 50px;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.add-pet:hover {
+    border: 1px solid #FFBDA8;
+    background-color: #fff;
+    color: #FFBDA8;
+}
+
+.frame-update-pet {
+    width: 80%;
+	height: 400px;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: linear-gradient(to top right, #177791 0%, #97DCEF 100%);
+	color: #333;
+	font-family: Roboto;
+    margin-bottom: 20px;
+}
+
+
+.modify-pet{
+    border: 1px solid #177791;
+    background-color: #177791;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 80%;
+	height: 50px;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.add-pet:hover {
+    border: 1px solid #FFBDA8;
+    background-color: #fff;
+    color: #FFBDA8;
+}
+
+
+.upload-button-modify {
+    border: 1px solid #177791;
+    background-color: #177791;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px; 
+	width: 30%;
+	height: 12%;
+    justify-self: center;
+    align-self: center;
+    transition: all 0.3s ease-in-out;
+	font-size: 14px;
+    cursor: pointer;
+}
+
+.upload-button-modify:hover {
+    border: 1px solid #97DCEF;
+    background-color: #fff;
+    color: #97DCEF;
+}
+
+/* Media queries */
+@media (min-width: 992px) {
+    .nav-login {
+        border-radius: 18px;
+        border: 1px solid var(--secondary-color);
+        background-color: var(--secondary-color);
+
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 6.5px 0;
+        --bs-navbar-nav-link-padding-x: 25px;
+        transition: 0s;
+    }
+
+    .nav-login:hover {
+        color: #fff;
+        filter: brightness(85%);
+        /* transition: 0.15s; */
+    }
+
+    .nav-signup {
+        border-radius: 18px;
+        border: 1px solid var(--secondary-color);
+        background-color: white;
+
+        color: var(--secondary-color);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 6.5px 0;
+        --bs-navbar-nav-link-padding-x: 25px;
+        transition: 0s;
+    }
+
+    .nav-signup:hover {
+        color: var(--secondary-color);
+        filter: brightness(85%);
+    }
+
+    .navbar {
+        --bs-navbar-padding-x: 94px;
+    }
+
+    .footer-nav {
+        --bs-navbar-padding-y: 30px;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        /* color: var(--primary-color); */
+    }
+}
 
 
 /* Account update page styling */
