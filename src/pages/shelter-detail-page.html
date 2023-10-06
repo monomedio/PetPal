@@ -1,87 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Pet Detail Page| PetPal</title>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto+Slab"
-        />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/styles/style.css" />
-    </head>
-    <body>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <header>
-            <div id="header-container">
-                <a href="./index.html"
-                    ><img
-                        id="header-logo"
-                        src="../assets/images/petpal-logo.svg"
-                    />
-                </a>
-                <nav id="header-nav">
-                    <a class="nav-link" href="">Adopt A Pet</a>
-                    <a class="nav-link" href="">Partner As A Shelter</a>
-                    <a class="button-outline" id="signup" href="">Sign Up</a>
-                    <a class="button-fill" id="login" href="login-page.html"
-                        >Login</a
-                    >
-                </nav>
-            </div>
-        </header>
-        <main>
-            <div class = "light-blue pb-4">
-                <div class="row margin-h margin-v pt-4">
-                    <div class="col">
-                        <img class="d-inline" src="../assets/images/back-arrow.svg">
-                        <p class="text-small-thin d-inline">Back to Pet Details</p>
-                    </div>
-                    <div class="col-auto">
-                        <div class="search-width input-group">
-                            <input type="search" class="form-control rounded search-bar" placeholder="Search"/>
-                            <img class="d-inline" src="../assets/images/search-icon.svg">
-                        </div>
-                    </div>
-                </div>
-                <div id="shelter-description" class="container bg-white rounded-item p-5 mt-2 margin-v margin-h">
-                    <div class="row">
-                        <div class="col-8">
-                            <h1 class="text-black heading-slab">Meet Duo Duo</h1>
-                            <p class="important-p text-black">Duo Duo is a 6 years old long-hair Ragamuffin who is house-trained. She loves sleeping, finding new sleeping spots, and getting pets. Duo Duo is overweight but her family is trying to help her exercise more.</p>
-                            <br>
-                            <p class="important-p text-black">Duo Duo can be in a household with both adults and children. She prefers a quiet environment with lots of hiding spots. Her favorite toys are hair ties, bouncy balls, and catnip toys.</p>
-                        </div>
-                        <div class="col">
-                            <img class="circle-image mx-auto" src="../assets/images/duoduo/duoduo1.jpg" />
-                        </div>
-                    </div>         
-                </div>
-            </div>
-        </main>
-        <footer>
-            <div id="footer-container">
-                <div id="footer-nav-container">
-                    <a href="./index.html"
-                        ><img
-                            id="footer-logo"
-                            src="../assets/images/petpal-logo.svg"
-                    /></a>
 
-                    <nav id="footer-nav">
-                        <a class="nav-link" href="">Adopt A Pet</a>
-                        <a class="nav-link" href="">Partner As A Shelter</a>
-                    </nav>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toronto Humane Society | PetPal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <header class="mb-3">
+        <nav class="navbar navbar-expand-lg bg-body-light shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img id="header-logo" src="../assets/images/petpal-logo.svg" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg">
+                    <div class="offcanvas-header">
+                        <img class="offcanvas-title" id="header-logo" src="../assets/images/petpal-logo.svg" />
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <ul class="navbar-nav px-3 px-lg-0 justify-content-lg-end align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Manage My Listings</a>
+                        </li>
+                        <div class="ms-lg-3 me-lg-2 d-none d-lg-inline divider">|</div>
+                        <hr class="hr border-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-link-icon dropdown-toggle d-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-bell"></i>
+                            </a>
+                            <ul id="notification-menu" class="dropdown-menu dropdown-menu-end">
+                                <li class="no-notifications d-flex justify-content-center">You're all caught up!</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="profile-button d-flex flex-row-reverse flex-lg-row align-items-center">
+                                    <img id="profile-pic" src="../assets/images/among-us.jpeg" />
+                                    Some Shelter
+                                </div>
+                            </a>
+                            <ul id="profile-menu" class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <p id="copyright">
-                    Copyright &copy; 2023 by Anisha, Anne, Celina, Sam
-                </p>
             </div>
-        </footer>
-    </body>
+        </nav>
+    </header>
+    <main>
+        <div class="light-blue pb-4">
+            <div class="row margin-h margin-v pt-4">
+                <div class="col">
+                    <img class="d-inline" src="../assets/images/back-arrow.svg">
+                    <p class="text-small-thin d-inline">Duo Duo / Shelters / Toronto Humane Society</p>
+                </div>
+                <div class="col-auto">
+                    <div class="search-width input-group">
+                        <input type="search" class="form-control rounded search-bar" placeholder="Search for Pets" />
+                        <img class="d-inline" src="../assets/images/search-icon.svg">
+                    </div>
+                </div>
+            </div>
+            <div id="shelter-description" class="container bg-white rounded-item p-5 mt-2 margin-v margin-h">
+                <div class="row">
+                    <div class="col-8">
+                        <h1 class="text-black heading-slab">Toronto Humane Society</h1>
+                        <br>
+                        <p class="body-bold">About the Organization:</p>
+                        <p class="important-p text-black">Toronto Humane Society excels in all ways an animal shelter
+                            should. With industry leading shelter care, animal training and behavioural consultations,
+                            and veterinary services, we have found new homes for thousands of animals and helped keep
+                            families together. But with a mission to Improve the Lives of Animals and build a more
+                            compassionate society, we go further. Way further.</p>
+                        <br>
+                        <p class="body-bold">Adoption Hours:</p>
+                        <p class="important-p m-0">Monday &#8212 11:00 AM &#8212 7:00 PM</p>
+                        <p class="important-p m-0">Tuesday &#8212 3:00 PM &#8212 7:00 PM</p>
+                        <p class="important-p m-0">Wednesday &#8212 CLOSED </p>
+                        <p class="important-p m-0">Thursday &#8212 3:00 PM &#8212 7:00 PM</p>
+                        <p class="important-p m-0">Friday &#8212 11:00 AM &#8212 7:00 PM</p>
+                        <p class="important-p m-0">Saturday &#8212 10:00 AM &#8212 6:00 PM</p>
+                        <p class="important-p m-0">Sunday &#8212 10:00 AM &#8212 6:00 PM</p>
+                        <br>
+                        <div class="d-flex">
+                            <p class="body-bold m-0">Telephone:&nbsp</p>
+                            <p class="important-p m-0">416.392.2273</p>
+                        </div>
+                        <div class="d-flex">
+                            <p class="body-bold m-0">Email:&nbsp</p>
+                            <p class="important-p m-0">adoption@torontohumanesociety.com</p>
+                        </div>
+                        <div class="d-flex">
+                            <p class="body-bold m-0">Charity Registration Number:&nbsp</p>
+                            <p class="important-p m-0">119259513 RR 0001</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img class="mx-auto" src="../assets/images/shelter-images/toronto-humane-society.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pet-listings-carousel" class="carousel slide margin-v" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#pet-listings-carousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1">
+                </button>
+                <button type="button" data-bs-target="#pet-listings-carousel" data-bs-slide-to="1"
+                    aria-label="Slide 2">
+                </button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="col-12 row gx-5">
+                        <div class="col-4 h-100">
+                            <div class="card light-yellow-box border-0">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <img class="w-100"
+                                            src="../assets/images/duoduo/duoduo1.jpg" />
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-center mt-5">
+                                                <p class="body-bold m-0">Name:&nbsp</p>
+                                                <p class="important-p m-0">Duo Duo</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Gender:&nbsp</p>
+                                                <p class="important-p m-0">Female</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Breed:&nbsp</p>
+                                                <p class="important-p m-0">Ragamuffin</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Age:&nbsp</p>
+                                                <p class="important-p m-0">6 years</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Status:&nbsp</p>
+                                                <p class="important-p m-0">Available</p>
+                                            </div>
+                                            <br>
+                                            <a href="..\pages\pet-detail-page.html" class="button-fill">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 h-100">
+                            <div class="card light-yellow-box border-0">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <img class="w-100"
+                                            src="../assets/images/duoduo/duoduo1.jpg" />
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-center mt-5">
+                                                <p class="body-bold m-0">Name:&nbsp</p>
+                                                <p class="important-p m-0">Duo Duo</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Gender:&nbsp</p>
+                                                <p class="important-p m-0">Female</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Breed:&nbsp</p>
+                                                <p class="important-p m-0">Ragamuffin</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Age:&nbsp</p>
+                                                <p class="important-p m-0">6 years</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Status:&nbsp</p>
+                                                <p class="important-p m-0">Available</p>
+                                            </div>
+                                            <br>
+                                            <a href="..\pages\pet-detail-page.html" class="button-fill">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 h-100">
+                            <div class="card light-yellow-box border-0">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <img class="w-100"
+                                            src="../assets/images/duoduo/duoduo1.jpg" />
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-center mt-5">
+                                                <p class="body-bold m-0">Name:&nbsp</p>
+                                                <p class="important-p m-0">Duo Duo</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Gender:&nbsp</p>
+                                                <p class="important-p m-0">Female</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Breed:&nbsp</p>
+                                                <p class="important-p m-0">Ragamuffin</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Age:&nbsp</p>
+                                                <p class="important-p m-0">6 years</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Status:&nbsp</p>
+                                                <p class="important-p m-0">Available</p>
+                                            </div>
+                                            <br>
+                                            <a href="..\pages\pet-detail-page.html" class="button-fill">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item no-margins">
+                    <div class="col-12 row gx-5">
+                        <div class="col-4 h-100">
+                            <div class="card light-yellow-box border-0">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <img class="w-100"
+                                            src="../assets/images/duoduo/duoduo1.jpg" />
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-center mt-5">
+                                                <p class="body-bold m-0">Name:&nbsp</p>
+                                                <p class="important-p m-0">Duo Duo</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Gender:&nbsp</p>
+                                                <p class="important-p m-0">Female</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Breed:&nbsp</p>
+                                                <p class="important-p m-0">Ragamuffin</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Age:&nbsp</p>
+                                                <p class="important-p m-0">6 years</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Status:&nbsp</p>
+                                                <p class="important-p m-0">Available</p>
+                                            </div>
+                                            <br>
+                                            <a href="..\pages\pet-detail-page.html" class="button-fill">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 h-100">
+                            <div class="card light-yellow-box border-0">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <img class="w-100"
+                                            src="../assets/images/duoduo/duoduo1.jpg" />
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-center mt-5">
+                                                <p class="body-bold m-0">Name:&nbsp</p>
+                                                <p class="important-p m-0">Duo Duo</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Gender:&nbsp</p>
+                                                <p class="important-p m-0">Female</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Breed:&nbsp</p>
+                                                <p class="important-p m-0">Ragamuffin</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Age:&nbsp</p>
+                                                <p class="important-p m-0">6 years</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Status:&nbsp</p>
+                                                <p class="important-p m-0">Available</p>
+                                            </div>
+                                            <br>
+                                            <a href="..\pages\pet-detail-page.html" class="button-fill">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 h-100">
+                            <div class="card light-yellow-box border-0">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <img class="w-100"
+                                            src="../assets/images/duoduo/duoduo1.jpg" />
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-center mt-5">
+                                                <p class="body-bold m-0">Name:&nbsp</p>
+                                                <p class="important-p m-0">Duo Duo</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Gender:&nbsp</p>
+                                                <p class="important-p m-0">Female</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Breed:&nbsp</p>
+                                                <p class="important-p m-0">Ragamuffin</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Age:&nbsp</p>
+                                                <p class="important-p m-0">6 years</p>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="body-bold m-0">Status:&nbsp</p>
+                                                <p class="important-p m-0">Available</p>
+                                            </div>
+                                            <br>
+                                            <a href="..\pages\pet-detail-page.html" class="button-fill">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-3">
+        <nav class="navbar footer-nav">
+            <div class="container-fluid justify-content-center">
+                <div class="row justify-content-center justify-content-lg-between container-fluid mx-0 px-0">
+                    <div
+                        class="container-fluid col-lg-6 px-0 pt-2 pt-lg-0 d-flex align-items-center justify-content-center justify-content-lg-start">
+                        <a href="./index.html" class="nanvbar-brand"><img id="footer-logo"
+                                src="../assets/images/petpal-logo.svg" /></a>
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end px-0">
+                        <nav class="d-flex align-items-center flex-lg-row flex-column">
+                            <a class="nav-link footer-nav-item px-lg-5 py-2 py-lg-0" href="">Adopt A Pet</a>
+                            <a class="nav-link footer-nav-item pb-2 pb-lg-0" href="">Partner As A Shelter</a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row mt-lg-2">
+                    <div class="col">
+                        <p id="copyright">
+                            Copyright &copy; 2023 by Anisha, Anne, Celina, Sam
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+</body>
+
 </html>

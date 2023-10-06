@@ -524,9 +524,24 @@ main {
 #apply {
     width: fit-content;
 }
+/* Shelter Details Page */
 
 .light-blue {
     background-color: var(--primary-color-dark);
+}
+
+.body-bold {
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: 700;
+}
+
+.card {
+    border-radius: 2rem;
+}
+
+.no-margins{
+    margin: 0 auto;
 }
 
 /* Account update page styling */
@@ -571,6 +586,7 @@ main {
 .profile-summary-card {
     background-color: #fff;
 }
+
 
 /* -------pet-creation------- */
 .pet-creation-title {
