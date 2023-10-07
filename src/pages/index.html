@@ -4,9 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home | PetPal</title>
+        <link rel="icon" type="image/x-icon" href="../assets/images/petpal-favicon.png">
         <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto"
+            href="https://fonts.googleapis.com/css?family=Roboto|Roboto Slab|Pacifico"
         />
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -17,18 +18,16 @@
         <link rel="stylesheet" href="../assets/styles/style.css" />
     </head>
     <body>
-        <header class="mb-3">
+        <header>
             <nav class="navbar navbar-expand-lg bg-body-light shadow-sm">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="./index.html">
                         <img
                             id="header-logo"
                             src="../assets/images/petpal-logo.svg"
                         />
                     </a>
                     <button
-                        class="navbar-toggler"
-                        ty<button
                         class="navbar-toggler"
                         type="button"
                         data-bs-toggle="offcanvas"
@@ -62,7 +61,7 @@
                         >
                             <li class="nav-item px-lg-3">
                                 <a
-                                    class="nav-link nav-signup"
+                                    class="button-outline"
                                     aria-current="page"
                                     href="#"
                                     >Sign Up</a
@@ -70,7 +69,7 @@
                             </li>
                             <li class="nav-item">
                                 <a
-                                    class="nav-link nav-login"
+                                    class="button-fill"
                                     href="./login-page.html"
                                     >Login</a
                                 >
@@ -82,22 +81,50 @@
             </nav>
         </header>
         <main>
-            <div class="container teal rounded">
+            <div class="container teal rounded-item">
                 <div class="row justify-content-center">
-                    <div class="col-6">
-                        <h1>Adopt <span>your new</span> best friend</h1>
-                        <p>
-                            New furry friends are added every day and are
-                            waiting for a forever home.
-                        </p>
-                        <button class="button-outline" href="">Sign Up</button>
+                    <div class="col-12 col-md-6">
+                        <div class="padding">
+                            <h1>Adopt</h1>
+                            <span class="h1-span">your new</span>
+                            <h1>best friend</h1>
+                            <p>
+                                New furry friends are added every day and are
+                                waiting for a forever home.
+                            </p>
+                            <button class="button-dark" href="">Sign Up</button>
+                        </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <img
-                            src="../assets/images/doggo.png"
+                            src="../assets/images/hero-dog.png"
                             alt="dog"
                             width="500px"
                         />
+                    </div>
+                </div>
+            </div>
+
+            <div class="container yellow rounded-item">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6">
+                        <img
+                            src="../assets/images/hero-dog.png"
+                            alt="dog"
+                            width="500px"
+                        />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="padding">
+                            <h1>Adopt</h1>
+                            <span class="h1-span">your new</span>
+                            <h1>best friend</h1>
+                            <p>
+                                New furry friends are added every day and are
+                                waiting for a forever home.
+                            </p>
+                            <button class="button-dark" href="">Sign Up</button>
+                        </div>
                     </div>
                 </div>
             </div>
