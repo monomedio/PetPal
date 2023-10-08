@@ -403,7 +403,7 @@ main {
     padding-left: 21.04px;
 }
 
-.login-email-text, .login-password-text {
+.login-email-text, .login-password-text, .sign-up-name-text {
     width: 50%;
     color: #1E1E1E;
     font-family: Roboto;
@@ -418,7 +418,8 @@ main {
 
 
 .login-username, 
-.login-password{
+.login-password, 
+.sign-up-name{
     width: 100%;
     height: 30%;
     margin-top: 5px; 
@@ -433,7 +434,7 @@ main {
     justify-self: center;
 }
 
-.login-button{
+.login-button, .sign-up-button{
     border-radius: 18px;
     border: 1px solid #E9724C;
     background-color: #E9724C;
@@ -450,7 +451,7 @@ main {
 
 
 
-.login-button:hover{
+.login-button:hover, .sign-up-button:hover{
     border: 1px solid #E9724C;
     background-color: #fff;
     color: #E9724C;
