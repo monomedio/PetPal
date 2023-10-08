@@ -579,46 +579,29 @@ a.teal-text {
 }
 
 /* Account update page styling */
-.account-overview {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.account-update-page {
+    background-color: var(--primary-color-dark);
 }
 
-.summary-profile-pic {
-    width: 100px;
-    height: 100px;
+.card-img-top {
+    max-width: 200px;
     border-radius: 50%;
 }
 
-.profile-summary-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
+.user-name {
+    font-size: 1.5rem;
 }
 
-.profile-summary {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.profile-summary p {
-    margin-bottom: 0;
-}
-
-.profile-summary-name {
-    font-family: "Roboto Slab";
-    font-weight: 700;
-    font-size: 2rem;
-}
-
-.profile-summary-email {
+.user-type {
     color: grey;
+    margin-top: -0.5rem;
 }
 
-.profile-summary-card {
-    background-color: #fff;
+.edit-profile-btn {
+    --bs-btn-bg: var(--primary-color);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: var(--primary-color-dark);
+    --bs-btn-hover-color: #FAF9F6;
 }
 
 
@@ -917,11 +900,20 @@ h1 {
     border-radius: 50%;
 }
 
-.profile-summary-container {
-    display: flex;
-    justify-content: center;
+.profile-summary-container,
+.edit-profile-container {
     gap: 1rem;
     width: 100%;
+}
+
+.profile-summary-container {
+    max-width: 500px;
+}
+
+.edit-profile-container {
+    border-radius: 1rem;
+    background-color: #fff;
+    max-width: 700px;
 }
 
 .profile-summary {
@@ -946,6 +938,11 @@ h1 {
 
 .profile-summary-card {
     background-color: #fff;
+}
+
+.bi.bi-arrow-left {
+    font-size: 2rem;
+    color: var(--primary-color);
 }
 
 /* -------pet-creation------- */
@@ -1177,6 +1174,45 @@ h1 {
     color: #97DCEF;
 }
 
+/* LANDING - INDEX.HTML */
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+    color: white;
+}
+
+.h1-span {
+    font-family: 'Roboto Slab', serif;
+    font-size: 3rem;
+    color: white;
+}
+
+.teal {
+    background-color: var(--primary-color);
+}
+
+.yellow {
+    background-color: var(--tertiary-color-dark);
+}
+
+.rounded {
+    border-radius: 2rem;
+}
+
+.padding {
+    padding: 2rem;
+}
+
+p {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 2rem;
+}
+
+.container {
+    margin: 1rem auto;
+}
+
 /* Media queries */
 @media (min-width: 992px) {
     .nav-login {
@@ -1228,43 +1264,4 @@ h1 {
         font-size: 1rem;
         /* color: var(--primary-color); */
     }
-}
-
-/* LANDING - INDEX.HTML */
-h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: 5rem;
-    color: white;
-}
-
-.h1-span {
-    font-family: 'Roboto Slab', serif;
-    font-size: 3rem;
-    color: white;
-}
-
-.teal {
-    background-color: var(--primary-color);
-}
-
-.yellow {
-    background-color: var(--tertiary-color-dark);
-}
-
-.rounded {
-    border-radius: 2rem;
-}
-
-.padding {
-    padding: 2rem;
-}
-
-p {
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    margin-top: 2rem;
-}
-
-.container {
-    margin: 1rem auto;
 }
