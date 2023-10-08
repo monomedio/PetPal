@@ -141,14 +141,50 @@
                                     </div>
                                 </div>
 
+                                <!-- <div class="container">
+                                    <form action="/action_page.php">
+                                      <label for="usrname">Username</label>
+                                      <input type="text" id="usrname" name="usrname" required>
+                                  
+                                      <label for="psw">Password</label>
+                                    <  input type="password" id="psw" name="psw" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Must contain at least one number, one special character, one uppercase and lowercase letter, and at least characters" required>
+                                  
+                                      <input type="submit" value="Submit">
+                                    </form>
+                                  </div>
+                                  
+                                  <div id="message">
+                                    <h3>Password must contain the following:</h3>
+                                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                                    <p id="number" class="invalid">A <b>number</b></p>
+                                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                                  </div> -->
+
+
                                 <div class ="row justify-content-center align-items-center">
                                     <div class="justify-content-center align-items-center">
-
-                                        <label for="login-password" class="login-password-text"
+                                        <label id="signup-password" for="signup-password" class="login-password-text"
                                             >Password:*</label>
-                                        <input type="text" id="login-password"
-                                        name="login-password" class ="form-control
-                                        login-password" placeholder="****************":required>
+                                        <input type="password" id="signup-password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Must contain at least one number, one special character, one uppercase and lowercase letter, and at least characters"
+                                        name="signup-password" class ="form-control
+                                        login-password" placeholder="****************" required>
+                                    </div>
+
+                                    <div class="justify-content-center align-items-center">
+                                        <label id="confirm-signup-password-label" for="confirm-signup-password" class="login-password-text">Confirm password:*</label>
+                                        <input type="password" id="confirm-signup-password" name="confirm-signup-password" class="form-control login-password" placeholder="****************" required>
+                                        <span id="passwordMatchMessage"></span> <!-- This will display "Match" or "Does not match" -->
+                                    </div>
+                                    
+
+                                    <div id="message">
+                                        Password must contain the following:
+                                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                                        <P id="special" class="invalid"> A <b> special character</b> </P>
+                                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                                        <p id="number" class="invalid">A <b>number</b></p>
+                                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                                     </div>
                                 </div>
 
@@ -213,5 +249,7 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="../assets/scripts/signup-password-validation.js"></script>
+    
     </body>
 </html>
