@@ -555,6 +555,14 @@ a.teal-text {
     color: var(--primary-color);
 }
 
+/* Shelter management page */
+.heading-roboto {
+    font-size: 40px;
+    font-family: "Roboto";
+    font-weight: 900;
+    word-wrap: break-word;
+}
+
 /* Account update page styling */
 .account-overview {
     margin-top: 1rem;
