@@ -1209,10 +1209,6 @@ p {
     margin-top: 2rem;
 }
 
-.container {
-    margin: 1rem auto;
-}
-
 /* Media queries */
 @media (min-width: 992px) {
     .nav-login {
@@ -1265,3 +1261,12 @@ p {
         /* color: var(--primary-color); */
     }
 }
+
+/* LANDING - INDEX.HTML */
+@media screen and (max-width: 600px) {
+    .container {
+        width: auto;
+        margin: 1rem;
+    }
+}
+    
