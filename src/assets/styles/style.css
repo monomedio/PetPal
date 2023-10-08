@@ -378,71 +378,74 @@ main {
 }
 
 .create-pet-name-text {
-    color: #1E1E1E;
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-top: 30.99px;
-    justify-self: start;
-    padding-left: 21.04px;
+  color: #1e1e1e;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 30.99px;
+  justify-self: start;
+  padding-left: 21.04px;
 }
 
-.login-email-text, .login-password-text, .sign-up-name-text, .CRN-signup-text, .shelter-address-signup-text {
-    width: 50%;
-    color: #1E1E1E;
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-top: 5px;
-    justify-self: start;
-    padding-left: 10px;
+.login-email-text,
+.login-password-text,
+.sign-up-name-text,
+.CRN-signup-text,
+.shelter-address-signup-text {
+  width: 50%;
+  color: #1e1e1e;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 5px;
+  justify-self: start;
+  padding-left: 10px;
 }
 
-
-.login-username, 
-.login-password, 
-.sign-up-name, 
-.CRN-signup, 
-.shelter-address-signup{
-    width: 100%;
-    height: 30%;
-    margin-top: 5px; 
-    padding-left: 10px;
-    border-radius: 20px;
-    border-radius: 18px;
-    border: 1px solid #177791;
-    background-color: white;
-    flex-direction: column;
-    background: #FFF;
-    align-self: center;
-    justify-self: center;
+.login-username,
+.login-password,
+.sign-up-name,
+.CRN-signup,
+.shelter-address-signup {
+  width: 100%;
+  height: 30%;
+  margin-top: 5px;
+  padding-left: 10px;
+  border-radius: 20px;
+  border-radius: 18px;
+  border: 1px solid #177791;
+  background-color: white;
+  flex-direction: column;
+  background: #fff;
+  align-self: center;
+  justify-self: center;
 }
 
-.login-button, .sign-up-button{
-    border-radius: 18px;
-    border: 1px solid #E9724C;
-    background-color: #E9724C;
+.login-button,
+.sign-up-button {
+  border-radius: 18px;
+  border: 1px solid #e9724c;
+  background-color: #e9724c;
 
-    color: #fff;
-    font-weight: 700;
-    padding: 6.5px 25px;
+  color: #fff;
+  font-weight: 700;
+  padding: 6.5px 25px;
 
-    width: 25%;
-    height: 10%;
-    
-    margin-bottom: 20px;
+  width: 25%;
+  height: 10%;
+
+  margin-bottom: 20px;
 }
 
-
-
-.login-button:hover, .sign-up-button:hover{
-    border: 1px solid #E9724C;
-    background-color: #fff;
-    color: #E9724C;
+.login-button:hover,
+.sign-up-button:hover {
+  border: 1px solid #e9724c;
+  background-color: #fff;
+  color: #e9724c;
 }
 
 .login-rotate-image-20 {
@@ -1119,6 +1122,13 @@ h1 {
   font-family: "Roboto Slab", serif;
   font-size: 3rem;
   color: white;
+}
+
+h2 {
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  color: var(--black);
+  margin: 1rem 0;
 }
 
 .teal {
