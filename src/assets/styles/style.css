@@ -1131,6 +1131,13 @@ h2 {
   margin: 1rem 0;
 }
 
+h4 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: var(--black);
+  margin: 1rem 0;
+}
+
 .teal {
   background-color: var(--primary-color);
 }
@@ -1139,7 +1146,7 @@ h2 {
   background-color: var(--tertiary-color-dark);
 }
 
-.rounded {
+.rounded-item {
   border-radius: 2rem;
 }
 
