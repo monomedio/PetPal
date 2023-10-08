@@ -58,10 +58,6 @@ body {
     --primary-color: #177791;
     --primary-color-dark: #97dcef;
     --secondary-color: #e9724c;
-    --secondary-color-dark: #FFBDA8;
-    --tertiary-color: #FFC857;
-    --tertiary-color-dark: #FFE7B5;
-    --black: #1E1E1E;
 }
 
 .navbar {
@@ -106,6 +102,19 @@ a:visited {
     gap: 2rem;
 }
 
+.nav-link {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.nav-link:hover {
+    color: var(--primary-color-dark);
+}
+
+.nav-link-icon:hover {
+    color: var(--secondary-color);
+}
+
 .nav-link-icon.dropdown-toggle::after {
     display: none !important;
 }
@@ -118,10 +127,6 @@ a:visited {
     /* font-weight: 700; */
     font-size: 2rem;
     color: var(--primary-color);
-}
-
-.container {
-    border-radius: 2rem;
 }
 
 .bi.bi-bell,
@@ -209,7 +214,7 @@ a:visited {
 }
 
 .button-outline {
-    border-radius: 2rem;
+    border-radius: 18px;
     border: 1px solid var(--secondary-color);
     background-color: white;
 
@@ -218,12 +223,8 @@ a:visited {
     padding: 6.5px 25px;
 }
 
-.button-outline:hover {
-    filter: brightness(85%);
-}
-
 .button-fill {
-    border-radius: 2rem;
+    border-radius: 18px;
     border: 1px solid var(--secondary-color);
     background-color: var(--secondary-color);
 
@@ -238,18 +239,12 @@ a:visited {
 }
 
 .button-dark {
-    border-radius: 2rem;
-    border: 1px solid var(--black);
-    background-color: var(--black);
+    border-radius: 18px;
+    background-color: #1e1e1e;
 
-    color: var(--secondary-color-dark);
+    color: #ffbda8;
     font-weight: 700;
-    padding: 6.5px 4rem;
-    transition: 0.15s;
-}
-
-.button-dark:hover {
-    filter: brightness(125%);
+    padding: 6.5px 25px;
 }
 
 .search-bar {
@@ -287,6 +282,13 @@ main {
     flex: 1;
 }
 
+.teal {
+    background-color: var(--primary-color);
+}
+
+.container {
+    border-radius: 2rem;
+}
 
 /* -------login------- */
 
@@ -463,32 +465,6 @@ main {
     margin-left: 0;
 }
 
-.alert {
-    padding: 20px;
-    background-color: #f44336; /* Red */
-    color: white;
-    margin-bottom: 15px;
-    font-family: "Roboto";
-    height: 65px;
-  }
-  
-
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  /* When moving the mouse over the close button */
-  .closebtn:hover {
-    color: black;
-  }
-
 /* ------login page----- */
 
 
@@ -545,6 +521,9 @@ a.important-p {
     object-fit: cover;
 }
 
+.rounded-item {
+    border-radius: 2rem;
+}
 
 .light-yellow-box {
     background-color: #ffe7b5;
@@ -1226,43 +1205,4 @@ h1 {
         font-size: 1rem;
         /* color: var(--primary-color); */
     }
-}
-
-/* LANDING - INDEX.HTML */
-h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: 5rem;
-    color: white;
-}
-
-.h1-span {
-    font-family: 'Roboto Slab', serif;
-    font-size: 3rem;
-    color: white;
-}
-
-.teal {
-    background-color: var(--primary-color);
-}
-
-.yellow {
-    background-color: var(--tertiary-color-dark);
-}
-
-.rounded {
-    border-radius: 2rem;
-}
-
-.padding {
-    padding: 2rem;
-}
-
-p {
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    margin-top: 2rem;
-}
-
-.container {
-    margin: 1rem auto;
 }
