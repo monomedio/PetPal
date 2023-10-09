@@ -11,7 +11,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto"
+      href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -63,12 +63,15 @@
             <ul
               class="navbar-nav px-3 px-lg-0 justify-content-lg-end align-items-lg-center"
             >
+              <li class="nav-item px-lg-3">
+                <a class="nav-link" aria-current="page" href="#">Adopt A Pet</a>
+              </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#"
-                  >Manage My Listings</a
+                <a class="nav-link" href="./login-page.html"
+                  >View Applications</a
                 >
               </li>
-              <div class="ms-lg-3 me-lg-2 d-none d-lg-inline divider">|</div>
+              <div class="divider mx-lg-3 d-none d-lg-inline">|</div>
               <hr class="hr border-4" />
               <li class="nav-item dropdown">
                 <a
@@ -104,10 +107,10 @@
                       id="profile-pic"
                       src="../assets/images/among-us.jpeg"
                     />
-                    Some Shelter
+                    Anisha Latchman
                   </div>
                 </a>
-                <ul id="profile-menu" class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end">
                   <li>
                     <a class="dropdown-item" href="#">Profile Settings</a>
                   </li>
@@ -122,39 +125,43 @@
     <main class="d-flex align-items-center">
       <div class="container">
         <form
-          action="./account-update-shelter.html"
+          action=""
           class="edit-profile-container d-flex justify-content-center p-4 container flex-column"
         >
           <div>
-            <a href="./account-update-shelter.html">
+            <a href="./account-update.html">
               <i class="bi bi-arrow-left"></i>
             </a>
           </div>
+          <div class="text-center">
+          <h2>Apply To Adopt Duo Duo</h4>
+          </div>
           <div class="d-flex justify-content-center">
             <img
-              src="../assets/images/among-us.jpeg"
+              src="../assets/images/duoduo/duoduo1.jpg"
               class="card-img-top"
               alt="Profile Photo"
+              height="200px"
             />
           </div>
           <div class="mb-3">
-            <label for="formFileSm" class="form-label"
-              >Choose a new profile picture</label
-            >
-            <input
-              class="form-control form-control-sm"
-              id="formFileSm"
-              type="file"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="InputFirstName" class="form-label">Shelter name</label>
+            <label for="InputFirstName" class="form-label">First name</label>
             <input
               type="text"
               class="form-control"
               id="InputFirstName"
-              placeholder="Some Shelter"
+              placeholder="Anisha"
               aria-describedby="firstNameHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="InputLastName" class="form-label">Last name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="InputLastName"
+              placeholder="Latchman"
+              aria-describedby="LastNameHelp"
             />
           </div>
           <div class="mb-3">
@@ -176,7 +183,7 @@
               type="email"
               class="form-control"
               id="InputEmail"
-              placeholder="some.shelter@shelters.ca"
+              placeholder="anisha.latchman@utoronto.ca"
               aria-describedby="emailHelp"
             />
             <div id="emailHelp" class="form-text">
@@ -197,21 +204,6 @@
             <div id="phoneHelp" class="form-text">
               We'll never share your number with anyone else.
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="InputPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="InputPassword" />
-          </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="InputCheck"
-              required
-            />
-            <label class="form-check-label" for="InputCheck"
-              >Confirm Update</label
-            >
           </div>
           <button type="submit" class="button-fill">Submit</button>
         </form>
