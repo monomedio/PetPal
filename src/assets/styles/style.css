@@ -571,7 +571,8 @@ a.teal-text {
 }
 
 /* Account update page styling */
-.account-update-page {
+.account-update-page,
+.search-page {
   background-color: var(--primary-color-dark);
 }
 
@@ -594,6 +595,55 @@ a.teal-text {
   --bs-btn-color: #fff;
   --bs-btn-hover-bg: var(--primary-color-dark);
   --bs-btn-hover-color: #faf9f6;
+}
+
+/* search-page */
+
+.search-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.available-nearby-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.search-page-container {
+    background-color: #fff;
+}
+
+#search-bar {
+    border: 1px solid rgb(210, 209, 211);
+}
+
+.search-btn {
+    --bs-btn-bg: var(--primary-color);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: var(--primary-color-dark);
+    --bs-btn-hover-color: #faf9f6;
+    --bs-btn-border-color: var(--primary-color);
+    --bs-btn-hover-border-color: var(--primary-color-dark);
+}
+
+.pet-card-container {
+    gap: 1rem;
+}
+
+.pet-card {
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.pet-card:hover {
+    border: 2px solid var(--primary-color);
+}
+
+.pet-card-img {
+    /* overflow: hidden; */
+    /* max-width: 200px; */
 }
 
 /* -------pet-creation------- */
@@ -1193,6 +1243,17 @@ p {
   .nav-link {
     font-size: 1rem;
     font-weight: 400;
+  }
+
+  .nav-link:hover {
+    color: var(--primary-color-dark)
+  }
+
+  .search-title {
+    font-size: 45px;
+  }
+  .available-nearby-title {
+    font-size: 35px;
   }
 }
 
