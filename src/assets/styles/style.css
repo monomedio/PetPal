@@ -378,15 +378,50 @@ main {
 }
 
 .create-pet-name-text {
-  color: #1e1e1e;
-  font-family: Roboto;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin-top: 30.99px;
-  justify-self: start;
-  padding-left: 21.04px;
+    color: #1E1E1E;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 30.99px;
+    justify-self: start;
+    padding-left: 21.04px;
+}
+
+.login-email-text, .login-password-text, .sign-up-name-text, .CRN-signup-text, .shelter-address-signup-text {
+    width: 50%;
+    color: #1E1E1E;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 5px;
+    justify-self: start;
+    padding-left: 10px;
+}
+
+
+.login-username, 
+.login-password,
+.signup-password,
+.confirm-signup-password, 
+.sign-up-name, 
+.CRN-signup, 
+.shelter-address-signup{
+    width: 100%;
+    height: 30%;
+    margin-top: 5px; 
+    padding-left: 10px;
+    border-radius: 20px;
+    border-radius: 18px;
+    border: 1px solid #177791;
+    background-color: white;
+    flex-direction: column;
+    background: #FFF;
+    align-self: center;
+    justify-self: center;
 }
 
 .login-email-text,
@@ -1220,3 +1255,52 @@ p {
     margin: 1rem;
   }
 }
+
+.container {
+    overflow-y: auto;
+  }
+  
+  #message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    margin: 0;
+    padding: 10px 35px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  #message p {
+    padding: 10px 35px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+
+  }
+  
+  .valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+    content: "\2714";
+  }
+  
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "\2716";
+  }
