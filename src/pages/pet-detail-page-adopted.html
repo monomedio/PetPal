@@ -13,13 +13,7 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto+Slab"
         />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/styles/pet-shelter-details-style.css" />
     </head>
     <body>
@@ -45,11 +39,9 @@
                   id="navbarOffcanvasLg"
                 >
                   <div class="offcanvas-header">
-                    <img
-                      class="offcanvas-title"
-                      id="header-logo"
-                      src="../assets/images/petpal-logo.svg"
-                    />
+                    <a class="navbar-brand" href="./index.html">
+                      <img id="header-logo" src="../assets/images/petpal-logo.svg" />
+                    </a>
                     <button
                       type="button"
                       class="btn-close"
@@ -60,17 +52,20 @@
                   <ul
                     class="navbar-nav px-3 px-lg-0 justify-content-lg-end align-items-lg-center"
                   >
-                    <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="#"
-                        >Manage My Listings</a
+                    <li class="nav-item px-lg-3">
+                      <a
+                        class="nav-link"
+                        aria-current="page"
+                        href="./search-page.html"
+                        >Adopt A Pet</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="#"
+                      <a class="nav-link" href="./applications.html"
                         >View Applications</a
                       >
                     </li>
-                    <div class="ms-lg-3 me-lg-2 d-none d-lg-inline divider">|</div>
+                    <div class="divider mx-lg-3 d-none d-lg-inline">|</div>
                     <hr class="hr border-4" />
                     <li class="nav-item dropdown">
                       <a
@@ -80,37 +75,14 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        <i class="bi bi-bell-fill"></i>
+                        <i class="bi bi-bell"></i>
                       </a>
                       <ul
                         id="notification-menu"
-                        class="dropdown-menu dropdown-menu-end px-2"
+                        class="dropdown-menu dropdown-menu-end"
                       >
-                        <li>
-                          <a
-                            class="d-flex justify-content-between"
-                            href="./applications.html"
-                          >
-                            <div class="d-flex align-items-center">
-                              <i class="bi bi-file-earmark-person-fill pe-2"></i>
-                              <p class="notification-text">
-                                You have a new adoption application for Fluffy
-                              </p>
-                            </div>
-                            <p class="ms-auto time-elapsed p-2">3m ago</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            class="d-flex justify-content-between"
-                            href="./shelter-detail-page.html#reviews"
-                          >
-                            <div class="d-flex align-items-center">
-                              <i class="bi bi-search-heart-fill pe-2"></i>
-                              <p class="notification-text">You have a new review</p>
-                            </div>
-                            <p class="ms-auto time-elapsed px-2">1h ago</p>
-                          </a>
+                        <li class="no-notifications d-flex justify-content-center">
+                          You're all caught up!
                         </li>
                       </ul>
                     </li>
@@ -129,14 +101,12 @@
                             id="profile-pic"
                             src="../assets/images/among-us.jpeg"
                           />
-                          Some Shelter
+                          Anisha Latchman
                         </div>
                       </a>
-                      <ul id="profile-menu" class="dropdown-menu dropdown-menu-end">
+                      <ul class="dropdown-menu dropdown-menu-end">
                         <li>
-                          <a
-                            class="dropdown-item"
-                            href="./account-update-shelter.html"
+                          <a class="dropdown-item" href="./account-update.html"
                             >Profile Settings</a
                           >
                         </li>
@@ -165,15 +135,15 @@
             </div>
             <div id="pet-intro" class="container teal rounded-item p-5 mt-2">
                 <div class="row">
-                    <div class="col-12 col-md">
-                        <img class="circle-image mx-auto img-fluid" src="../assets/images/duoduo/duoduo1.jpg" />
+                    <div class="col-12 col-sm">
+                        <img class="circle-image mx-auto" src="../assets/images/duoduo/duoduo1.jpg" />
                     </div>
-                    <div class="col-12 col-md-8">
+                    <div class="col-12 col-sm-8">
                         <h1 class="text-white heading-slab">Meet Duo Duo</h1>
                         <p class="important-p text-white">Duo Duo is a 6 years old long-hair Ragamuffin who is house-trained. She loves sleeping, finding new sleeping spots, and getting pets. Duo Duo is overweight but her family is trying to help her exercise more.</p>
                         <br>
                         <p class="important-p text-white">Duo Duo can be in a household with both adults and children. She prefers a quiet environment with lots of hiding spots. Her favorite toys are hair ties, bouncy balls, and catnip toys.</p>
-                        <a class="button-fill text-center" id="apply" href="../pages/pet-update-page.html">Edit Pet Listing</a>
+                            <a class="button-greyed-out text-center" href="">Pet Adopted</a>
                     </div>
                 </div>         
             </div>
@@ -266,10 +236,11 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <a class="button-fill text-center" id="apply" href="../pages/pet-update-page.html">Edit Pet Listing</a>
+                            <a class="button-greyed-out" href=".">Pet Adopted</a>
                         </div>
+                    </div>
                 </div>
-              </div>
+            </div>
         </main>
         <footer class="mt-3">
             <nav class="navbar footer-nav">
