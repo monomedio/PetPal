@@ -13,6 +13,13 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto+Slab"
         />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/styles/pet-shelter-details-style.css" />
     </head>
@@ -97,7 +104,7 @@
                 </div>
             </nav>
         </header>
-        <main class="margin-v margin-h">
+        <main class="my-md-auto mt-md-3">
             <div class="row">
                 <div class="col">
                     <img class="d-inline" src="../assets/images/back-arrow.svg">
@@ -123,11 +130,42 @@
                     </div>
                 </div>         
             </div>
-            <div id="pet-images" class="carousel slide margin-v" data-bs-ride="carousel">
+            <div id="pet-images-sm" class="carousel slide margin-v" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#pet-images" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#pet-images" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#pet-images" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#pet-images-sm" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#pet-images-sm" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#pet-images-sm" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="col-12 row">
+                        <div class="col carousel-img"><img src="../assets/images/duoduo/duoduo1.jpg" class="d-block w-100" alt="Pet Picture 1"></div>
+                    </div>                    
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-12 row">
+                        <div class="col carousel-img"><img src="../assets/images/duoduo/duoduo4.jpg" class="d-block w-100" alt="Pet Picture 2"></div>
+                    </div> 
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-12 row">
+                        <div class="col carousel-img"><img src="../assets/images/duoduo/duoduo3.jpg" class="d-block w-100" alt="Pet Picture 2"></div>
+                    </div> 
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#pet-images-sm" data-bs-slide="prev">
+                    <img src="../assets/images/left-paw.svg">
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#pet-images-sm" data-bs-slide="next">
+                    <img src="../assets/images/right-paw.svg">
+                    <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            <div id="pet-images-lg" class="carousel slide margin-v" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#pet-images-lg" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#pet-images-lg" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -145,12 +183,12 @@
                     </div> 
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#pet-images" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#pet-images-lg" data-bs-slide="prev">
                     <img src="../assets/images/left-paw.svg">
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#pet-images" data-bs-slide="next">
-                    <img src="../assets/images/right-paw.svg">
+                <button class="carousel-control-next" type="button" data-bs-target="#pet-images-lg" data-bs-slide="next">
+                    <img class="img-fluid" src="../assets/images/right-paw.svg">
                     <span class="visually-hidden">Next</span>
                 </button>
               </div>
