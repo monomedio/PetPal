@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Update Account | PetPal</title>
+        <title>Search | PetPal</title>
         <link rel="icon" type="image/x-icon" href="../assets/images/petpal-favicon.png">
         <link
             rel="stylesheet"
@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="../assets/styles/style.css" />
     </head>
-    <body class="account-update-page">
+    <body class="search-page">
         <header class="mb-3">
             <nav class="navbar navbar-expand-lg bg-body-light shadow-sm">
                 <div class="container-fluid">
@@ -45,12 +45,11 @@
                         
                     >
                         <div class="offcanvas-header">
-                            <a class="navbar-brand" href="./index.html">
-                                <img
-                                    id="header-logo"
-                                    src="../assets/images/petpal-logo.svg"
-                                />
-                            </a>
+                            <img
+                                class="offcanvas-title"
+                                id="header-logo"
+                                src="../assets/images/petpal-logo.svg"
+                            />
                             <button
                                 type="button"
                                 class="btn-close"
@@ -106,16 +105,99 @@
                 </div>
             </nav>
         </header>
-        <main class="d-flex align-items-center">
-            <div class="container">
-                <div class="profile-summary-container card d-flex align-items-center py-3 container flex-md-row">
-                    <img src="../assets/images/among-us.jpeg" class="card-img-top" alt="Profile Photo">
-                    <div class="card-body">
-                        <h5 class="card-title user-name">Anisha Latchman</h5>
-                        <p class="card-text user-type">Pet Seeker</p>
-                        <p class="card-text">anisha.latchman@utoronto.ca</p>
-                        <p class="card-text">+1 (123) 456-7890</p>
-                        <a href="./edit-profile.html" class="btn edit-profile-btn">Edit Profile</a>
+        <main class="d-flex flex-column justify-content-center">
+            <div class="container-xl">
+                <div class="row">
+                    <div class="container search-page-container py-3 my-auto">
+                        <div class="row">
+                            <div class="container-fluid d-flex justify-content-between">
+                                <a href="./search-page.html">
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                                <a href="./search-result-filtered.html">
+                                    <i class="bi bi-sort-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container-fluid col-12 col-lg-2 pe-lg-0">
+                                <form action="./search-result-filtered.html">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelect" aria-label="">
+                                          <option selected>Any</option>
+                                          <option value="1">&lt; 3 months old</option>
+                                          <option value="2">&ge; 3 months old</option>
+                                        </select>
+                                        <label for="floatingSelect">AGE</label>
+                                    </div>
+                                    <div class="form-floating mt-2">
+                                        <select class="form-select" id="floatingSelect" aria-label="">
+                                          <option selected>Any</option>
+                                          <option value="1">Capybara</option>
+                                          <option value="2">Ragamuffin</option>
+                                          <option value="3">Among Us</option>
+                                          <option value="4">Plushie</option>
+                                        </select>
+                                        <label for="floatingSelect">BREED</label>
+                                    </div>
+                                    <div class="form-floating mt-2">
+                                        <select class="form-select" id="floatingSelect" aria-label="">
+                                          <option selected>Any</option>
+                                          <option value="1">Toronto</option>
+                                          <option value="2">Markham</option>
+                                          <option value="3">Mississauga</option>
+                                          <option value="4">Scarborough</option>
+                                        </select>
+                                        <label for="floatingSelect">SHELTER LOCATION</label>
+                                    </div>
+                                      <button type="submit" class="btn edit-profile-btn mt-2 full-width">Apply Filters</button>
+                                </form>
+                                <div class="filters-applied mt-3">FILTERS APPLIED</div>
+                                <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="d-flex">
+                                      <div class="toast-body">
+                                        Ragamuffin
+                                      </div>
+                                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                                <div class="toast align-items-center border-0 mt-2" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="d-flex">
+                                      <div class="toast-body">
+                                        &ge; 3 months old
+                                      </div>
+                                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                                <div class="toast align-items-center border-0 mt-2" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="d-flex">
+                                      <div class="toast-body">
+                                        Toronto
+                                      </div>
+                                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container pet-container col-lg-10 col-12 mt-sm-3 mt-lg-0">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-6 col-xxl-4 mb-4 d-flex justify-content-center">
+                                        <a href="./pet-detail-page.html">
+                                            <div class="card pet-card">
+                                                <img src="../assets/images/duoduo/duoduo1.jpg" class="pet-card-img" alt="...">
+                                                <div class="card-body">
+                                                <h5 class="card-title">Duo Duo</h5>
+                                                <p class="card-text">6 years old Ragamuffin</p>
+                                                <p class="card-text">
+                                                    <i class="bi bi-geo-alt-fill me-3">Toronto, ON</i>
+                                                </p>
+                                                <p class="card-text"><small class="text-body-secondary">Last updated 2 hours ago</small></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,5 +240,10 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script>
+            const toastElList = document.querySelectorAll('.toast');
+            const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, { autohide: false }));
+            toastList.forEach(toast => toast.show());
+        </script>
     </body>
 </html>
