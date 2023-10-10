@@ -247,6 +247,28 @@ a:visited {
   padding: 6.5px 25px;
 }
 
+.button-greyed-out {
+  border-radius: 2rem;
+  border: 1px solid var(--black);
+  background-color: darkgray;
+
+  color: white;
+  font-weight: 700;
+  padding: 8px 2rem;
+  transition: 0.15s;
+}
+
+.button-pending {
+  border-radius: 2rem;
+  background-color: var(--secondary-color);
+
+  color: white;
+  font-weight: 700;
+  padding: 8px 2rem;
+  transition: 0.15s;
+}
+
+
 .search-bar {
   border: 1px var(--primary-color) solid;
   background: white;
@@ -400,6 +422,7 @@ h1 {
 
 .rounded-item-circle{
   border-radius: 50%;
+  width: 65%;
 }
 
 
