@@ -24,7 +24,7 @@
         <header class="mb-3">
             <nav class="navbar navbar-expand-lg bg-body-light shadow-sm">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="./index.html">
                         <img
                             id="header-logo"
                             src="../assets/images/petpal-logo.svg"
@@ -77,7 +77,7 @@
                                 </a>
                                 <ul id="notification-menu" class="dropdown-menu dropdown-menu-end px-2">
                                     <li>
-                                        <a class="d-flex justify-content-between" href="">
+                                        <a class="d-flex justify-content-between" href="./applications.html">
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-file-earmark-person-fill pe-2"></i>
                                                 <p class="notification-text">You have a new adoption application for Fluffy</p>
@@ -86,7 +86,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="d-flex justify-content-between" href="">
+                                        <a class="d-flex justify-content-between" href="./shelter-detail-page.html#reviews">
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-search-heart-fill pe-2"></i>
                                                 <p class="notification-text">You have a new review</p>
@@ -107,8 +107,8 @@
                                     </div>
                                 </a>
                                 <ul id="profile-menu" class="dropdown-menu dropdown-menu-end">
-                                  <li><a class="dropdown-item" href="#">Profile Settings</a></li>
-                                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                                  <li><a class="dropdown-item" href="./account-update-shelter.html">Profile Settings</a></li>
+                                  <li><a class="dropdown-item" href="./login-page.html">Logout</a></li>
                                 </ul>
                               </li>
                         </ul>
@@ -140,21 +140,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 d-flex justify-content-center align-items-center">
+                    <div class="col-6 d-flex justify-content-center align-items-center create-update-padding">
                         <div class=" justify-content-center align-items-center container">
 
                             <form action="#" method="post" class="pet-create-form-grid">
-                                <div class="row justify-content-center">
+                                <div class="row justify-content-center create-update-padding">
                                     <div class="col-6 d-flex justify-content-center align-items-center">
                                         <div class="row d-flex justify-content-center">
 
                                             <label for="create-pet-name">Name:*</label>
-                                            <input type="text" id="create-pet-name" name="create-pet-name" class ="form-control create-pet-name-input" required>             
+                                            <input type="text" id="create-pet-name" name="create-pet-name" class ="form-control create-pet-name-input" value="Duo Duo"required>             
                                         
                                             <label for="create-pet-sex">Sex:*</label>
                                             <select id="create-pet-sex" name="create-pet-sex" class="form-control create-pet-sex-input" required>
                                                 <option value="" disabled selected>Please select</option>
-                                                <option value="Female">Female</option>
+                                                <option value="Female" selected>Female</option>
                                                 <option value="Male">Male</option>
                                             </select>
                                             
@@ -164,35 +164,43 @@
                                     <div class="col-6 d-flex justify-content-center align-items-center">
                                         <div class="row justify-content-center">
 
-                                            <label for="create-pet-age">Age:*</label>
-                                            <input type="number" id="create-pet-age" name="create-pet-age" class ="form-control create-pet-age-input"  required>
+                                            <label for="create-pet-age">Age:* (years)</label>
+                                            <input type="number" id="create-pet-age" name="create-pet-age" class ="form-control create-pet-age-input"  value = "6" required>
                                         
                                             <label for="create-pet-size">Size*</label>
                                             <select id="create-pet-size" name="create-pet-size" class="form-control create-pet-size-input" required>
                                                 <option value="" disabled selected>Please select</option>
                                                 <option value="Small">Small</option>
-                                                <option value="Medium">Medium</option>
+                                                <option value="Medium" selected >Medium</option>
                                                 <option value="Large">Large</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row justify-content-center">
+                                <div class="row justify-content-center create-update-padding">
+                                    <label for="create-pet-characteristics">Breed:*</label>
+                                    <input type="text" id="create-pet-characteristics" name="create-pet-characteristics" class ="form-control create-pet-chars-input" value = "Ragamuffin" required>
+                                </div>
+
+                                <div class="row justify-content-center create-update-padding">
                                     <label for="create-pet-characteristics">Characteristics:*</label>
-                                    <input type="text" id="create-pet-characteristics" name="create-pet-characteristics" class ="form-control create-pet-chars-input" required>
+                                    <input type="text" id="create-pet-characteristics" name="create-pet-characteristics" class ="form-control create-pet-chars-input" value = "Gentle, Shy, Lazy" required>
                                 </div>
 
-                                <div class="row justify-content-center">
+                                <div class="row justify-content-center create-update-padding">
                                     <label for="create-pet-med-hist">Medical History:*</label>
-                                    <input type="text" id="create-pet-med-hist" name="create-pet-med-hist" class ="form-control create-pet-med-hist-input" required>
+                                    <input type="text" id="create-pet-med-hist" name="create-pet-med-hist" class ="form-control create-pet-med-hist-input" value="Healthy" required>
                                 </div>
 
-                                <div class="row justify-content-center">
+                                <div class="row justify-content-center create-update-padding">
                                     <label for="create-pet-SNR">Special Needs & Requirements:*</label>
-                                    <input type="text" id="create-pet-SNR" name="create-pet-SNR" class ="form-control create-pet-SNR-input" required>
+                                    <input type="text" id="create-pet-SNR" name="create-pet-SNR" class ="form-control create-pet-SNR-input" value="N/A" required>
                                 </div>
-                                <div class="row justify-content-center">
+
+                                <!-- commenting this for now. the shelter should autopopulate based on who's signed in and should not be an input -->
+
+                                <!-- <div class="row justify-content-center">
                                     <label for="create-pet-shelter">Shelter:*</label>
                                     <select id="create-pet-shelter" name="create-pet-shelter" class="form-control create-pet-shelter-input" placeholder="Please select" required>
                                         <option value="" disabled selected>Please select</option>
@@ -200,7 +208,7 @@
                                         <option value="Medium">Toronto Animal Services, North Shelter</option>
                                         <option value="Large">Etobicoke Humane Society</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -209,9 +217,14 @@
                         <div class="col-6 d-flex justify-content-center align-items-center">
                             <div class="row justify-content-center">
                                 <label for="create-pet-description">Description:*</label>
-                                <textarea id="create-pet-description" name="create-pet-description" class="form-control create-pet-description-input" rows="4" required></textarea>
+                                <textarea id="create-pet-description" name="create-pet-description" class="form-control create-pet-description-input" rows="4" required>
+Duo Duo is a 6 years old long-hair Ragamuffin who is house-trained. She loves sleeping, finding new sleeping spots, and getting pets. Duo Duo is overweight but her family is trying to help her exercise more.
+
+Duo Duo can be in a household with both adults and children. She prefers a quiet environment with lots of hiding spots. Her favorite toys are hair ties, bouncy balls, and catnip toys.
+                                </textarea>
                             </div>
                         </div>
+                        
                         <div class="col-6 d-flex justify-content-center align-items-center">
                             <a class="button-fill text-center w-100" href="./shelter-listings.html">
                                 <!-- <input type="submit" value="Modify Listing" class="button-fill text-center w-100"> -->
