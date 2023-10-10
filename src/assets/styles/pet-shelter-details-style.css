@@ -506,7 +506,11 @@ h1 {
 
   .nav-link {
     font-size: 1rem;
-    /* color: var(--primary-color); */
+    font-weight: 400;
+  }
+
+  .nav-link:hover {
+    color: var(--primary-color-dark);
   }
 
   .carousel-item.active-next {
@@ -550,3 +554,4 @@ h1 {
   }
 
 }
+
