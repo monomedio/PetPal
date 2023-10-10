@@ -1003,15 +1003,10 @@ h1 {
   color: white;
 }
 
-h2 {
-  font-family: "Roboto Slab", serif;
-  font-weight: bold;
-  color: var(--black);
-  margin: 1rem 0;
-}
-
+h2,
+h3,
 h4 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Slab", serif;
   font-weight: bold;
   color: var(--black);
   margin: 1rem 0;
@@ -1021,8 +1016,24 @@ h4 {
   background-color: var(--primary-color);
 }
 
+.orange {
+  background-color: var(--secondary-color);
+}
+
 .yellow {
   background-color: var(--tertiary-color-dark);
+}
+
+.white {
+  background-color: white;
+}
+
+.grey {
+  background-color: #e8e8e8;
+}
+
+.light-orange {
+  background-color: var(--secondary-color-dark);
 }
 
 .rounded-item {

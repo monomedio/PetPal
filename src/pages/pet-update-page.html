@@ -23,99 +23,114 @@
     <body>
         <header class="mb-3">
             <nav class="navbar navbar-expand-lg bg-body-light shadow-sm">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="./index.html">
-                        <img
-                            id="header-logo"
-                            src="../assets/images/petpal-logo.svg"
-                        />
-                    </a>
+              <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">
+                  <img id="header-logo" src="../assets/images/petpal-logo.svg" />
+                </a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#navbarOffcanvasLg"
+                  aria-controls="navbarOffcanvasLg"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  class="offcanvas offcanvas-end"
+                  tabindex="-1"
+                  id="navbarOffcanvasLg"
+                >
+                  <div class="offcanvas-header">
+                    <img
+                      class="offcanvas-title"
+                      id="header-logo"
+                      src="../assets/images/petpal-logo.svg"
+                    />
                     <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#navbarOffcanvasLg"
-                        aria-controls="navbarOffcanvasLg"
-                        aria-label="Toggle navigation"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div
-                        class="offcanvas offcanvas-end"
-                        tabindex="-1"
-                        id="navbarOffcanvasLg"
-                        
-                    >
-                        <div class="offcanvas-header">
-                            <img
-                                class="offcanvas-title"
-                                id="header-logo"
-                                src="../assets/images/petpal-logo.svg"
-                            />
-                            <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="offcanvas"
-                                aria-label="Close"
-                            ></button>
-                        </div>
-                        <ul
-                            class="navbar-nav px-3 px-lg-0 justify-content-lg-end align-items-lg-center"
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="offcanvas"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <ul
+                    class="navbar-nav px-3 px-lg-0 justify-content-lg-end align-items-lg-center"
+                  >
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        aria-current="page"
+                        href="./shelter-management.html"
+                        >Manage My Listings</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        aria-current="page"
+                        href="./applications-shelter.html"
+                        >View Applications</a
+                      >
+                    </li>
+                    <div class="ms-lg-3 me-lg-2 d-none d-lg-inline divider">|</div>
+                    <hr class="hr border-4" />
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link nav-link-icon dropdown-toggle d-flex align-items-center"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <i class="bi bi-bell"></i>
+                      </a>
+                      <ul
+                        id="notification-menu"
+                        class="dropdown-menu dropdown-menu-end"
+                      >
+                        <li class="no-notifications d-flex justify-content-center">
+                          You're all caught up!
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link dropdown-toggle d-flex align-items-center"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <div
+                          class="profile-button d-flex flex-row-reverse flex-lg-row align-items-center"
                         >
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    aria-current="page"
-                                    href="#"
-                                    >Manage My Listings</a
-                                >
-                            </li>
-                            <div class="ms-lg-3 me-lg-2 d-none d-lg-inline divider">|</div>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link nav-link-icon dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-bell-fill"></i>
-                                </a>
-                                <ul id="notification-menu" class="dropdown-menu dropdown-menu-end px-2">
-                                    <li>
-                                        <a class="d-flex justify-content-between" href="./applications.html">
-                                            <div class="d-flex align-items-center">
-                                                <i class="bi bi-file-earmark-person-fill pe-2"></i>
-                                                <p class="notification-text">You have a new adoption application for Fluffy</p>
-                                            </div>
-                                            <p class="ms-auto time-elapsed p-2">3m ago</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="d-flex justify-content-between" href="./shelter-detail-page.html#reviews">
-                                            <div class="d-flex align-items-center">
-                                                <i class="bi bi-search-heart-fill pe-2"></i>
-                                                <p class="notification-text">You have a new review</p>
-                                            </div>
-                                            <p class="ms-auto time-elapsed px-2">1h ago</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <div class="profile-button d-flex flex-row-reverse flex-lg-row align-items-center">
-                                        <img
-                                            id="profile-pic"
-                                            src="../assets/images/among-us.jpeg"
-                                        />
-                                        Some Shelter
-                                    </div>
-                                </a>
-                                <ul id="profile-menu" class="dropdown-menu dropdown-menu-end">
-                                  <li><a class="dropdown-item" href="./account-update-shelter.html">Profile Settings</a></li>
-                                  <li><a class="dropdown-item" href="./login-page.html">Logout</a></li>
-                                </ul>
-                              </li>
-                        </ul>
-                    </div>
+                          <img
+                            id="profile-pic"
+                            src="../assets/images/among-us.jpeg"
+                          />
+                          Some Shelter
+                        </div>
+                      </a>
+                      <ul id="profile-menu" class="dropdown-menu dropdown-menu-end">
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            href="./account-update-shelter.html"
+                            >Profile Settings</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="./login-page.html">Logout</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
+              </div>
             </nav>
-        </header>
+          </header>
         <main>
 
             <div class="container light-blue rounded-item">
