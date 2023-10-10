@@ -1,0 +1,45 @@
+:root {
+  --primary-color: #177791;
+  --primary-color-dark: #97dcef;
+  --secondary-color: #e9724c;
+  --secondary-color-dark: #ffbda8;
+  --tertiary-color: #ffc857;
+  --tertiary-color-dark: #ffe7b5;
+  --black: #1e1e1e;
+}
+
+/* APPLICATIONS.HTML */
+.border-tab {
+  border-top: var(--secondary-color) 1px solid;
+  border-bottom: var(--secondary-color) 1px solid;
+}
+
+.chat-container {
+  /* height: 300px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-msg {
+  color: var(--black);
+  border: 1px solid var(--secondary-color);
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  margin: 0;
+}
+
+.chat-sent-name {
+  color: var(--secondary-color);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.chat-sent-name.left {
+  margin-left: 75px;
+}
+
+.chat-sent-name.right {
+  margin-right: 75px;
+}
