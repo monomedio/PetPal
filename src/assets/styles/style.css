@@ -320,18 +320,18 @@ main {
 
 .login-container {
   width: 80%;
-  /* height: 80%; */
+  height: 80%;
   box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-  height: calc(100vh - 200px);
   margin-top: 16px;
   margin-bottom: 16px;
   background-color: white;
   border-radius: 18px;
+  min-height: calc(100vh - 200px);
   /* display: grid; */
 }
 
@@ -401,7 +401,7 @@ main {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-top: 5px;
+  margin-top: 15px;
   justify-self: start;
   padding-left: 10px;
 }
@@ -438,7 +438,7 @@ main {
   width: 25%;
   height: 10%;
 
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .login-button:hover,
@@ -574,7 +574,8 @@ a.teal-text {
 }
 
 /* Account update page styling */
-.account-update-page {
+.account-update-page,
+.search-page {
   background-color: var(--primary-color-dark);
 }
 
@@ -597,6 +598,93 @@ a.teal-text {
   --bs-btn-color: #fff;
   --bs-btn-hover-bg: var(--primary-color-dark);
   --bs-btn-hover-color: #faf9f6;
+}
+
+/* search-page */
+
+.search-title {
+  font-size: 25px;
+  font-family: "Pacifico";
+  /* font-weight: 700; */
+  color: var(--primary-color);
+}
+
+.available-nearby-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.search-page-container {
+  background-color: #fff;
+}
+
+#search-bar {
+  border: 1px solid rgb(210, 209, 211);
+}
+
+.search-btn {
+  --bs-btn-bg: var(--primary-color);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--primary-color-dark);
+  --bs-btn-hover-color: #faf9f6;
+  --bs-btn-border-color: var(--primary-color);
+  --bs-btn-hover-border-color: var(--primary-color-dark);
+}
+
+.pet-card-container {
+  gap: 1rem;
+}
+
+.pet-card {
+  max-width: 300px;
+  overflow: hidden;
+}
+
+.pet-card:hover {
+  outline: 2px solid var(--primary-color);
+}
+
+.pet-card-img {
+  /* overflow: hidden; */
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.bi.bi-geo-alt-fill {
+  color: var(--primary-color);
+}
+
+.card-title {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.filters-applied {
+  color: grey;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.no-filters {
+  color: grey;
+  font-style: italics;
+  font-size: 14px;
+}
+
+.toast {
+  background-color: var(--primary-color-dark);
+}
+
+.toast-body {
+  color: var(--primary-color);
+  font-size: 14px;
 }
 
 /* -------pet-creation------- */
@@ -881,9 +969,17 @@ h1 {
   background-color: #fff;
 }
 
-.bi.bi-arrow-left {
+.bi.bi-arrow-left,
+.bi.bi-sort-down,
+.bi.bi-sort-up {
   font-size: 2rem;
   color: var(--primary-color);
+}
+
+.bi.bi-arrow-left:hover,
+.bi.bi-sort-down:hover,
+.bi.bi-sort-up:hover {
+  color: var(--primary-color-dark);
 }
 
 /* -------pet-creation------- */
@@ -1160,6 +1256,48 @@ p {
   margin-top: 2rem;
 }
 
+/* LANDING - INDEX.HTML */
+@media screen and (max-width: 600px) {
+  .container {
+    width: auto;
+    margin: 1rem;
+  }
+
+  .search-page-container {
+    margin: 0;
+  }
+
+  .pet-container {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .toast {
+    --bs-toast-max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .search-title {
+    font-size: 30px;
+  }
+  .available-nearby-title {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .search-title {
+    font-size: 45px;
+  }
+  .available-nearby-title {
+    font-size: 35px;
+  }
+}
+
 /* Media queries */
 @media (min-width: 992px) {
   .nav-login {
@@ -1211,12 +1349,56 @@ p {
     font-size: 1rem;
     font-weight: 400;
   }
+
+  .nav-link:hover {
+    color: var(--primary-color-dark);
+  }
 }
 
-/* LANDING - INDEX.HTML */
-@media screen and (max-width: 600px) {
-  .container {
-    width: auto;
-    margin: 1rem;
-  }
+.container {
+  overflow-y: auto;
+}
+
+#message {
+  display: none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  margin: 0;
+  padding: 10px 35px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "\2714";
+}
+
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "\2716";
 }

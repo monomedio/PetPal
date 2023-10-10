@@ -12,13 +12,6 @@
   background-color: var(--primary-color-dark);
 }
 
-h2 {
-  font-family: "Roboto Slab", serif;
-  font-weight: bold;
-  color: var(--black);
-  margin: 1rem 0;
-}
-
 p {
   margin: auto;
 }

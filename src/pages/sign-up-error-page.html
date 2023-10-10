@@ -4,7 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-        <title>Login| PetPal</title>
+
+        <title>Sign up| PetPal</title>
         <link rel="icon" type="image/x-icon" href="../assets/images/petpal-favicon.png">
         <link
             rel="stylesheet"
@@ -86,15 +87,15 @@
         </header>
         <main>
 
-            <div class="container light-pink rounded-item">
+            <div class="container light-yellow-box rounded">
                 <div class="row">
                     <div class="login-title justify-content-center align-items-center">
-                        <div class="flex-text">Login</div>
+                        <div class="flex-text">Sign Up</div>
                             <img src="../assets/images/pet-cat-login.svg" alt="login-cat-image" class="login-cat-image flex-image" />
                             
                     </div>
                     <div class="login-subtitle justify-content-center align-items-center">
-                        Our furry friends have missed you!
+                        Adopting a pet is only a few clicks away!
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -108,10 +109,27 @@
                     <div class="col-8 d-flex justify-content-center align-items-center">
                         <div class="login-container">
                             <form action="" method="post" class="form-grid container">
+
                                 <div class="alert">
                                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                     Invalid username or password.
                                 </div>
+
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="justify-content-center align-items-center">
+                                        
+                                        <label for="signup-name" class="sign-up-name-text">Full name:*</label>
+                                        <input
+                                            type="text"
+                                            id="signup-name"
+                                            name="signup-name"
+                                            class="form-control sign-up-name"
+                                            placeholder="Hermione Granger"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="justify-content-center align-items-center">
@@ -132,7 +150,7 @@
                                     <div class="justify-content-center align-items-center">
 
                                         <label for="login-password" class="login-password-text"
-                                            >password:*</label>
+                                            >Password:*</label>
                                         <input type="text" id="login-password"
                                         name="login-password" class ="form-control
                                         login-password" placeholder="****************":required>
@@ -143,8 +161,8 @@
                                     <div class="d-flex justify-content-center align-items-center">
                                         <input
                                             type="submit"
-                                            value="Login"
-                                            class="login-button"
+                                            value="Sign up"
+                                            class="sign-up-button"
                                         />
                                     </div>
                                 </div>                              
@@ -158,11 +176,10 @@
                             class="pawprint-image"
                         />
                     </div>
- 
                 </div>
-            
             </form>
         </main>
+
         <footer class="mt-3">
             <nav class="navbar footer-nav">
                 <div class="container-fluid justify-content-center">
