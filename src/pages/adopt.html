@@ -129,12 +129,12 @@
           class="edit-profile-container d-flex justify-content-center p-4 container flex-column"
         >
           <div>
-            <a href="./account-update.html">
+            <a href="./pet-detail-page.html">
               <i class="bi bi-arrow-left"></i>
             </a>
           </div>
           <div class="text-center">
-          <h2>Apply To Adopt Duo Duo</h4>
+            <h2>Apply To Adopt Duo Duo</h2>
           </div>
           <div class="d-flex justify-content-center">
             <img
@@ -144,68 +144,89 @@
               height="200px"
             />
           </div>
+          <div class="row mt-3">
+            <div class="col-6 mb-3">
+              <label for="InputFirstName" class="form-label">First name*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="InputFirstName"
+                value="Anisha"
+                aria-describedby="firstNameHelp"
+                required
+              />
+            </div>
+            <div class="col-6 mb-3">
+              <label for="InputLastName" class="form-label">Last name*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="InputLastName"
+                value="Latchman"
+                aria-describedby="LastNameHelp"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label for="InputEmail" class="form-label">Email address*</label>
+              <input
+                type="email"
+                class="form-control"
+                id="InputEmail"
+                value="anisha.latchman@utoronto.ca"
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+            <div class="col-6 mb-3">
+              <label for="InputPhoneNumber" class="form-label"
+                >Phone number*</label
+              >
+              <input
+                type="tel"
+                class="form-control"
+                id="InputPhoneNumber"
+                value="+1 (123) 456-7890"
+                aria-describedby="phoneHelp"
+                required
+              />
+            </div>
+          </div>
+
           <div class="mb-3">
-            <label for="InputFirstName" class="form-label">First name</label>
+            <label for="InputAddress" class="form-label">Address*</label>
             <input
               type="text"
               class="form-control"
-              id="InputFirstName"
-              placeholder="Anisha"
-              aria-describedby="firstNameHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="InputLastName" class="form-label">Last name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="InputLastName"
-              placeholder="Latchman"
-              aria-describedby="LastNameHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="InputAddress" class="form-label">Location</label>
-            <select
               id="InputAddress"
-              class="form-select"
-              aria-label="Default select example"
-            >
-              <option selected>Choose your location</option>
-              <option value="1">Toronto</option>
-              <option value="2">Ottawa</option>
-              <option value="3">Vancouver</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="InputEmail" class="form-label">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="InputEmail"
-              placeholder="anisha.latchman@utoronto.ca"
-              aria-describedby="emailHelp"
+              placeholder="123 Street, City, PROV, POSTAL CODE"
+              aria-describedby="AddressHelp"
+              required
             />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
-            </div>
           </div>
+
           <div class="mb-3">
-            <label for="InputPhoneNumber" class="form-label"
-              >Phone number</label
+            <label for="InputMessage" class="form-label"
+              >Message to Shelter*</label
             >
-            <input
-              type="tel"
+            <textarea
               class="form-control"
-              id="InputPhoneNumber"
-              placeholder="+1 (123) 456-7890"
-              aria-describedby="phoneHelp"
-            />
-            <div id="phoneHelp" class="form-text">
-              We'll never share your number with anyone else.
-            </div>
+              id="InputMessage"
+              placeholder="Hi, I am interested in adopting Duo Duo. I have 2 years of experience with cats and I live in a high-rise apartment."
+              aria-describedby="MessageHelp"
+              rows="4"
+              required
+            ></textarea>
           </div>
-          <button type="submit" class="button-fill">Submit</button>
+
+          <a
+            type="submit"
+            class="button-fill text-center"
+            href="./adopt-success.html"
+            >Submit</a
+          >
         </form>
       </div>
     </main>
