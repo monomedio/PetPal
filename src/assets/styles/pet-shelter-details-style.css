@@ -247,6 +247,10 @@ a:visited {
   padding: 6.5px 25px;
 }
 
+.button-dark:hover {
+  filter: brightness(125%);
+}
+
 .button-greyed-out {
   border-radius: 2rem;
   border: 1px solid var(--black);
@@ -254,8 +258,21 @@ a:visited {
 
   color: white;
   font-weight: 700;
-  padding: 8px 2rem;
-  transition: 0.15s;
+  padding: 6.5px 25px !important;
+  margin: 0;
+  cursor: default;
+}
+
+.button-greyed-out:hover {
+  border-radius: 2rem;
+  border: 1px solid var(--black);
+  background-color: darkgray;
+
+  color: white;
+  font-weight: 700;
+  padding: 6.5px 25px !important;
+  margin: 0;
+  cursor: default;
 }
 
 .button-pending {
@@ -266,7 +283,20 @@ a:visited {
   font-weight: 700;
   padding: 8px 2rem;
   transition: 0.15s;
+  cursor: default;
 }
+
+.button-pending:hover {
+  border-radius: 2rem;
+  background-color: var(--secondary-color);
+
+  color: white;
+  font-weight: 700;
+  padding: 8px 2rem;
+  transition: 0.15s;
+  cursor: default;
+}
+
 
 
 .search-bar {
