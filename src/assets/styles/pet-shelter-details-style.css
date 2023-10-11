@@ -154,28 +154,30 @@ a:visited {
 }
 
 .notification-text {
-  font-size: 14px;
-  font-weight: 700;
-  color: #1e1e1e;
-}
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin: 1rem;
+  }
 
 .time-elapsed {
-  color: #fff;
-  white-space: nowrap;
-  font-size: 10px;
+    color: var(--primary-color);
+    white-space: nowrap;
+    font-size: 10px;
+    margin-top: 1rem;
 }
 
 #notification-menu,
 #profile-menu {
-  background-color: var(--primary-color-dark);
+  background-color: #fff;
 }
 
 #notification-menu {
   --bs-dropdown-min-width: 300px;
 }
 
-#notification-menu li p:hover {
-  color: #fff;
+#notification-menu li:hover p {
+  color: var(--primary-color-dark);
 }
 
 .profile-button {
