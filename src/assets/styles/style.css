@@ -691,14 +691,15 @@ a.teal-text {
 
 /* -------pet-creation------- */
 .pet-creation-title {
-    color: #000;
-    font-family: "Pacifico", cursive;
-    font-size: 60px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  color: #000;
+  font-family: "Pacifico", cursive;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .frame {
@@ -864,6 +865,13 @@ h1 {
     color: #ffbda8;
 }
 
+.border-add-pet{
+  margin-bottom: 8px;
+}
+.border-modify-pet{
+  margin-bottom: 8px;
+}
+
 .frame-update-pet {
     width: 80%;
     height: 400px;
@@ -876,24 +884,18 @@ h1 {
 }
 
 .modify-pet {
-    border: 1px solid #177791;
-    background-color: #177791;
-    color: #fff;
-    font-weight: 700;
-    font-size: 14px;
-    width: 80%;
-    height: 50px;
-    justify-self: center;
-    align-self: center;
-    transition: all 0.3s ease-in-out;
-    font-size: 14px;
-    cursor: pointer;
-}
 
-.add-pet:hover {
-    border: 1px solid #ffbda8;
-    background-color: #fff;
-    color: #ffbda8;
+  border: 1px solid #177791;
+  background-color: #177791;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  height: 50px;
+  justify-self: center;
+  align-self: center;
+  transition: all 0.3s ease-in-out;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .upload-button-modify {
@@ -915,6 +917,25 @@ h1 {
     border: 1px solid #97dcef;
     background-color: #fff;
     color: #97dcef;
+}
+
+@media (max-width: 768px) { /* Consider 768px for portrait mode for general mobile responsiveness */
+  .pet-creation-title {
+      flex-direction: column;
+  }
+  .center {
+    height: 250px;
+  }
+  .upload-button, .upload-button-modify{
+    height: 40px;
+    width: 120px;
+  }
+  .create-pet-description-input{
+    margin-bottom: 15px;
+  }
+  .add-pet, .modify-pet{
+    margin-bottom: 15px;
+  }
 }
 
 /* Account update page styling */
