@@ -305,7 +305,7 @@ a:visited {
   border: 1px var(--primary-color) solid;
   background: white;
   border-radius: 20px;
-  width: 8rem;
+  width: 14rem;
   height: 2rem;
 }
 
@@ -542,6 +542,10 @@ h1 {
 
   #pet-images-lg{
     display: none;
+  }
+
+  .heading-slab{
+    font-size: 2rem;
   }
 
 }
