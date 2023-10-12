@@ -43,3 +43,17 @@
 .chat-sent-name.right {
   margin-right: 75px;
 }
+
+.select-status option[value="Pending"] {
+  background-color: var(--primary-color);
+}
+
+.select-status option[value="Approved"] {
+  background-color: var(--tertiary-color);
+  color: var(--black);
+}
+
+.select-status option[value="Denied"] {
+  background-color: var(--secondary-color);
+  color: var(--black);
+}
