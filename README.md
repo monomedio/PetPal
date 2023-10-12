@@ -1,6 +1,6 @@
 # PetPal - Modern Pet Adoption Site
 
-![Landing Page](https://github.com/monomedio/PetPal/assets/94577880/85c65b1e-afb2-49e3-a6f7-e022487e737b)
+<img width="1432" alt="image" src="https://github.com/monomedio/PetPal/assets/94577880/57389e99-d08f-4bc2-bc33-aa9293b069fc">
 
 ## Project Overview
 
