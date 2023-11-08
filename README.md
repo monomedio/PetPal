@@ -17,3 +17,18 @@ How files and folders are organized somewhat follow the "intermediate" section s
 ## CSS Defaults
 
 Some default settings for CSS have been added following [this guide](https://www.joshwcomeau.com/css/custom-css-reset/) to hopefully make CSS and your life easier.
+
+## Helpful Commands
+
+# Activate virtual environment
+source venv/bin/activate 
+# Install package requirments (in outer petpal folder)
+pip3 install -r requirements.txt
+# Commit model changes to database (in outer petpal folder)
+python3 ./manage.py makemigrations
+# Push model changes to database (in outer petpal folder)
+python3 ./manage.py migrate
+# View database schemas (in outer petpal folder)
+python3 ./manage.py dbshell
+.schema accounts_user
+.quit
