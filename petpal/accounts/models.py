@@ -4,11 +4,13 @@ from django.contrib.contenttypes.fields import GenericRelation, GenericForeignKe
 from django.contrib.contenttypes.models import ContentType
 
 
+
 class User(AbstractUser):
     # set AUTH_USER_MODEL = "myapp.User" in settings.py
     phone = models.CharField(max_length=200)
     is_shelter = models.BooleanField(default=False)
     profile_pic = models.ImageField
+
 
 
 # Shelter comments are reviews, application comments are chats
