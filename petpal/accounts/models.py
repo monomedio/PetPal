@@ -30,3 +30,11 @@ class ShelterProfile(models.Model):
     description = models.CharField(max_length=400)
     charity_id = models.PositiveIntegerField(unique=True)
     hours = models.CharField(max_length=400)
+
+class Notification(models.Model):
+    is_read = models.BooleanField(default=False)
+    message = models.TextField()
+    url = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    icon = models.ImageField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
