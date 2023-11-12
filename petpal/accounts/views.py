@@ -8,6 +8,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import generics
 from rest_framework import viewsets
 from rest_framework import status
+from rest_framework.exceptions import PermissionDenied
 
 class RegistrationView(CreateAPIView):
     permission_classes = [AllowAny]
@@ -74,21 +75,30 @@ class UpdateView(generics.RetrieveUpdateAPIView):
     def get_serializer_class(self):
         user_type = self.kwargs.get('user_type', 'default')
         if user_type == 'user':
-            return shelterSerializer
-        else:
             return userSerializer
+        else:
+            return shelterSerializer
 
-    serializer_class = get_serializer_class
+    # serializer_class = get_serializer_class
     permission_classes = [IsAuthenticated]
 
 
     def get_object(self):
-        return self.request.user
+        user_type = self.kwargs.get('user_type', 'default')
+
+        is_shelter = self.request.user.is_shelter
+
+        if user_type == 'seeker' and not is_shelter:
+            return self.request.user
+        elif user_type == 'shelter' and is_shelter:
+            return self.request.user.shelter_profile
+        else:
+            raise PermissionDenied("You are not authorized to edit this profile")
     
     def update(self, request, *args, **kwargs):
         kwargs['partial'] = True 
         return super().update(request, *args, **kwargs)
-
+    
 
 
 
