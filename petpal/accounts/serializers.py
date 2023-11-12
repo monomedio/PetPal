@@ -116,14 +116,25 @@ class shelterSerializer(serializers.ModelSerializer):
  
     
     def update(self, instance, validated_data):
+        user_data = validated_data.pop('user', {}) 
+
         password = validated_data.pop('password', None)
         password2 = validated_data.pop('password2', None)
+
+        user_instance = instance.user
+
 
         if password is not None:
             if password != password2:
                 raise serializers.ValidationError({"password": "Passwords must match."})
             instance.set_password(password)
 
+        # Updating the nested user stuff
+        for attr, value in user_data.items():
+            setattr(user_instance, attr, value)
+        user_instance.save()
+
+        # Updating the outter shelter stuff
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
 
