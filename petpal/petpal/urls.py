@@ -28,5 +28,5 @@ urlpatterns = [
     path('', include(router.urls)), # automatic URL routing
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('api/accounts/', include('accounts.api.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
