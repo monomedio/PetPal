@@ -11,7 +11,7 @@ class IsShelter(permissions.BasePermission):
         return True
 
     def has_object_permission(self, request, view, obj):
-        if request.method in ["PUT", "DELETE"]:
+        if request.method in ["PUT", "DELETE", "PATCH"]:
             # change if pet shelter field is changed to user object
             return request.user == obj.shelter
         return True

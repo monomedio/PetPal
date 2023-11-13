@@ -23,9 +23,9 @@ class PetViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = self.filter_queryset(super().get_queryset())
-        if self.request == "GET":
+        if self.request.method == "GET":
             filters = self.request.GET
-
+            print(filters)
             # status filter defaults to available if unspecified
             if "status" not in filters:
                 queryset = queryset.filter(status=Pet.AVAILABLE)
