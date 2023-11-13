@@ -74,7 +74,7 @@ class UpdateView(generics.RetrieveUpdateAPIView):
 
     def get_serializer_class(self):
         user_type = self.kwargs.get('user_type', 'default')
-        if user_type == 'user':
+        if user_type == 'seeker':
             return userSerializer
         else:
             return shelterSerializer
