@@ -16,13 +16,14 @@ class userSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['is_shelter', 'first_name', 'last_name', 'email', 'phone', 'password', 'password2', 'username']
+        fields = ['is_shelter', 'first_name', 'last_name', 'email', 'phone', 'password', 'password2', 'username', 'profile_pic']
         extra_kwargs = {
             'password': {'write_only': True},
             'last_name': {'required': True},
             'email': {'required': True},
             'phone': {'required': True},
             'username': {'required': True},
+            'profile_pic': {'required': False},
         }
 
     def create(self, validated_data):
@@ -61,7 +62,7 @@ class shelterSerializer(serializers.ModelSerializer):
         shelter_name = serializers.CharField(source='first_name')
 
         class Meta(userSerializer.Meta):
-            fields = ['is_shelter', 'shelter_name', 'email', 'phone', 'password', 'password2', 'username']
+            fields = ['is_shelter', 'shelter_name', 'email', 'phone', 'password', 'password2', 'username', 'profile_pic']
 
         # def to_representation(self, instance):
         #     ret = super().to_representation(instance)
@@ -119,6 +120,7 @@ class shelterSerializer(serializers.ModelSerializer):
             if password != password2:
                 raise serializers.ValidationError({"password": "Passwords must match."})
             instance.set_password(password)
+        
 
         # Updating the nested user stuff
         for attr, value in user_data.items():
