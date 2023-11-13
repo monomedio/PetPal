@@ -1,4 +1,4 @@
-from requests import Response, request
+# from requests import Response, request
 from rest_framework import serializers
 
 from django.core.exceptions import ValidationError
@@ -8,11 +8,8 @@ from rest_framework import serializers
 from .models import User, ShelterProfile
 from rest_framework import status
 
-
-
-
-
 User = get_user_model()
+
 
 class userSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
@@ -56,14 +53,11 @@ class userSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
-    
-
 
 
 class shelterSerializer(serializers.ModelSerializer):
-
     class excludeAndAddSerializer(userSerializer):
-        
+
         shelter_name = serializers.CharField(source='first_name')
 
         class Meta(userSerializer.Meta):
@@ -83,7 +77,6 @@ class shelterSerializer(serializers.ModelSerializer):
 
     user = excludeAndAddSerializer()
 
-
     # user = userSerializer()
 
     class Meta:
@@ -98,7 +91,7 @@ class shelterSerializer(serializers.ModelSerializer):
         print(user_data)
         password = user_data.pop('password')
         password2 = user_data.pop('password2')
-        
+
         user_data['is_shelter'] = True
 
         if password != password2:
@@ -113,8 +106,6 @@ class shelterSerializer(serializers.ModelSerializer):
         print(shelter_profile)
         return shelter_profile
 
- 
-    
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         password2 = validated_data.pop('password2', None)
@@ -129,7 +120,3 @@ class shelterSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
-
-         
-
-
