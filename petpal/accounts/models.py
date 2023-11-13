@@ -9,7 +9,7 @@ class User(AbstractUser):
     # set AUTH_USER_MODEL = "myapp.User" in settings.py
     phone = models.CharField(max_length=200)
     is_shelter = models.BooleanField(default=False)
-    # profile_pic = models.ImageField
+    profile_pic = models.ImageField(upload_to='pfp/', blank=True)
 
 
 
@@ -36,5 +36,4 @@ class Notification(models.Model):
     message = models.TextField()
     url = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-    icon = models.ImageField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)

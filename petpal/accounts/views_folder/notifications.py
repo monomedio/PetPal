@@ -1,9 +1,10 @@
 from accounts.models import Notification
 from rest_framework import permissions, serializers
-from .notif_serializers import NotificationSerializer
+from accounts.serializers_folder.notif_serializers import NotificationSerializer
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from rest_framework import status
 # Notifications (16 marks)
 # Model (2 marks) 
 # Create (2 marks)
@@ -22,6 +23,8 @@ from django.shortcuts import get_object_or_404
 # Should provide a link to the associated model
 # Link to new comment added (2 marks)
 # Link to application creation and status update (2 marks)
+
+#add body request for notif sorting, paginate
 
 class NotificationCreate(CreateAPIView):
     """
@@ -54,16 +57,19 @@ class NotificationUpdate(UpdateAPIView):
         return Response(serializer.data)
     
 class NotificationsList(ListAPIView):
-    # we allow the user to switch the owner to someone else
     serializer_class = NotificationSerializer
     paginate_by = 5
 
     def get_queryset(self):
         user_id = self.request.user.id
         queryset = Notification.objects.all()
-        queryset = queryset.filter(is_read=False)
-        # Test below once login is implemented
-        # queryset = Notification.objects.filter(user=user_id)
+        queryset = Notification.objects.filter(user=user_id)
+
+        if (self.request.data.get("display_is_read")):
+            queryset = queryset.filter(is_read=True)
+        else:
+            queryset = queryset.filter(is_read=False)
+
         return queryset.order_by('-timestamp')
     
     # class Notification(models.Model):
@@ -73,10 +79,17 @@ class NotificationsList(ListAPIView):
     # icon = models.ImageField()
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+# add message
 class NotificationDelete(DestroyAPIView):
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
     lookup_field = 'pk'
+
+    def destroy(self, *args, **kwargs):
+        serializer = NotificationSerializer
+        super().destroy(*args, **kwargs)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
 
 class NotificationRetrieve(RetrieveAPIView):
     # might need reverse lazy
