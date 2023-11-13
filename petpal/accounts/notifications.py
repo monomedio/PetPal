@@ -31,6 +31,9 @@ class NotificationCreate(CreateAPIView):
     serializer_class = NotificationSerializer
 
 class NotificationUpdate(UpdateAPIView):
+    """
+    Update whether a notification is read or not.
+    """
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
     lookup_field = 'pk'

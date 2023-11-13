@@ -26,6 +26,11 @@ class NotificationSerializer(serializers.ModelSerializer):
         model = Notification
         fields = '__all__'
 
+class NotificationUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = '__all__'
+
     # def create(self, validated_data):
     #     if 'is_read' not in validated_data:
     #         raise serializers.ValidationError({'is_read': 'This field is required during creation.'})
