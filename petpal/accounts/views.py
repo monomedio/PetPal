@@ -14,7 +14,9 @@ from rest_framework.parsers import MultiPartParser
 
 
 class RegistrationUpdateView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+    authentication_classes = []
+    # permission_classes = [IsAuthenticated]
     parser_classes = (MultiPartParser, )
 
     def get_serializer_class(self):
@@ -29,7 +31,6 @@ class RegistrationUpdateView(APIView):
         is_shelter = self.request.user.is_shelter
 
         if user_type == 'seeker' and not is_shelter:
-            print(self.request.user)
             return self.request.user
         elif user_type == 'shelter' and is_shelter:
             return self.request.user.shelter_profile
@@ -116,7 +117,6 @@ class RegistrationUpdateView(APIView):
         #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         
-
     def get_permissions(self):
         if self.request.method == 'POST':
             return [AllowAny()]
