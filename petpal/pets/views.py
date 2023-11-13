@@ -2,7 +2,7 @@ from .models import Pet, Application
 from rest_framework import viewsets, permissions, mixins
 from rest_framework.response import Response
 from .serializers import PetSerializer, ApplicationSerializer
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.filters import OrderingFilter
 from .permissions import IsShelter
 
 
@@ -14,29 +14,37 @@ class PetViewSet(viewsets.ModelViewSet):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsShelter]
+    filter_backends = [OrderingFilter]
+    ordering_fields = ["name", "size", "age", "created_at", "updated_at"]
 
     def perform_create(self, serializer):
         serializer.validated_data["shelter"] = self.request.user
         serializer.save()
 
+    def get_queryset(self):
+        queryset = self.filter_queryset(super().get_queryset())
+        if self.request == "GET":
+            filters = self.request.GET
+
+            # status filter defaults to available if unspecified
+            if "status" not in filters:
+                queryset = queryset.filter(status=Pet.AVAILABLE)
+
+            # apply filters
+            for field, value in filters.items():
+                match field:
+                    case "ordering":
+                        pass
+                    # TODO: shelter filtering
+                    case "shelter":
+                        pass
+                    case _:
+                        field = f"{field}__iexact"
+                        queryset = queryset.filter(**{field: value})
+        return queryset
+
     def list(self, request, *args, **kwargs):
-
-        filters = request.data
-        queryset = self.queryset
-
-        # status filter defaults to available if unspecified
-        if "status" not in filters:
-            queryset = queryset.filter(status=Pet.AVAILABLE)  # Assign the filtered queryset
-
-        # apply filters
-        for field, value in filters.items():
-            match field:
-                # TODO: shelter filtering
-                case "shelter":
-                    pass
-                case _:
-                    field = f"{field}__iexact"
-                    queryset = queryset.filter(**{field: value})
+        queryset = self.get_queryset()
 
         # pagination and response
         page = self.paginate_queryset(queryset)
