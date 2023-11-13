@@ -11,10 +11,12 @@ class Pet(models.Model):
     gender = models.CharField(max_length=200)
     description = models.CharField(max_length=400)
     photo = models.ImageField()
+    status = models.CharField(default='Available', max_length=200)
 
 class Application(models.Model):
-	pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
-	applicant =  models.ForeignKey(User, on_delete=models.CASCADE)
-	status = models.CharField(max_length=200)
-	shelter = models.ForeignKey(ShelterProfile, on_delete=models.CASCADE)
-	comments = GenericRelation(Comment)
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="pet")
+    applicant =  models.ForeignKey(User, on_delete=models.CASCADE, related_name="applicant")
+    status = models.CharField(max_length=200)
+    shelter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="shelter")
+    comments = GenericRelation(Comment)
+    lastupdated = models.DateTimeField(auto_now=True)

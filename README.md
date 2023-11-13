@@ -30,6 +30,8 @@ pip3 install -r requirements.txt
 python3 ./manage.py makemigrations
 # Push model changes to database (in outer petpal folder)
 python3 ./manage.py migrate
+# Run server (AFTER migrations are applied)
+python3 ./manage.py runserver
 # View database schemas (in outer petpal folder)
 python3 ./manage.py dbshell
 .schema accounts_user
