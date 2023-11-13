@@ -22,6 +22,8 @@ Some default settings for CSS have been added following [this guide](https://www
 
 # Activate virtual environment
 source venv/bin/activate 
+# Start new app (in outer petpal folder with venv activated)
+python3 ./manage.py startapp pets
 # Install package requirments (in outer petpal folder)
 pip3 install -r requirements.txt
 # Commit model changes to database (in outer petpal folder)
