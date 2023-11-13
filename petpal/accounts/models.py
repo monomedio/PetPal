@@ -36,5 +36,4 @@ class Notification(models.Model):
     message = models.TextField()
     url = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-    icon = models.ImageField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)

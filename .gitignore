@@ -2,3 +2,5 @@ __pycache__
 db.sqlite3
 *.pyc
 venv
+petpal/accounts/migrations/0001_initial.py
+petpal/pets/migrations/0001_initial.py
