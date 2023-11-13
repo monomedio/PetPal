@@ -35,6 +35,7 @@ class userSerializer(serializers.ModelSerializer):
         if password != password2:
             raise serializers.ValidationError({"password": "Passwords must match."})
 
+        print("IS THIS IN HERE")
         user = User(**validated_data)
         user.set_password(password)
         user.save()
@@ -43,6 +44,8 @@ class userSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         password2 = validated_data.pop('password2', None)
+
+        print("IS THIS IN HERE")
 
         if password is not None:
             if password != password2:
