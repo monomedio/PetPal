@@ -38,7 +38,7 @@ class Pet(models.Model):
 
 class Application(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="pet")
-    applicant =  models.ForeignKey(User, on_delete=models.CASCADE, related_name="applicant")
+    applicant = models.ForeignKey(User, on_delete=models.CASCADE, related_name="applicant")
     status = models.CharField(max_length=200)
     shelter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="shelter")
     comments = GenericRelation(Comment)
