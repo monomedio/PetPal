@@ -13,7 +13,7 @@ class PetViewSet(viewsets.ModelViewSet):
     """
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsShelter]
+    permission_classes = [permissions.IsAuthenticated, IsShelter]
     filter_backends = [OrderingFilter]
     ordering_fields = ["name", "size", "age", "created_at", "updated_at"]
 
@@ -36,6 +36,9 @@ class PetViewSet(viewsets.ModelViewSet):
                     case "ordering":
                         pass
                     # TODO: shelter filtering
+                    case "location":
+                        field = "shelter__shelter_profile__address__iexact"
+                        queryset = queryset.filter(**{field: value})
                     case "shelter":
                         pass
                     case _:

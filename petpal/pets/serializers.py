@@ -3,9 +3,14 @@ from .models import Pet, Application
 
 
 class PetSerializer(serializers.ModelSerializer):
+    location = serializers.SerializerMethodField()
+
     class Meta:
         model = Pet
         exclude = ["shelter"]
+
+    def get_location(self, obj):
+        return obj.shelter.shelter_profile.address
 
 
 class ApplicationSerializer(serializers.ModelSerializer):

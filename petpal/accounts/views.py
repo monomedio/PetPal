@@ -14,7 +14,7 @@ from rest_framework.parsers import MultiPartParser
 
 
 class RegistrationUpdateView(APIView):
-    parser_classes = (MultiPartParser, )
+    parser_classes = (MultiPartParser,)
 
     def get_serializer_class(self):
         user_type = self.kwargs.get('user_type', 'default')
@@ -34,7 +34,6 @@ class RegistrationUpdateView(APIView):
             return self.request.user.shelter_profile
         else:
             raise PermissionDenied("You are not authorized to edit this profile")
-        
 
     def post(self, request, *args, **kwargs):
         # user_type = self.kwargs.get('user_type', 'default')
@@ -44,7 +43,6 @@ class RegistrationUpdateView(APIView):
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors, status=400)
-
 
     def put(self, request, *args, **kwargs):
         # Update logic
@@ -60,22 +58,19 @@ class RegistrationUpdateView(APIView):
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors, status=400)
-        
 
     def get_permissions(self):
         if self.request.method == 'PUT':
             return [IsAuthenticated()]
         return []
-    
-
 
 
 class ProfileView(APIView):
-    
+
     def get(self, request):
         if not request.user.is_authenticated:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-        
+
         serializer = userSerializer(request.user)
         return Response(serializer.data)
 
@@ -86,21 +81,10 @@ class ShelterProfileView(generics.RetrieveAPIView):
     serializer_class = shelterSerializer
 
 
-
 class AllShelters(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     queryset = ShelterProfile.objects.all()
     serializer_class = shelterSerializer
-
-
-
-
-
-
-
-
-
-
 
 # class RegistrationView(CreateAPIView):
 #     permission_classes = [AllowAny]
@@ -124,7 +108,7 @@ class AllShelters(generics.ListAPIView):
 #         else:
 #             serializer_class = shelterSerializer
 #             serializer = serializer_class(data=request.data)
-        
+
 #         if serializer.is_valid():
 #             account = serializer.save()
 #             user_id = account.id
@@ -156,7 +140,7 @@ class AllShelters(generics.ListAPIView):
 #             return Response(data)
 #         else:
 #             return Response(serializer.errors)
-        
+
 
 # from rest_framework import status
 # from django.contrib.auth import update_session_auth_hash
@@ -185,9 +169,7 @@ class AllShelters(generics.ListAPIView):
 #             return self.request.user.shelter_profile
 #         else:
 #             raise PermissionDenied("You are not authorized to edit this profile")
-    
+
 #     def update(self, request, *args, **kwargs):
 #         kwargs['partial'] = True 
 #         return super().update(request, *args, **kwargs)
-    
-
