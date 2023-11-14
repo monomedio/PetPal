@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from .serializers import PetSerializer, ApplicationSerializer, ApplicationUpdateSerializer
 from rest_framework.filters import OrderingFilter, SearchFilter
 from .permissions import IsShelter, ApplicationPermissions
+from django.shortcuts import get_object_or_404
+
 
 class PetViewSet(viewsets.ModelViewSet):
     """
@@ -54,7 +56,6 @@ class PetViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-
 class ApplicationViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
@@ -88,43 +89,73 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
     permission_classes = [permissions.IsAuthenticated, ApplicationPermissions]
-    filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['status']
+    filter_backends = [OrderingFilter]
     ordering_fields = ['created_at', 'updated_at']
 
+    # def create(self, request, *args, **kwargs):
+    #     # POST PARAMS: pet_pk, applicant_pk, status, shelter_pk
+    #     pet_pk = request.query_params.get('pk')
+    #
+    #     try:
+    #         pet = Pet.objects.get(pk=pet_pk, status='Available')
+    #     except Pet.DoesNotExist:
+    #         return Response({'error': 'Pet not found or not available'}, status=400)
+    #
+    #     # Create the application for the available pet
+    #     serializer = self.get_serializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save(pet=pet)
+    #
+    #     headers = self.get_success_headers(serializer.data)
+    #     return Response(serializer.data, status=201, headers=headers)
+
     def create(self, request, *args, **kwargs):
-        # POST PARAMS: pet_pk, applicant_pk, status, shelter_pk
-        pet_pk = request.query_params.get('pet_pk')
+        if "pet_id" not in request.data:
+            return Response("pet_id is required.", status=400)
+        pet_id = request.data["pet_id"]
+        pet = get_object_or_404(Pet, id=pet_id)
 
-        try:
-            pet = Pet.objects.get(pk=pet_pk, status='Available')
-        except Pet.DoesNotExist:
-            return Response({'error': 'Pet not found or not available'}, status=400)
+        request.data["pet"] = pet
+        request.data["applicant"] = request.user
+        request.data["shelter"] = pet.shelter
 
-        # Create the application for the available pet
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(pet=pet)
+        return super().create(request, *args, **kwargs)
 
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=201, headers=headers)
-
+    # def update(self, request, *args, **kwargs):
+    #     serializer = ApplicationUpdateSerializer(data=request.data)
+    #     return super().update(request, *args, **kwargs)
     def update(self, request, *args, **kwargs):
-        serializer = ApplicationUpdateSerialiser(data=request.data)
-        return super().update(request, *args, **kwargs)
+
+        # do logic
+        # by default, PATCHing to /applications/1/ will patch application with id1
+
+        super().update(request, *args, **kwargs)
 
     def get_queryset(self):
-        user = self.request.user
-        # If the user is a shelter, return only their applications
-        if user.is_shelter:
-            return Application.objects.filter(shelter=user)
-        # If the user is a seeker, return only their applications
-        return Application.objects.filter(applicant=user)
+        queryset = super().get_queryset()
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        # You can access the filtered and ordered queryset using self.filter_queryset(queryset)
-        queryset = self.filter_queryset(queryset)
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+        # only allow owned applications
+        if self.request.user.is_shelter:
+            queryset = queryset.filter(shelter=self.request.user)
+        else:
+            queryset = queryset.filter(applicant=self.request.user)
 
+        query_parms = self.request.GET
+        if "status" in query_parms:
+            queryset = queryset.filter(status=query_parms["status"])
+
+        return queryset
+
+        # user = self.request.user
+        # # If the user is a shelter, return only their applications
+        # if user.is_shelter:
+        #     return Application.objects.filter(shelter=user)
+        # # If the user is a seeker, return only their applications
+        # return Application.objects.filter(applicant=user)
+
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.get_queryset()
+    #     # You can access the filtered and ordered queryset using self.filter_queryset(queryset)
+    #     queryset = self.filter_queryset(queryset)
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return Response(serializer.data)
