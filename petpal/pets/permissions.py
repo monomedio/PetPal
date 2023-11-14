@@ -8,6 +8,8 @@ SAFE_OPTIONS = ["GET", "HEAD", "OPTIONS"]
 class IsOwner(permissions.BasePermission):
     def has_permission(self, request, view):
         # print(f"{request.method}")
+        if request.method == "GET":
+            return True
         if not request.user.is_shelter:
             return request.method in SAFE_OPTIONS
         # Assume user is now a shelter

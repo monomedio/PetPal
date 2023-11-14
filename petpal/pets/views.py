@@ -18,6 +18,9 @@ class PetImageViewSet(viewsets.ModelViewSet):
         return PetImage.objects.filter(pet__id=pet_id)
 
     def create(self, request, *args, **kwargs):
+        if len(request.data) == 0:
+            return Response("No images provided.", status.HTTP_400_BAD_REQUEST)
+
         pet_id = self.kwargs.get('pet_id')
         pet = get_object_or_404(Pet, id=pet_id)
 
@@ -57,6 +60,9 @@ class PetImageViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         serialized_data = serializer.data
 
+        if len(serialized_data) == 0:
+            return Response("This pet has no images.")
+
         # Add 'id' field to each image in the response
         for i, image_data in enumerate(serialized_data):
             image_data['id'] = queryset[i].id
@@ -88,28 +94,41 @@ class PetViewSet(viewsets.ModelViewSet):
         if self.request.method == "GET":
             filters = self.request.GET
             print(filters)
-            # status filter defaults to available if unspecified
-            if "status" not in filters:
-                queryset = queryset.filter(status=Pet.AVAILABLE)
+            # # status filter defaults to available if unspecified
+            # if "status" not in filters:
+            #     queryset = queryset.filter(status=Pet.AVAILABLE)
 
             # apply filters
             for field, value in filters.items():
-                match field:
-                    case "ordering":
-                        pass
-                    case "location":
-                        field = "shelter__shelter_profile__address__iexact"
-                        queryset = queryset.filter(**{field: value})
-                    case "shelter":
-                        field = f"{field}__id__iexact"
-                        queryset = queryset.filter(**{field: value})
-                    case _:
-                        field = f"{field}__iexact"
-                        queryset = queryset.filter(**{field: value})
+                if field == "ordering":
+                    pass
+                elif field == "location":
+                    field = "shelter__shelter_profile__address__iexact"
+                    queryset = queryset.filter(**{field: value})
+                elif field == "shelter":
+                    field = f"{field}__id__iexact"
+                    queryset = queryset.filter(**{field: value})
+                else:
+                    field = f"{field}__iexact"
+                    queryset = queryset.filter(**{field: value})
+                # match field:
+                #     case "ordering":
+                #         pass
+                #     case "location":
+                #
+                #     case "shelter":
+                #
+                #     case _:
+
         return queryset
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+
+        # status filter defaults to available if unspecified
+        filters = request.GET
+        if "status" not in filters:
+            queryset = queryset.filter(status=Pet.AVAILABLE)
 
         # pagination and response
         page = self.paginate_queryset(queryset)
