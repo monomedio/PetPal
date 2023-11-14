@@ -36,17 +36,14 @@ class PetViewSet(viewsets.ModelViewSet):
                 if field == "ordering":
                     pass
                     # TODO: shelter filtering
-<<<<<<< HEAD
                 elif field == "shelter":
                     pass
                 elif field == "location":
-                        field = "shelter__shelter_profile__address__iexact"
-                        queryset = queryset.filter(**{field: value})
+                    field = "shelter__shelter_profile__address__iexact"
+                    queryset = queryset.filter(**{field: value})
                 else:
                     field = f"{field}__iexact"
                     queryset = queryset.filter(**{field: value})
-=======
->>>>>>> 338f7d60fcf58a25c4280dc830efd786bfe33546
         return queryset
 
     def list(self, request, *args, **kwargs):
@@ -98,23 +95,6 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     filter_backends = [OrderingFilter]
     ordering_fields = ['created_at', 'updated_at']
 
-    # def create(self, request, *args, **kwargs):
-    #     # POST PARAMS: pet_pk, applicant_pk, status, shelter_pk
-    #     pet_pk = request.query_params.get('pk')
-    #
-    #     try:
-    #         pet = Pet.objects.get(pk=pet_pk, status='Available')
-    #     except Pet.DoesNotExist:
-    #         return Response({'error': 'Pet not found or not available'}, status=400)
-    #
-    #     # Create the application for the available pet
-    #     serializer = self.get_serializer(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save(pet=pet)
-    #
-    #     headers = self.get_success_headers(serializer.data)
-    #     return Response(serializer.data, status=201, headers=headers)
-
     def create(self, request, *args, **kwargs):
         if "pet_id" not in request.data:
             return Response("pet_id is required.", status=400)
@@ -127,15 +107,27 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
         return super().create(request, *args, **kwargs)
 
-    # def update(self, request, *args, **kwargs):
-    #     serializer = ApplicationUpdateSerializer(data=request.data)
-    #     return super().update(request, *args, **kwargs)
     def update(self, request, *args, **kwargs):
-
-        # do logic
         # by default, PATCHing to /applications/1/ will patch application with id1
+        if "status" in request.data:
+            application_id = request.path_info.split("/")[0]
+            application = get_object_or_404(Application, id=application_id)
 
-        super().update(request, *args, **kwargs)
+            # Shelter can only update the status of an application from pending to accepted or denied.
+            if request.user.is_shelter and (
+                application.status == Application.PENDING and (
+                request.data["status"] == Application.ACCEPTED or request.data["status"] == Application.DENIED)):
+                super().update(request, *args, **kwargs)
+            # Pet seeker can only update the status of an application from pending or accepted to withdrawn.
+            elif not request.user.is_shelter and (
+                application.status == Application.PENDING and (
+                request.data["status"] == Application.ACCEPTED or request.data["status"] == Application.WITHDRAWN)):
+                super().update(request, *args, **kwargs)
+                
+            else:    
+                return Response("Cannot update status of application.", status=400)
+        else:    
+            return Response("status: required field", status=400)
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -151,17 +143,3 @@ class ApplicationViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(status=query_parms["status"])
 
         return queryset
-
-        # user = self.request.user
-        # # If the user is a shelter, return only their applications
-        # if user.is_shelter:
-        #     return Application.objects.filter(shelter=user)
-        # # If the user is a seeker, return only their applications
-        # return Application.objects.filter(applicant=user)
-
-    # def list(self, request, *args, **kwargs):
-    #     queryset = self.get_queryset()
-    #     # You can access the filtered and ordered queryset using self.filter_queryset(queryset)
-    #     queryset = self.filter_queryset(queryset)
-    #     serializer = self.get_serializer(queryset, many=True)
-    #     return Response(serializer.data)
