@@ -94,18 +94,26 @@ class PetViewSet(viewsets.ModelViewSet):
 
             # apply filters
             for field, value in filters.items():
-                match field:
-                    case "ordering":
-                        pass
-                    case "location":
-                        field = "shelter__shelter_profile__address__iexact"
-                        queryset = queryset.filter(**{field: value})
-                    case "shelter":
-                        field = f"{field}__id__iexact"
-                        queryset = queryset.filter(**{field: value})
-                    case _:
-                        field = f"{field}__iexact"
-                        queryset = queryset.filter(**{field: value})
+                if field == "ordering":
+                    pass
+                elif field == "location":
+                    field = "shelter__shelter_profile__address__iexact"
+                    queryset = queryset.filter(**{field: value})
+                elif field == "shelter":
+                    field = f"{field}__id__iexact"
+                    queryset = queryset.filter(**{field: value})
+                else:
+                    field = f"{field}__iexact"
+                    queryset = queryset.filter(**{field: value})
+                # match field:
+                #     case "ordering":
+                #         pass
+                #     case "location":
+                #
+                #     case "shelter":
+                #
+                #     case _:
+
         return queryset
 
     def list(self, request, *args, **kwargs):
