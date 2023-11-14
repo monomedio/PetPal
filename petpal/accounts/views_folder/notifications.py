@@ -1,5 +1,6 @@
 from accounts.models import Notification
 from rest_framework import permissions, serializers
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from accounts.serializers_folder.notif_serializers import NotificationSerializer
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, UpdateAPIView, DestroyAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
@@ -30,8 +31,12 @@ class NotificationCreate(CreateAPIView):
     """
     API endpoint to be called by the frontend once a notification should be created.
     """
+    permission_classes = [IsAuthenticated]
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class NotificationUpdate(UpdateAPIView):
     """
@@ -101,7 +106,7 @@ class NotificationRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
         super().destroy(*args, **kwargs)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-    def update(self, request, *args, **kwargs):
+    def update(self, request):
         instance = self.get_object()
         instance.is_read = request.data.get("is_read")
         if (instance.is_read == 'true'):

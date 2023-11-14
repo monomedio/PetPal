@@ -27,6 +27,19 @@ class NotificationSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['message', 'url', 'timestamp', 'user']
 
+    # def __init__(self, *args, **kwargs):
+    #     super(NotificationSerializer, self).__init__(*args, **kwargs)
+    #     user_fields = ['last_name', 'email', 'phone', 'password', 'password2', 'username']
+    #     for field in user_fields:
+    #         self.fields.pop(field, None)
+
+
+# class NotificationCreateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Notification
+#         exclude = ['user', 'last_name', 'email', 'phone', 'password', 'password2', 'username']
+#         read_only_fields = ['message', 'url', 'timestamp']
+
 class NotificationUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification

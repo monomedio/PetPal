@@ -33,6 +33,16 @@ class ShelterProfile(models.Model):
 
 class Notification(models.Model):
     is_read = models.BooleanField(default=False)
+
+    # COMMENT = "comment"
+    # APPLICATION = "application"
+    # REVIEW = "review"
+    # STATUS_CHOICES = [
+    #     (COMMENT, "Comment"),
+    #     (APPLICATION, "Application"),
+    #     (REVIEW, "Review"),
+    # ]
+
     message = models.TextField()
     url = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
