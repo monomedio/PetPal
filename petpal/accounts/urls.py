@@ -22,8 +22,8 @@ urlpatterns = [
     # path('shelter/edit', views.ShelterUpdateView.as_view(), name='shelter-update'), 
     # path('', include(router.urls)),
     
-    path('notifications/<int:pk>/', notifications.NotificationUpdate.as_view(), name = "notif_update"),
+    path('notifications/<int:pk>/', notifications.NotificationRetrieveUpdateDestroy.as_view(), name = "notif_retrieve_update_destroy"),
     path('notifications/', notifications.NotificationCreate.as_view(), name = "notif_create"),
     path('notifications/list/', notifications.NotificationsList.as_view(), name = "notif_list"),
-    path('notifications/<int:pk>/trash/', notifications.NotificationDelete.as_view(), name = "notif_delete")
+    # path('notifications/<int:pk>/trash/', notifications.NotificationDelete.as_view(), name = "notif_delete")
 ]

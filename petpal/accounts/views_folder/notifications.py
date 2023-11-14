@@ -1,7 +1,7 @@
 from accounts.models import Notification
 from rest_framework import permissions, serializers
 from accounts.serializers_folder.notif_serializers import NotificationSerializer
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, UpdateAPIView, DestroyAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import status
@@ -89,6 +89,32 @@ class NotificationDelete(DestroyAPIView):
         serializer = NotificationSerializer
         super().destroy(*args, **kwargs)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class NotificationRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
+    def get_object(self):
+        return get_object_or_404(Notification, id=self.kwargs['pk'])
+    
+    def destroy(self, *args, **kwargs):
+        serializer = NotificationSerializer
+        super().destroy(*args, **kwargs)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.is_read = request.data.get("is_read")
+        if (instance.is_read == 'true'):
+            instance.is_read = True
+        else:
+            instance.is_read = False
+        instance.save()
+
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
+        return Response(serializer.data)
     
 
 class NotificationRetrieve(RetrieveAPIView):

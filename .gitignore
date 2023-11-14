@@ -4,3 +4,4 @@ db.sqlite3
 venv
 petpal/accounts/migrations/0001_initial.py
 petpal/pets/migrations/0001_initial.py
+petpal/media/pfp/a2_q3a.jpeg

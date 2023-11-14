@@ -25,6 +25,7 @@ class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
         fields = '__all__'
+        read_only_fields = ['message', 'url', 'timestamp', 'user']
 
 class NotificationUpdateSerializer(serializers.ModelSerializer):
     class Meta:
