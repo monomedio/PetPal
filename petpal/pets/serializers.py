@@ -13,3 +13,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
         fields = ['pet', 'applicant', 'status', 'shelter', 'comments']
         read_only_fields = ['pet', 'applicant', 'shelter', 'comments']
+
+class ApplicationUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = ['status']

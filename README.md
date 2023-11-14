@@ -32,6 +32,8 @@ python3 ./manage.py makemigrations
 python3 ./manage.py migrate
 # Run server (AFTER migrations are applied)
 python3 ./manage.py runserver
+# Create a user
+python3 ./manage.py createsuperuser --email admin@example.com --username admin
 # View database schemas (in outer petpal folder)
 python3 ./manage.py dbshell
 .schema accounts_user
