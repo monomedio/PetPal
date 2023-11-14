@@ -9,7 +9,7 @@ app_name = "accounts"
 
 urlpatterns = [
     path('<str:user_type>/', views.RegistrationUpdateView.as_view(), name='register'),
-    path('shelter/details/<int:pk>/', views.ShelterProfileView.as_view(), name='shelter-details'),
+    path('shelter/<int:pk>/details/', views.ShelterProfileView.as_view(), name='shelter-details'),
     path('shelter/all/', views.AllShelters.as_view(), name='shelter-all'),
 
     # path('seeker/', views.RegistrationView.as_view(), name='seeker_register'),
