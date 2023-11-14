@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'pets', views.PetViewSet)
 router.register(r'applications', views.ApplicationViewSet)
+router.register(r'pets/(?P<pet_id>[^/.]+)/images', views.PetImageViewSet, basename='pet-image')
 
 
 urlpatterns = [
