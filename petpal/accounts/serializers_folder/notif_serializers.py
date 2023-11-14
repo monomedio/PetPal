@@ -24,7 +24,7 @@ from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView,
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
-        fields = '__all__'
+        fields = ['is_read', 'message', 'url']
         read_only_fields = ['message', 'url', 'timestamp', 'user']
 
     # def __init__(self, *args, **kwargs):
