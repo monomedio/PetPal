@@ -36,6 +36,15 @@ class Pet(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+class PetImage(models.Model):
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='pet_images/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Image for {self.pet.name}"
+
+
 class Application(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="pet")
     applicant = models.ForeignKey(User, on_delete=models.CASCADE, related_name="applicant")
