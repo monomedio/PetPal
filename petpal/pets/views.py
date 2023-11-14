@@ -1,9 +1,71 @@
-from .models import Pet, Application
-from rest_framework import viewsets, permissions, mixins
+from .models import Pet, Application, PetImage
+from rest_framework import viewsets, permissions, mixins, status
 from rest_framework.response import Response
-from .serializers import PetSerializer, ApplicationSerializer
+from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer
 from rest_framework.filters import OrderingFilter
-from .permissions import IsShelter
+from .permissions import IsShelter, IsOwner
+from django.shortcuts import get_object_or_404
+from rest_framework.decorators import action
+
+
+class PetImageViewSet(viewsets.ModelViewSet):
+    queryset = PetImage.objects.all()
+    serializer_class = PetImageSerializer
+    permission_classes = [permissions.IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        pet_id = self.kwargs.get('pet_id')
+        return PetImage.objects.filter(pet__id=pet_id)
+
+    def create(self, request, *args, **kwargs):
+        pet_id = self.kwargs.get('pet_id')
+        pet = get_object_or_404(Pet, id=pet_id)
+
+        images = request.data.getlist('images')
+        image_instances = []
+
+        for image in images:
+            image_instance = PetImage(pet=pet, image=image)
+            image_instances.append(image_instance)
+
+        PetImage.objects.bulk_create(image_instances)
+
+        # Modify the serializer to include 'id' field
+        serializer = self.get_serializer(image_instances, many=True)
+        serialized_data = serializer.data
+
+        # Add 'id' field to each image in the response
+        for i, image_data in enumerate(serialized_data):
+            image_data['id'] = image_instances[i].id
+
+        return Response(serialized_data, status=status.HTTP_201_CREATED)
+
+    def retrieve(self, request, *args, **kwargs):
+        pet_id = self.kwargs.get('pet_id')
+        image_id = self.kwargs.get('pk')
+        pet_image = get_object_or_404(PetImage, id=image_id, pet__id=pet_id)
+
+        serializer = self.get_serializer(pet_image)
+        serialized_data = serializer.data
+
+        # Add 'id' field to the image in the response
+        serialized_data['id'] = pet_image.id
+        return Response(serialized_data)
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        serialized_data = serializer.data
+
+        # Add 'id' field to each image in the response
+        for i, image_data in enumerate(serialized_data):
+            image_data['id'] = queryset[i].id
+        return Response(serialized_data)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response("Image deleted successfully", status=status.HTTP_204_NO_CONTENT)
 
 
 class PetViewSet(viewsets.ModelViewSet):
@@ -35,12 +97,12 @@ class PetViewSet(viewsets.ModelViewSet):
                 match field:
                     case "ordering":
                         pass
-                    # TODO: shelter filtering
                     case "location":
                         field = "shelter__shelter_profile__address__iexact"
                         queryset = queryset.filter(**{field: value})
                     case "shelter":
-                        pass
+                        field = f"{field}__id__iexact"
+                        queryset = queryset.filter(**{field: value})
                     case _:
                         field = f"{field}__iexact"
                         queryset = queryset.filter(**{field: value})
@@ -59,16 +121,11 @@ class PetViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-
-
-
-
-
-class ApplicationViewSet(mixins.CreateModelMixin, 
-                        mixins.RetrieveModelMixin, 
-                        mixins.UpdateModelMixin,
-                        mixins.ListModelMixin,
-                        viewsets.GenericViewSet):
+class ApplicationViewSet(mixins.CreateModelMixin,
+                         mixins.RetrieveModelMixin,
+                         mixins.UpdateModelMixin,
+                         mixins.ListModelMixin,
+                         viewsets.GenericViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions. 
