@@ -18,6 +18,9 @@ class PetImageViewSet(viewsets.ModelViewSet):
         return PetImage.objects.filter(pet__id=pet_id)
 
     def create(self, request, *args, **kwargs):
+        if len(request.data) == 0:
+            return Response("No images provided.", status.HTTP_400_BAD_REQUEST)
+
         pet_id = self.kwargs.get('pet_id')
         pet = get_object_or_404(Pet, id=pet_id)
 
@@ -57,6 +60,9 @@ class PetImageViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         serialized_data = serializer.data
 
+        if len(serialized_data) == 0:
+            return Response("This pet has no images.")
+
         # Add 'id' field to each image in the response
         for i, image_data in enumerate(serialized_data):
             image_data['id'] = queryset[i].id
@@ -88,9 +94,9 @@ class PetViewSet(viewsets.ModelViewSet):
         if self.request.method == "GET":
             filters = self.request.GET
             print(filters)
-            # status filter defaults to available if unspecified
-            if "status" not in filters:
-                queryset = queryset.filter(status=Pet.AVAILABLE)
+            # # status filter defaults to available if unspecified
+            # if "status" not in filters:
+            #     queryset = queryset.filter(status=Pet.AVAILABLE)
 
             # apply filters
             for field, value in filters.items():
@@ -118,6 +124,11 @@ class PetViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+
+        # status filter defaults to available if unspecified
+        filters = request.GET
+        if "status" not in filters:
+            queryset = queryset.filter(status=Pet.AVAILABLE)
 
         # pagination and response
         page = self.paginate_queryset(queryset)
