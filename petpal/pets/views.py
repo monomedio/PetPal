@@ -192,13 +192,14 @@ class ApplicationViewSet(viewsets.ModelViewSet):
             if request.user.is_shelter and (
                 application.status == Application.PENDING and (
                 request.data["status"] == Application.ACCEPTED or request.data["status"] == Application.DENIED)):
-                return super().update(request, *args, **kwargs)
+                super().update(request, *args, **kwargs)
             # Pet seeker can only update the status of an application from pending or accepted to withdrawn.
             elif not request.user.is_shelter and (
                 (application.status == Application.PENDING or application.status == Application.ACCEPTED) and (
                 request.data["status"] == Application.WITHDRAWN)):
                 super().update(request, *args, **kwargs)
             else:    
+                # return Response("application.status:{}, request.data['status']:{}".format(application.status, request.data["status"]), status=200)
                 return Response("Cannot update status of application.", status=400)
         else:    
             return Response("status: required field", status=400)
