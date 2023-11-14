@@ -1,5 +1,12 @@
 from rest_framework import serializers
-from .models import Pet, Application
+from .models import Pet, Application, PetImage
+
+
+class PetImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PetImage
+        fields = ["image"]
+        read_only_fields = ["id"]
 
 
 class PetSerializer(serializers.ModelSerializer):
