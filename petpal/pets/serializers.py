@@ -23,10 +23,5 @@ class PetSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ['pet', 'applicant', 'status', 'shelter', 'comments']
-        read_only_fields = ['pet', 'applicant', 'shelter', 'comments']
-
-class ApplicationUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Application
-        fields = ['status']
+        fields = ['pet', 'applicant', 'status', 'shelter']
+        read_only_fields = ['pet', 'applicant', 'shelter']

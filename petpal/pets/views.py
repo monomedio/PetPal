@@ -1,7 +1,7 @@
 from .models import Pet, Application, PetImage
 from rest_framework import viewsets, permissions, mixins, status
 from rest_framework.response import Response
-from .serializers import PetSerializer, ApplicationSerializer, ApplicationUpdateSerializer, PetImageSerializer
+from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer
 from rest_framework.filters import OrderingFilter
 from .permissions import IsShelter, ApplicationPermissions, IsOwner
 from django.shortcuts import get_object_or_404
@@ -157,35 +157,47 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     filter_backends = [OrderingFilter]
     ordering_fields = ['created_at', 'updated_at']
 
-    def create(self, request, *args, **kwargs):
-        if "pet_id" not in request.data:
+    # def create(self, request, *args, **kwargs):
+    #     if "pet_id" not in request.data:
+    #         return Response("pet_id is required.", status=400)
+    #     pet_id = request.data["pet_id"]
+    #     pet = get_object_or_404(Pet, id=pet_id)
+
+    #     serializer = self.get_serializer(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.validated_data["pet"] = pet
+    #         serializer.validated_data["applicant"] = request.user
+    #         serializer.validated_data["shelter"] = pet.shelter
+    #         serializer.save()
+    #     else:
+    #         return Response(serializer.errors, status=400)
+
+    #     return super().create(request, *args, **kwargs)
+
+    def perform_create(self, serializer):
+        if "pet_id" not in self.request.data:
             return Response("pet_id is required.", status=400)
-        pet_id = request.data["pet_id"]
+        pet_id = self.request.data["pet_id"]
         pet = get_object_or_404(Pet, id=pet_id)
 
-        request.data["pet"] = pet
-        request.data["applicant"] = request.user
-        request.data["shelter"] = pet.shelter
-
-        return super().create(request, *args, **kwargs)
+        serializer.save(applicant=self.request.user, pet=pet, shelter=pet.shelter)
 
     def update(self, request, *args, **kwargs):
         # by default, PATCHing to /applications/1/ will patch application with id1
         if "status" in request.data:
-            application_id = request.path_info.split("/")[0]
+            application_id = request.path_info.split("/")[-2]
             application = get_object_or_404(Application, id=application_id)
 
             # Shelter can only update the status of an application from pending to accepted or denied.
             if request.user.is_shelter and (
                 application.status == Application.PENDING and (
                 request.data["status"] == Application.ACCEPTED or request.data["status"] == Application.DENIED)):
-                super().update(request, *args, **kwargs)
+                return super().update(request, *args, **kwargs)
             # Pet seeker can only update the status of an application from pending or accepted to withdrawn.
             elif not request.user.is_shelter and (
-                application.status == Application.PENDING and (
-                request.data["status"] == Application.ACCEPTED or request.data["status"] == Application.WITHDRAWN)):
+                (application.status == Application.PENDING or application.status == Application.ACCEPTED) and (
+                request.data["status"] == Application.WITHDRAWN)):
                 super().update(request, *args, **kwargs)
-                
             else:    
                 return Response("Cannot update status of application.", status=400)
         else:    
