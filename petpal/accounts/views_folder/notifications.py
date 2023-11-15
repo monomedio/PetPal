@@ -14,16 +14,32 @@ class NotificationCreate(CreateAPIView):
     serializer_class = NotificationSerializer
 
     def perform_create(self, serializer, *args, **kwargs):
+        user_to_be_notified = self.request.user
+
         if "application_id" in self.request.data and not "comment_or_reply_id" in self.request.data:
             # Status change
             application_id = self.request.data.get('application_id')
             application = get_object_or_404(Application, id=application_id)
+
+            if self.request.user != application.shelter:
+                return Response('Invalid permissions')
+            else:
+                user_to_be_notified = application.applicant
+
             message = 'Your application for ' + application.pet.name + ' has changed to the status: ' + application.status + '.'
         elif "application_id" in self.request.data:
             # new application comment
             application_id = self.request.data.get('application_id')
             comment_id = self.request.data.get('comment_or_reply_id')
             application = get_object_or_404(Application, id=application_id)
+
+            if self.request.user == application.applicant:
+                user_to_be_notified = application.shelter
+            elif self.request.user == application.shelter:
+                user_to_be_notified = application.applicant
+            else:
+                return Response('Invalid permissions')
+                
             comment = get_object_or_404(Comment, application=application, id=comment_id)
             message = 'Your application for ' + application.pet.name + ' has a new reply.'
         elif "shelter_id" in self.request.data and "comment_or_reply_id" in self.request.data and "review_id" in self.request.data:
@@ -34,6 +50,15 @@ class NotificationCreate(CreateAPIView):
             shelter = get_object_or_404(User, id=shelter_id)
             review = get_object_or_404(Comment, shelter=shelter, id=review_id)
             reply = get_object_or_404(Reply, id=reply_id, review=review)
+
+            if self.request.user != reply.commenter:
+                return Response('Invalid permissions')
+            else:
+                if self.request.user == review.shelter:
+                    user_to_be_notified = review.commenter
+                else:
+                    user_to_be_notified = review.shelter
+            
             message = 'You have a new reply to a review.'
         elif "shelter_id" in self.request.data and "review_id" in self.request.data:
             # new review
@@ -41,11 +66,17 @@ class NotificationCreate(CreateAPIView):
             shelter_id = self.request.data.get('shelter_id')
             shelter = get_object_or_404(User, id=shelter_id)
             review = get_object_or_404(Comment, shelter=shelter, id=review_id)
+
+            if self.request.user != review.commenter:
+                return Response('Invalid permissions')
+            else:
+                user_to_be_notified = review.shelter
+                
             message = 'You have a new review!'
         else:
             return Response('Ids for relevant models should be provided')
 
-        serializer.save(user=self.request.user, message=message)
+        serializer.save(user=user_to_be_notified, message=message)
 
 class NotificationUpdate(UpdateAPIView):
     """

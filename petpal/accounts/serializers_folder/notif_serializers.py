@@ -27,35 +27,9 @@ class NotificationSerializer(serializers.ModelSerializer):
         read_only_fields = ['message', 'url', 'timestamp', 'user']
 
 
-# class NotificationCreateSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Notification
-#         exclude = ['user', 'last_name', 'email', 'phone', 'password', 'password2', 'username']
-#         read_only_fields = ['message', 'url', 'timestamp']
-
 class NotificationUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
         fields = '__all__'
 
-    # def create(self, validated_data):
-    #     if 'is_read' not in validated_data:
-    #         raise serializers.ValidationError({'is_read': 'This field is required during creation.'})
-    #     if 'message' not in validated_data:
-    #         raise serializers.ValidationError({'message': 'This field is required during creation.'})
-    #     if 'timestamp' not in validated_data:
-    #         raise serializers.ValidationError({'timestamp': 'This field is required during creation.'})
-    #     if 'icon' not in validated_data:
-    #         raise serializers.ValidationError({'icon': 'This field is required during creation.'})
-    #     if 'user' not in validated_data:
-    #         raise serializers.ValidationError({'user': 'This field is required during creation.'})
-
-    #     return super().create(validated_data)
-    
-# class Notification(models.Model):
-#     is_read = models.BooleanField(default=False)
-#     message = models.TextField()
-#     timestamp = models.DateTimeField(auto_now_add=True)
-#     icon = models.ImageField()
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
