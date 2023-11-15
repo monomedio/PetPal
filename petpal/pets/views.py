@@ -179,21 +179,17 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     ordering_fields = ['created_at', 'updated_at']
 
     # def create(self, request, *args, **kwargs):
-    #     if "pet_id" not in request.data:
-    #         return Response("pet_id is required.", status=400)
-    #     pet_id = request.data["pet_id"]
-    #     pet = get_object_or_404(Pet, id=pet_id)
-
-    #     serializer = self.get_serializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.validated_data["pet"] = pet
-    #         serializer.validated_data["applicant"] = request.user
-    #         serializer.validated_data["shelter"] = pet.shelter
-    #         serializer.save()
+    #     # Prevent duplicate object creation
+    #     serializer = ProductReviewSerializer(data=self.request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     user = self.request.user
+    #     product = serializer.validated_data['product']
+    #     obj, created = ProductReview.objects.get_or_create(user=user, product=product, deleted=False, defaults=seriaizer.validated_data)
+    #     if not created:
+    #         serializer.save(user=user)
+    #         return Response(status=status.HTTP_201_CREATED)
     #     else:
-    #         return Response(serializer.errors, status=400)
-
-    #     return super().create(request, *args, **kwargs)
+    #         return Response(status=status.HTTP_409_CONFLICT)
 
     def perform_create(self, serializer):
         if "pet_id" not in self.request.data:
