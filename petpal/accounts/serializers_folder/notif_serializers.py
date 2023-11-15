@@ -19,12 +19,19 @@
 
 from rest_framework import serializers
 from accounts.models import User, Notification
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
 
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
         fields = '__all__'
+        read_only_fields = ['message', 'url', 'timestamp', 'user']
+
+
+# class NotificationCreateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Notification
+#         exclude = ['user', 'last_name', 'email', 'phone', 'password', 'password2', 'username']
+#         read_only_fields = ['message', 'url', 'timestamp']
 
 class NotificationUpdateSerializer(serializers.ModelSerializer):
     class Meta:

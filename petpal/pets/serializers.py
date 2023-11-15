@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Pet, Application, PetImage
+from .models import Pet, Application, PetImage, Comment, Reply
 
 
 class PetImageSerializer(serializers.ModelSerializer):
@@ -25,3 +25,16 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
         fields = ['pet', 'applicant', 'status', 'shelter']
         read_only_fields = ['pet', 'applicant', 'shelter']
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        read_only_fields = ['commenter', 'creation_time', 'shelter', 'application']
+
+class ReplySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reply
+        fields = '__all__'
+        read_only_fields = ['commenter', 'creation_time', 'review']

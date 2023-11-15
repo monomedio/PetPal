@@ -19,6 +19,7 @@ class userSerializer(serializers.ModelSerializer):
         fields = ['is_shelter', 'first_name', 'last_name', 'email', 'phone', 'password', 'password2', 'username', 'profile_pic']
         extra_kwargs = {
             'password': {'write_only': True},
+            'first_name': {'required': True},
             'last_name': {'required': True},
             'email': {'required': True},
             'phone': {'required': True},
@@ -35,7 +36,6 @@ class userSerializer(serializers.ModelSerializer):
         if password != password2:
             raise serializers.ValidationError({"password": "Passwords must match."})
 
-        print("IS THIS IN HERE")
         user = User(**validated_data)
         user.set_password(password)
         user.save()
@@ -44,8 +44,6 @@ class userSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         password2 = validated_data.pop('password2', None)
-
-        print("IS THIS IN HERE")
 
         if password is not None:
             if password != password2:
@@ -67,21 +65,7 @@ class shelterSerializer(serializers.ModelSerializer):
         class Meta(userSerializer.Meta):
             fields = ['is_shelter', 'shelter_name', 'email', 'phone', 'password', 'password2', 'username', 'profile_pic']
 
-        # def to_representation(self, instance):
-        #     ret = super().to_representation(instance)
-        #     # Replace 'first_name' with 'shelter_name' in the output
-        #     ret['shelter_name'] = ret.pop('first_name', None)
-        #     return ret
-
-        # def to_internal_value(self, data):
-        #     # Map 'shelter_name' to 'first_name' in the input
-        #     if 'shelter_name' in data:
-        #         data['first_name'] = data.pop('shelter_name')
-        #     return super().to_internal_value(data)
-
     user = excludeAndAddSerializer()
-
-    # user = userSerializer()
 
     class Meta:
         model = ShelterProfile
@@ -92,7 +76,6 @@ class shelterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')
-        print(user_data)
         password = user_data.pop('password')
         password2 = user_data.pop('password2')
 
@@ -102,12 +85,10 @@ class shelterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"password": "Passwords must match."})
 
         user = User.objects.create(**user_data)
-        print(user)
         user.set_password(password)
         user.save()
 
         shelter_profile = ShelterProfile.objects.create(user=user, **validated_data)
-        print(shelter_profile)
         return shelter_profile
 
     def update(self, instance, validated_data):

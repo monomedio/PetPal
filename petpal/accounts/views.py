@@ -11,6 +11,9 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.parsers import MultiPartParser
+from django.urls import reverse
+from django.shortcuts import redirect
+from pets.models import Application
 
 
 class RegistrationUpdateView(APIView):
@@ -86,90 +89,23 @@ class AllShelters(generics.ListAPIView):
     queryset = ShelterProfile.objects.all()
     serializer_class = shelterSerializer
 
-# class RegistrationView(CreateAPIView):
-#     permission_classes = [AllowAny]
-#     authentication_classes = []
-#     def get_serializer_class(self):
-#         user_type = self.kwargs.get('user_type', 'default')
-#         if user_type == 'shelter':
-#             return shelterSerializer
-#         else:
-#             return userSerializer
 
+class SeekerProfileView(APIView):
+    permission_classes = [IsAuthenticated]
 
-#     def create(self, request, *args, **kwargs):
-#         user_type = self.kwargs.get('user_type', 'default')
+    def get(self, request):
+        user = request.user
 
+        if user.is_shelter:
 
-#         if user_type == 'seeker':
-#             serializer_class = userSerializer
-#             serializer = serializer_class(data=request.data)
+            applications = Application.objects.filter(shelter=user)
 
-#         else:
-#             serializer_class = shelterSerializer
-#             serializer = serializer_class(data=request.data)
+            applicant_ids = applications.values_list('applicant', flat=True)
+            
+            # select all objects where the user_id is in the list applicant_ids.
+            applicants = User.objects.filter(id__in=applicant_ids).distinct()
 
-#         if serializer.is_valid():
-#             account = serializer.save()
-#             user_id = account.id
-#             if user_type == 'seeker': 
-#                 data = {
-#                     "response": "Success",
-#                     "user_id": user_id,
-#                     "username": account.username,
-#                     "email": account.email,
-#                     "first_name": account.first_name,
-#                     "last_name": account.last_name,
-#                     "phone": account.phone,
-#                     "is_shelter": account.is_shelter
-#                 }
-#             else: 
-#                 print(serializer)
-#                 data = {
-#                     "response": "Success",
-#                     "user_id": account.user.id,  
-#                     "username": account.user.username, 
-#                     "shelter_name": account.user.first_name, 
-#                     "charity_id": account.charity_id,
-#                     "address": account.address,
-#                     "email": account.user.email,  
-#                     "phone": account.user.phone,
-#                     "is_shelter": account.user.is_shelter 
-#                 }
-
-#             return Response(data)
-#         else:
-#             return Response(serializer.errors)
-
-
-# from rest_framework import status
-# from django.contrib.auth import update_session_auth_hash
-
-# class UpdateView(generics.RetrieveUpdateAPIView):
-
-#     def get_serializer_class(self):
-#         user_type = self.kwargs.get('user_type', 'default')
-#         if user_type == 'seeker':
-#             return userSerializer
-#         else:
-#             return shelterSerializer
-
-#     # serializer_class = get_serializer_class
-#     permission_classes = [IsAuthenticated]
-
-
-#     def get_object(self):
-#         user_type = self.kwargs.get('user_type', 'default')
-
-#         is_shelter = self.request.user.is_shelter
-
-#         if user_type == 'seeker' and not is_shelter:
-#             return self.request.user
-#         elif user_type == 'shelter' and is_shelter:
-#             return self.request.user.shelter_profile
-#         else:
-#             raise PermissionDenied("You are not authorized to edit this profile")
-
-#     def update(self, request, *args, **kwargs):
-#         kwargs['partial'] = True 
-#         return super().update(request, *args, **kwargs)
+            serializer = userSerializer(applicants, many=True)
+            return Response(serializer.data)
+        else:
+            return Response({"error": "Please log in as a shelter to see applications"}, status=403)
