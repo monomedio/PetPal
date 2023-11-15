@@ -11,16 +11,7 @@ urlpatterns = [
     path('<str:user_type>/', views.RegistrationUpdateView.as_view(), name='register'),
     path('shelter/<int:pk>/details/', views.ShelterProfileView.as_view(), name='shelter-details'),
     path('shelter/all/', views.AllShelters.as_view(), name='shelter-all'),
-
-    # path('seeker/', views.RegistrationView.as_view(), name='seeker_register'),
-    # path('seeker', views.RegistrationView.as_view(), name = "seeker_create"), 
-    # path('seeker/edit', views.UserUpdateView.as_view(), name='seeker_update'), 
-    # path('<str:user_type>/edit/', views.UpdateView.as_view(), name='update'),
-    # path('seeker/details', views.ProfileView.as_view(), name='profile'),
-    # path('shelter', views.RegistrationView.as_view(), name = "seeker_create"), 
-    # path('shelter/details', views.ShelterProfileView.as_view(), name='shelter-details'),
-    # path('shelter/edit', views.ShelterUpdateView.as_view(), name='shelter-update'), 
-    # path('', include(router.urls)),
+    path('shelter/allApps/', views.SeekerProfileView.as_view(), name='shelter-allApps'),
     
     path('notifications/<int:pk>/', notifications.NotificationUpdate.as_view(), name = "notif_update"),
     path('notifications/', notifications.NotificationCreate.as_view(), name = "notif_create"),
