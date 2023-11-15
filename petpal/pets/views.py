@@ -246,10 +246,19 @@ class CommentViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     paginate_by = 5
 
-    def perform_create(self, serializer):
-        if 'shelter_id' in self.request.data:
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        response = self.perform_create(serializer)
+        if response is not None:
+            return response
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    
+    def perform_create(self, serializer, *args, **kwargs):
+        if 'shelter_id' in self.kwargs:
             # shelter is not NULL, then the comment is a review
-            shelter_id = self.request.data["shelter_id"]
+            shelter_id = self.kwargs["shelter_id"]
             shelter = get_object_or_404(User, id=shelter_id)
 
             if 'rating' not in self.request.data:
@@ -257,15 +266,16 @@ class CommentViewSet(viewsets.ModelViewSet):
             
             serializer.save(commenter=self.request.user, shelter=shelter)
 
-        elif 'application_id' in self.request.data:
+        elif 'application_id' in self.kwargs:
         # application is not NULL, then the comment is an comment on an application
-            app_id = self.request.data["application_id"]
+            app_id = self.kwargs["application_id"]
             application = get_object_or_404(Application, id=app_id)
         
         # Make sure that the logged in user is allowed to comment on the application
             logged_in_user = self.request.user
             if (logged_in_user== application.applicant or logged_in_user == application.shelter):
                 serializer.save(commenter=self.request.user, application=application, rating=None)
+                application.save()
             else:
                 return Response('Current user not associated with this application.')
         else:
@@ -300,6 +310,14 @@ class ReplyViewSet(viewsets.ModelViewSet):
     serializer_class = ReplySerializer
     permission_classes = [permissions.IsAuthenticated]
     paginate_by = 3
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        response = self.perform_create(serializer)
+        if response is not None:
+            return response
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
         # if 'review_id' in self.request.data:
@@ -307,7 +325,7 @@ class ReplyViewSet(viewsets.ModelViewSet):
         review = get_object_or_404(Comment, id=review_id)
 
         if (review.shelter is None):
-            return Response('Replies may only be created for shelter reviews.')
+            return Response('Review not found.')
         
         serializer.save(commenter=self.request.user, review=review)
         # else:
