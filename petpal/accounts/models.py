@@ -3,15 +3,11 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.contenttypes.fields import GenericRelation, GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-
-
 class User(AbstractUser):
     # set AUTH_USER_MODEL = "myapp.User" in settings.py
     phone = models.CharField(max_length=200)
     is_shelter = models.BooleanField(default=False)
     profile_pic = models.ImageField(upload_to='pfp/', blank=True)
-
-
 
 # Shelter comments are reviews, application comments are chats
 class Comment(models.Model):
@@ -21,7 +17,6 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey("content_type", "object_id")
     creation_date = models.DateTimeField()
-
 
 class ShelterProfile(models.Model):
     user = models.OneToOneField('User', related_name="shelter_profile", on_delete=models.CASCADE)
