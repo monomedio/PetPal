@@ -23,7 +23,7 @@ from accounts.models import User, Notification
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
-        fields = ['is_read', 'message', 'url']
+        fields = '__all__'
         read_only_fields = ['message', 'url', 'timestamp', 'user']
 
 

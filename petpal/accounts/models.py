@@ -32,9 +32,11 @@ class ShelterProfile(models.Model):
     hours = models.CharField(max_length=400)
 
 class Notification(models.Model):
-    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE) # shelter: shelter, application, comments; seeker: status update, comments
-    # object_id = models.PositiveIntegerField()
-    # content_object = GenericForeignKey('content_type', 'object_id')
+
+    application_id = models.IntegerField(null=True, blank=True)
+    shelter_id = models.IntegerField(null=True, blank=True)
+    review_id = models.IntegerField(null=True, blank=True)
+    comment_or_reply_id = models.IntegerField(null=True, blank=True) # If null, notif should link to status update
 
     is_read = models.BooleanField(default=False)
 

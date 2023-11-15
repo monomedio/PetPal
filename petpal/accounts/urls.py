@@ -9,7 +9,7 @@ app_name = "accounts"
 # router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews', views.ReviewViewSet, basename='pet-image')
 
 urlpatterns = [
-    path('notifications/', notifications.NotificationCreate.as_view(), name = "notif_create"),
+    path('notifications/create/', notifications.NotificationCreate.as_view(), name = "notif_create"),
     path('<str:user_type>/', views.RegistrationUpdateView.as_view(), name='register'),
     path('shelter/<int:pk>/details/', views.ShelterProfileView.as_view(), name='shelter-details'),
     path('shelter/all/', views.AllShelters.as_view(), name='shelter-all'),

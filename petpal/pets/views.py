@@ -241,63 +241,6 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         return queryset
 
 class CommentViewSet(viewsets.ModelViewSet):
-
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-    def perform_create(self, serializer):
-         permission_classes = [permissions.IsAuthenticated, ApplicationPermissions]
-    filter_backends = [OrderingFilter]
-    ordering_fields = ['created_at', 'updated_at']
-
-    def perform_create(self, serializer):
-        if "pet_id" not in self.request.data:
-            return Response("pet_id is required.", status=400)
-        pet_id = self.request.data["pet_id"]
-        pet = get_object_or_404(Pet, id=pet_id)
-
-        serializer.save(applicant=self.request.user, pet=pet, shelter=pet.shelter)
-
-    def update(self, request, *args, **kwargs):
-        # by default, PATCHing to /applications/1/ will patch application with id1
-        if "status" in request.data:
-            application_id = request.path_info.split("/")[-2]
-            application = get_object_or_404(Application, id=application_id)
-
-            # Shelter can only update the status of an application from pending to accepted or denied.
-            if request.user.is_shelter and (
-                application.status == Application.PENDING and (
-                request.data["status"] == Application.ACCEPTED or request.data["status"] == Application.DENIED)):
-                return super().update(request, *args, **kwargs)
-            # Pet seeker can only update the status of an application from pending or accepted to withdrawn.
-            elif not request.user.is_shelter and (
-                (application.status == Application.PENDING or application.status == Application.ACCEPTED) and (
-                request.data["status"] == Application.WITHDRAWN)):
-                return super().update(request, *args, **kwargs)
-            else:    
-                # return Response("application.status:{}, request.data['status']:{}".format(application.status, request.data["status"]), status=200)
-                return Response("Cannot update status of application.", status=400)
-        else:    
-            return Response("status: required field", status=400)
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-
-        # only allow owned applications
-        if self.request.user.is_shelter:
-            queryset = queryset.filter(shelter=self.request.user)
-        else:
-            queryset = queryset.filter(applicant=self.request.user)
-
-        query_parms = self.request.GET
-        if "status" in query_parms:
-            queryset = queryset.filter(status=query_parms["status"])
-
-        return queryset
-
-class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated]
