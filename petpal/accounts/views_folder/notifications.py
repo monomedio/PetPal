@@ -36,6 +36,7 @@ class NotificationCreate(CreateAPIView):
     serializer_class = NotificationSerializer
 
     def perform_create(self, serializer):
+        # serializer.validated_data['message'] = "You have a new review."
         serializer.save(user=self.request.user)
 
 class NotificationUpdate(UpdateAPIView):

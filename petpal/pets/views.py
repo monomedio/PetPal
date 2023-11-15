@@ -1,11 +1,12 @@
-from .models import Pet, Application, PetImage
+from .models import Pet, Application, PetImage, Comment
 from rest_framework import viewsets, permissions, mixins, status
 from rest_framework.response import Response
-from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer
+from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer, CommentSerializer
 from rest_framework.filters import OrderingFilter
 from .permissions import IsShelter, IsOwner
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
+from django.core.exceptions import ValidationError
 
 
 class PetImageViewSet(viewsets.ModelViewSet):
@@ -183,3 +184,41 @@ class ApplicationViewSet(mixins.CreateModelMixin,
             return super().update(request, pk)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class CommentViewSet(viewsets.ModelViewSet):
+
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+    def perform_create(self, serializer):
+        if (self.request.shelter):
+            # shelter is not NULL, then the comment is a review/reply to a review
+            serializer.validated_data['message'] = "You have a new review."
+
+        elif (self.request.application):
+            # application is not NULL, then the comment is an comment on an application
+            if (self.application.shelter):
+                pass
+        else:
+            raise ValidationError('Either a shelter or application must be provided.')
+        
+        serializer.save()
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+
+        # status filter defaults to available if unspecified
+        filters = request.GET
+        if "status" not in filters:
+            queryset = queryset.filter(status=Pet.AVAILABLE)
+
+        # pagination and response
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
