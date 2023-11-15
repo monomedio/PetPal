@@ -52,7 +52,7 @@ class PetImage(models.Model):
 class Comment(models.Model):
     commenter = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
-    body = models.CharField(max_length=400)
+    body = models.CharField(max_length=1000)
     shelter = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='review')
     application = models.ForeignKey('Application', on_delete=models.CASCADE, null=True, blank=True, related_name='application_message')
     creation_time = models.DateTimeField(auto_now_add=True)
