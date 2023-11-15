@@ -46,9 +46,20 @@ class PetImage(models.Model):
 
 
 class Application(models.Model):
+    PENDING = "pending"
+    ACCEPTED = "accepted"
+    DENIED = "denied"
+    WITHDRAWN = "withdrawn"
+    STATUS_CHOICES = [
+        (PENDING, "Pending"),
+        (ACCEPTED, "Accepted"),
+        (DENIED, "denied"),
+        (WITHDRAWN, "Withdrawn"),
+    ]
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="pet")
     applicant = models.ForeignKey(User, on_delete=models.CASCADE, related_name="applicant")
-    status = models.CharField(max_length=200)
+    status = models.CharField(default=PENDING, max_length=200, choices=STATUS_CHOICES, blank=True)
     shelter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="shelter")
     comments = GenericRelation(Comment)
-    lastupdated = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
