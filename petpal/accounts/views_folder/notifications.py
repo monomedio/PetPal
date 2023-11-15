@@ -7,26 +7,6 @@ from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView,
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, redirect
 from rest_framework import status
-# Notifications (16 marks)
-# Model (2 marks) 
-# Create (2 marks)
-# Note that you do not have to provide this endpoint IF your other actions will create notification objects directly.
-# E.g., notification created as part of creating a new comment for a shelter.
-# Update (1 mark)
-# You should only be able change the state of a notification from "unread" to "read".
-# It is fine to not do the above, but instead make a notification read the first time it is retrieved.
-# List (6 marks)
-# Users (shelter and seeker) can only view their own notifications (1 mark)
-# Sort notifications by creation time (2 mark)
-# Filter notifications by read/unread (2 mark)
-# Pagination support (1 mark)
-# Delete (1 mark)
-# Get (4 mark)
-# Should provide a link to the associated model
-# Link to new comment added (2 marks)
-# Link to application creation and status update (2 marks)
-
-#add body request for notif sorting, paginate
 
 class NotificationCreate(CreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -97,23 +77,24 @@ class NotificationsList(ListAPIView):
     paginate_by = 5
 
     def get_queryset(self):
-        user_id = self.request.user.id
-        queryset = Notification.objects.all()
-        queryset = Notification.objects.filter(user=user_id)
+        user = self.request.user.id
+        queryset = Notification.objects.filter(user=user)
 
-        if (self.request.data.get("display_is_read")):
-            queryset = queryset.filter(is_read=True)
-        else:
-            queryset = queryset.filter(is_read=False)
+        display_is_read = self.request.query_params.get("display_is_read")
+
+        if display_is_read is not None:
+            queryset = queryset.filter(is_read=display_is_read.lower() == 'true')
+
+        sort_ascending = self.request.query_params.get("sort_ascending")
+
+        if sort_ascending is not None:
+            sort_ascending = sort_ascending.lower() == 'true'\
+            
+            if sort_ascending:
+                return queryset.order_by('timestamp')
 
         return queryset.order_by('-timestamp')
-    
-    # class Notification(models.Model):
-    # is_read = models.BooleanField(default=False)
-    # message = models.TextField()
-    # timestamp = models.DateTimeField(auto_now_add=True)
-    # icon = models.ImageField()
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
 # add message
 class NotificationDelete(DestroyAPIView):
@@ -131,18 +112,21 @@ class NotificationRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
     def get_object(self):
-        # application_id = models.IntegerField(null=True, blank=True)
-        # shelter_id = models.IntegerField(null=True, blank=True)
-        # reply_id = models.IntegerField(null=True, blank=True)
-        # comment_or_reply_id = models.IntegerField(null=True, blank=True) # If null, notif should link to status update
+        instance = super().get_object()
 
-        # if (self.request.application_id and self.request.shelter_id) or (self.request.application_id and self.request.reply_id) or (self.request.reply_id and self.request.shelter_id):
-        #     return Response('Only one application, shelter, or reply id should be provided.')
-        # elif (self.request.application_id is not None and self.request.comment_or_reply_id is None):
-        #     # Status change
-        #     return redirect('comments', pk=self.request.application_id)
-
-        return get_object_or_404(Notification, id=self.kwargs['pk'])
+        if instance.application_id is not None and instance.comment_or_reply_id is not None:
+            # new application comment
+            return redirect('comments-detail', application_id=instance.application_id, pk=instance.comment_or_reply_id)
+        elif instance.application_id is not None:
+            # new application
+            return redirect('application-detail', pk=instance.application_id)
+        elif instance.shelter_id is not None and instance.comment_or_reply_id is not None:
+            # new reply to review
+            return redirect('review-replies-detail', shelter_id=instance.shelter_id, review_id=instance.review_id, pk=instance.comment_or_reply_id)
+        else:
+            # new review
+            return redirect('reviews-detail', shelter_id=instance.shelter_id, pk=instance.review_id)
+        
     
     def destroy(self, *args, **kwargs):
         serializer = NotificationSerializer
