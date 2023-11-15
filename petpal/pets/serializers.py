@@ -31,4 +31,10 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
-        read_only_fields = ['commenter', 'creation_time', 'message', 'creation_time', 'shelter', 'application']
+        read_only_fields = ['commenter', 'creation_time', 'shelter', 'application']
+
+class ReplySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        read_only_fields = ['commenter', 'creation_time', 'review']

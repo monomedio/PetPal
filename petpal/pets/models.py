@@ -50,11 +50,6 @@ class PetImage(models.Model):
 
 # Shelter comments are reviews, application comments are chats
 class Comment(models.Model):
-    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE) # user (shelter) - topic is review, application - comment
-    # object_id = models.PositiveIntegerField()
-    # content_object = GenericForeignKey("content_type", "object_id") # user
-
-    # other comment fields
     commenter = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
     body = models.CharField(max_length=400)
@@ -62,13 +57,11 @@ class Comment(models.Model):
     application = models.ForeignKey('Application', on_delete=models.CASCADE, null=True, blank=True, related_name='application_message')
     creation_time = models.DateTimeField(auto_now_add=True)
 
-# class Reply(models.Model):
-#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-#     object_id = models.PositiveIntegerField()
-#     content_object = GenericForeignKey('content_type', 'object_id')
-
-#     body = models.CharField(max_length=400)
-#     creation_date = models.DateTimeField(auto_now_add=True)
+class Reply(models.Model):
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    body = models.CharField(max_length=400)
+    creation_time = models.DateTimeField(auto_now_add=True)
 
 class Application(models.Model):
     PENDING = "pending"

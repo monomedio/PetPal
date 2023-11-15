@@ -25,7 +25,8 @@ router = routers.DefaultRouter()
 router.register(r'pets', views.PetViewSet)
 router.register(r'applications', views.ApplicationViewSet)
 router.register(r'pets/(?P<pet_id>[^/.]+)/images', views.PetImageViewSet, basename='pet-image')
-router.register(r'applications/(?P<application_id>[^/.]+)/comments', views.CommentViewSet, basename='application-comment')
+router.register(r'applications/(?P<application_id>[^/.]+)/comments', views.CommentViewSet, basename='comments')
+router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews', views.CommentViewSet, basename='pet-image')
 
 
 urlpatterns = [

@@ -11,6 +11,8 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.parsers import MultiPartParser
+from django.urls import reverse
+from django.shortcuts import redirect
 
 
 class RegistrationUpdateView(APIView):
@@ -173,3 +175,7 @@ class AllShelters(generics.ListAPIView):
 #     def update(self, request, *args, **kwargs):
 #         kwargs['partial'] = True 
 #         return super().update(request, *args, **kwargs)
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    def get(self, request, *args, **kwargs):
+            return redirect(reverse('comments'))

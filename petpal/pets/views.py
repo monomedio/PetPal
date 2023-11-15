@@ -1,7 +1,7 @@
-from .models import Pet, Application, PetImage, Comment
+from .models import Pet, Application, PetImage, Comment, Reply
 from rest_framework import viewsets, permissions, mixins, status
 from rest_framework.response import Response
-from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer, CommentSerializer
+from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer, CommentSerializer, ReplySerializer
 from rest_framework.filters import OrderingFilter
 from .permissions import IsShelter, ApplicationPermissions, IsOwner
 from django.shortcuts import get_object_or_404
@@ -298,7 +298,6 @@ class CommentViewSet(viewsets.ModelViewSet):
         return queryset
 
 class CommentViewSet(viewsets.ModelViewSet):
-
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -309,6 +308,9 @@ class CommentViewSet(viewsets.ModelViewSet):
             # shelter is not NULL, then the comment is a review/reply to a review
             shelter_id = self.request.data["shelter_id"]
             shelter = get_object_or_404(User, id=shelter_id)
+
+            if 'rating' not in self.request.data:
+                return Response('Rating is required for a review.')
             
             serializer.save(commenter=self.request.user, shelter=shelter)
 
@@ -333,21 +335,72 @@ class CommentViewSet(viewsets.ModelViewSet):
             # shelter is not NULL, then the comment is a review/reply to a review
             shelter_id = request.data["shelter_id"]
             shelter = get_object_or_404(User, id=shelter_id)
+            queryset = Comment.objects.filter(shelter=shelter).order_by('-creation_time')
+            serializer = CommentSerializer(queryset, many=True)
+            return Response(serializer.data)
 
         elif 'application_id' in self.request.data:
-            
             app_id = self.request.data["application_id"]
             application = get_object_or_404(Application, id=app_id)
+
+            logged_in_user = self.request.user
+            if (logged_in_user== application.applicant or logged_in_user == application.shelter):
+                queryset = Comment.objects.filter(application=application).order_by('-creation_time')
+                serializer = CommentSerializer(queryset, many=True)
+                return Response(serializer.data)
+            else:
+                return Response('Current user not associated with this application.')
             
+class ReplyViewSet(viewsets.ModelViewSet):
+    queryset = Reply.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    paginate_by = 5
+
+    def perform_create(self, serializer):
+        if 'shelter_id' in self.request.data:
+            # shelter is not NULL, then the comment is a review/reply to a review
+            shelter_id = self.request.data["shelter_id"]
+            shelter = get_object_or_404(User, id=shelter_id)
+
+            if 'rating' not in self.request.data:
+                return Response('Rating is required for a review.')
+            
+            serializer.save(commenter=self.request.user, shelter=shelter)
+
+        elif 'application_id' in self.request.data:
+        # application is not NULL, then the comment is an comment on an application
+            app_id = self.request.data["application_id"]
+            application = get_object_or_404(Application, id=app_id)
+        
+        # Make sure that the logged in user is allowed to comment on the application
             logged_in_user = self.request.user
             if (logged_in_user== application.applicant or logged_in_user == application.shelter):
                 serializer.save(commenter=self.request.user, application=application, rating=None)
             else:
                 return Response('Current user not associated with this application.')
+        else:
+            # Not working? idk why
+            return Response('Either a shelter or application id must be provided.')
 
-            queryset = Comment.objects.filter(application=application).order_by('-creation_time')
+    def list(self, request, *args, **kwargs):
+
+        if 'shelter_id' in request.data:
+            # shelter is not NULL, then the comment is a review/reply to a review
+            shelter_id = request.data["shelter_id"]
+            shelter = get_object_or_404(User, id=shelter_id)
+            queryset = Comment.objects.filter(shelter=shelter).order_by('-creation_time')
             serializer = CommentSerializer(queryset, many=True)
             return Response(serializer.data)
-        
-            # queryset = Comment.objects.all()
-            # return queryset.order_by('creation_time')
+
+        elif 'application_id' in self.request.data:
+            app_id = self.request.data["application_id"]
+            application = get_object_or_404(Application, id=app_id)
+
+            logged_in_user = self.request.user
+            if (logged_in_user== application.applicant or logged_in_user == application.shelter):
+                queryset = Comment.objects.filter(application=application).order_by('-creation_time')
+                serializer = CommentSerializer(queryset, many=True)
+                return Response(serializer.data)
+            else:
+                return Response('Current user not associated with this application.')
