@@ -13,17 +13,42 @@ class NotificationCreate(CreateAPIView):
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        response = self.perform_create(serializer)
+        if response is not None:
+            return response
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
     def perform_create(self, serializer, *args, **kwargs):
+        user_to_be_notified = self.request.user
+
         if "application_id" in self.request.data and not "comment_or_reply_id" in self.request.data:
             # Status change
             application_id = self.request.data.get('application_id')
             application = get_object_or_404(Application, id=application_id)
+
+            if self.request.user != application.shelter:
+                return Response('Invalid permissions')
+            else:
+                user_to_be_notified = application.applicant
+
             message = 'Your application for ' + application.pet.name + ' has changed to the status: ' + application.status + '.'
         elif "application_id" in self.request.data:
             # new application comment
             application_id = self.request.data.get('application_id')
             comment_id = self.request.data.get('comment_or_reply_id')
             application = get_object_or_404(Application, id=application_id)
+
+            if self.request.user == application.applicant:
+                user_to_be_notified = application.shelter
+            elif self.request.user == application.shelter:
+                user_to_be_notified = application.applicant
+            else:
+                return Response('Invalid permissions')
+                
             comment = get_object_or_404(Comment, application=application, id=comment_id)
             message = 'Your application for ' + application.pet.name + ' has a new reply.'
         elif "shelter_id" in self.request.data and "comment_or_reply_id" in self.request.data and "review_id" in self.request.data:
@@ -34,6 +59,15 @@ class NotificationCreate(CreateAPIView):
             shelter = get_object_or_404(User, id=shelter_id)
             review = get_object_or_404(Comment, shelter=shelter, id=review_id)
             reply = get_object_or_404(Reply, id=reply_id, review=review)
+
+            if self.request.user != reply.commenter:
+                return Response('Invalid permissions')
+            else:
+                if self.request.user == review.shelter:
+                    user_to_be_notified = review.commenter
+                else:
+                    user_to_be_notified = review.shelter
+            
             message = 'You have a new reply to a review.'
         elif "shelter_id" in self.request.data and "review_id" in self.request.data:
             # new review
@@ -41,11 +75,17 @@ class NotificationCreate(CreateAPIView):
             shelter_id = self.request.data.get('shelter_id')
             shelter = get_object_or_404(User, id=shelter_id)
             review = get_object_or_404(Comment, shelter=shelter, id=review_id)
+
+            if self.request.user != review.commenter:
+                return Response('Invalid permissions')
+            else:
+                user_to_be_notified = review.shelter
+
             message = 'You have a new review!'
         else:
             return Response('Ids for relevant models should be provided')
 
-        serializer.save(user=self.request.user, message=message)
+        serializer.save(user=user_to_be_notified, message=message)
 
 class NotificationUpdate(UpdateAPIView):
     """
@@ -111,8 +151,19 @@ class NotificationRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if isinstance(instance, Response):
+            return instance
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+    
     def get_object(self):
         instance = super().get_object()
+
+        if instance.user != self.request.user:
+            return Response('Notification not found', status=status.HTTP_404_NOT_FOUND)
 
         if instance.application_id is not None and instance.comment_or_reply_id is not None:
             # new application comment
@@ -127,19 +178,19 @@ class NotificationRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
             # new review
             return redirect('reviews-detail', shelter_id=instance.shelter_id, pk=instance.review_id)
         
-    
-    def destroy(self, *args, **kwargs):
-        serializer = NotificationSerializer
-        super().destroy(*args, **kwargs)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    
-    def update(self, request):
-        instance = self.get_object()
-        instance.is_read = request.data.get("is_read")
-        if (instance.is_read == 'true'):
+    def destroy(self, request, *args, **kwargs):
+        instance = super().get_object()
+        self.perform_destroy(instance)
+        return Response('Object deleted', status=status.HTTP_204_NO_CONTENT)
+
+    def update(self, request, *args, **kwargs):
+        instance = super().get_object()
+
+        if (request.data.get("is_read") == 'true'):
             instance.is_read = True
         else:
             instance.is_read = False
+
         instance.save()
 
         serializer = self.get_serializer(instance, data=request.data)
