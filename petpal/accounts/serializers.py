@@ -19,6 +19,7 @@ class userSerializer(serializers.ModelSerializer):
         fields = ['is_shelter', 'first_name', 'last_name', 'email', 'phone', 'password', 'password2', 'username', 'profile_pic']
         extra_kwargs = {
             'password': {'write_only': True},
+            'first_name': {'required': True},
             'last_name': {'required': True},
             'email': {'required': True},
             'phone': {'required': True},
