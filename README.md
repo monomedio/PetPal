@@ -38,3 +38,8 @@ python3 ./manage.py createsuperuser --email admin@example.com --username admin
 python3 ./manage.py dbshell
 .schema accounts_user
 .quit
+# Save database into json
+python3 ./manage.py dumpdata > mock_data.json
+# Load data from json into database
+python3 ./manage.py loaddata mock_data.json
+

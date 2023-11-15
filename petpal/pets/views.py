@@ -254,7 +254,7 @@ class CommentViewSet(viewsets.ModelViewSet):
             return response
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-    
+        
     def perform_create(self, serializer, *args, **kwargs):
         if 'shelter_id' in self.kwargs:
             # shelter is not NULL, then the comment is a review
