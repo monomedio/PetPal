@@ -1,11 +1,13 @@
-from .models import Pet, Application, PetImage
+from .models import Pet, Application, PetImage, Comment, Reply
 from rest_framework import viewsets, permissions, mixins, status
 from rest_framework.response import Response
-from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer
+from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer, CommentSerializer, ReplySerializer
 from rest_framework.filters import OrderingFilter
 from .permissions import IsShelter, ApplicationPermissions, IsOwner
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
+from django.core.exceptions import ValidationError
+from accounts.models import User, ShelterProfile
 
 
 class PetImageViewSet(viewsets.ModelViewSet):
@@ -237,3 +239,85 @@ class ApplicationViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(status=query_parms["status"])
 
         return queryset
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    paginate_by = 5
+
+    def perform_create(self, serializer):
+        if 'shelter_id' in self.request.data:
+            # shelter is not NULL, then the comment is a review
+            shelter_id = self.request.data["shelter_id"]
+            shelter = get_object_or_404(User, id=shelter_id)
+
+            if 'rating' not in self.request.data:
+                return Response('Rating is required for a review.')
+            
+            serializer.save(commenter=self.request.user, shelter=shelter)
+
+        elif 'application_id' in self.request.data:
+        # application is not NULL, then the comment is an comment on an application
+            app_id = self.request.data["application_id"]
+            application = get_object_or_404(Application, id=app_id)
+        
+        # Make sure that the logged in user is allowed to comment on the application
+            logged_in_user = self.request.user
+            if (logged_in_user== application.applicant or logged_in_user == application.shelter):
+                serializer.save(commenter=self.request.user, application=application, rating=None)
+            else:
+                return Response('Current user not associated with this application.')
+        else:
+            # Not working? idk why
+            return Response('Either a shelter or application id must be provided.')
+
+    def list(self, request, *args, **kwargs):
+
+        if 'shelter_id' in request.data:
+            shelter_id = request.data["shelter_id"]
+            shelter = get_object_or_404(User, id=shelter_id)
+            queryset = Comment.objects.filter(shelter=shelter).order_by('-creation_time')
+            serializer = CommentSerializer(queryset, many=True)
+            return Response(serializer.data)
+
+        elif 'application_id' in self.request.data:
+            app_id = self.request.data["application_id"]
+            application = get_object_or_404(Application, id=app_id)
+
+            logged_in_user = self.request.user
+            if (logged_in_user== application.applicant or logged_in_user == application.shelter):
+                queryset = Comment.objects.filter(application=application).order_by('-creation_time')
+                serializer = CommentSerializer(queryset, many=True)
+                return Response(serializer.data)
+            else:
+                return Response('Current user not associated with this application.')
+        else:
+            return Response('Shelter id or application id required.')
+            
+class ReplyViewSet(viewsets.ModelViewSet):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer
+    permission_classes = [permissions.IsAuthenticated]
+    paginate_by = 3
+
+    def perform_create(self, serializer):
+        # if 'review_id' in self.request.data:
+        review_id = self.kwargs.get('review_id')
+        review = get_object_or_404(Comment, id=review_id)
+
+        if (review.shelter is None):
+            return Response('Replies may only be created for shelter reviews.')
+        
+        serializer.save(commenter=self.request.user, review=review)
+        # else:
+        #     return Response('Review id is required.')
+
+    def list(self, request, *args, **kwargs):
+
+        review_id = self.kwargs.get('review_id')
+        review = get_object_or_404(Comment, id=review_id)
+        
+        queryset = Reply.objects.filter(review=review).order_by('-creation_time')
+        serializer = ReplySerializer(queryset, many=True)
+        return Response(serializer.data)

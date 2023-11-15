@@ -1,6 +1,9 @@
 from django.db import models
-from accounts.models import User, Comment, ShelterProfile
+from accounts.models import User, ShelterProfile
 from django.contrib.contenttypes.fields import GenericRelation
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.core.validators import MaxValueValidator, MinValueValidator 
 
 
 class Pet(models.Model):
@@ -44,6 +47,21 @@ class PetImage(models.Model):
     def __str__(self):
         return f"Image for {self.pet.name}"
 
+
+# Shelter comments are reviews, application comments are chats
+class Comment(models.Model):
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
+    body = models.CharField(max_length=1000)
+    shelter = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='review')
+    application = models.ForeignKey('Application', on_delete=models.CASCADE, null=True, blank=True, related_name='application_message')
+    creation_time = models.DateTimeField(auto_now_add=True)
+
+class Reply(models.Model):
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    body = models.CharField(max_length=400)
+    creation_time = models.DateTimeField(auto_now_add=True)
 
 class Application(models.Model):
     PENDING = "pending"
