@@ -177,6 +177,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, ApplicationPermissions]
     filter_backends = [OrderingFilter]
     ordering_fields = ['created_at', 'updated_at']
+    paginate_by = 5
 
     # def create(self, request, *args, **kwargs):
     #     # Prevent duplicate object creation
@@ -262,6 +263,7 @@ class CommentViewSet(viewsets.ModelViewSet):
             logged_in_user = self.request.user
             if (logged_in_user== application.applicant or logged_in_user == application.shelter):
                 serializer.save(commenter=self.request.user, application=application, rating=None)
+                application.save()                
             else:
                 return Response('Current user not associated with this application.')
         else:
