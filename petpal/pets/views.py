@@ -7,6 +7,7 @@ from .permissions import IsShelter, ApplicationPermissions, IsOwner
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
 from django.core.exceptions import ValidationError
+from accounts.models import User, ShelterProfile
 
 
 class PetImageViewSet(viewsets.ModelViewSet):
@@ -304,29 +305,30 @@ class CommentViewSet(viewsets.ModelViewSet):
     paginate_by = 5
 
     def perform_create(self, serializer):
-        if (self.request.shelter):
+        if 'shelter_id' in self.request.data:
             # shelter is not NULL, then the comment is a review/reply to a review
-            serializer.save()
+            shelter_id = self.request.data["shelter_id"]
+            shelter = get_object_or_404(User, id=shelter_id)
+            
+            serializer.save(commenter=self.request.user, shelter=shelter)
 
-        elif (self.request.application):
+        elif 'application_id' in self.request.data:
         # application is not NULL, then the comment is an comment on an application
+            app_id = self.request.data["application_id"]
+            application = get_object_or_404(Application, id=app_id)
+        
         # Make sure that the logged in user is allowed to comment on the application
             logged_in_user = self.request.user
-            application = self.request.application
-            if (logged_in_user== application.user or logged_in_user == application.shelter):
-                serializer.save()
+            if (logged_in_user== application.applicant or logged_in_user == application.shelter):
+                serializer.save(commenter=self.request.user, application=application, rating=None)
+            else:
+                return Response('Current user not associated with this application.')
         else:
-            raise ValidationError('Either a shelter or application must be provided.')
+            # Not working? idk why
+            return Response('Either a shelter or application id must be provided.')
 
     def list(self, request, *args, **kwargs):
-        
+
         def get_queryset(self):
-            user_id = self.request.user.id
             queryset = Comment.objects.all()
-
-            if (self.request.data.get("display_is_read")):
-                queryset = queryset.filter(is_read=True)
-            else:
-                queryset = queryset.filter(is_read=False)
-
             return queryset.order_by('creation_time')

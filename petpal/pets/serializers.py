@@ -23,12 +23,12 @@ class PetSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ['pet', 'applicant', 'status', 'shelter', 'comments']
-        read_only_fields = ['pet', 'applicant', 'shelter', 'comments']
+        fields = ['pet', 'applicant', 'status', 'shelter']
+        read_only_fields = ['pet', 'applicant', 'shelter']
 
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        exclude = ['creation_time']
-        read_only_fields = ['commenter', 'creation_time']
+        fields = '__all__'
+        read_only_fields = ['commenter', 'creation_time', 'message', 'creation_time', 'shelter', 'application']

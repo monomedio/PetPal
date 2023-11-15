@@ -13,14 +13,14 @@ class User(AbstractUser):
 
 
 
-# Shelter comments are reviews, application comments are chats
-class Comment(models.Model):
-    commenter = models.ForeignKey(User, on_delete=models.CASCADE)
-    description = models.CharField(max_length=400)
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey("content_type", "object_id")
-    creation_date = models.DateTimeField()
+# # Shelter comments are reviews, application comments are chats
+# class Comment(models.Model):
+#     commenter = models.ForeignKey(User, on_delete=models.CASCADE)
+#     description = models.CharField(max_length=400)
+#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     object_id = models.PositiveIntegerField()
+#     content_object = GenericForeignKey("content_type", "object_id")
+#     creation_date = models.DateTimeField()
 
 
 class ShelterProfile(models.Model):
