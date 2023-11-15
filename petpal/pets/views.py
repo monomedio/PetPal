@@ -329,6 +329,25 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
 
-        def get_queryset(self):
-            queryset = Comment.objects.all()
-            return queryset.order_by('creation_time')
+        if 'shelter_id' in request.data:
+            # shelter is not NULL, then the comment is a review/reply to a review
+            shelter_id = request.data["shelter_id"]
+            shelter = get_object_or_404(User, id=shelter_id)
+
+        elif 'application_id' in self.request.data:
+            
+            app_id = self.request.data["application_id"]
+            application = get_object_or_404(Application, id=app_id)
+            
+            logged_in_user = self.request.user
+            if (logged_in_user== application.applicant or logged_in_user == application.shelter):
+                serializer.save(commenter=self.request.user, application=application, rating=None)
+            else:
+                return Response('Current user not associated with this application.')
+
+            queryset = Comment.objects.filter(application=application).order_by('-creation_time')
+            serializer = CommentSerializer(queryset, many=True)
+            return Response(serializer.data)
+        
+            # queryset = Comment.objects.all()
+            # return queryset.order_by('creation_time')
