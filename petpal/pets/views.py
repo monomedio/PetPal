@@ -195,30 +195,31 @@ class CommentViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         if (self.request.shelter):
             # shelter is not NULL, then the comment is a review/reply to a review
-            serializer.validated_data['message'] = "You have a new review."
+            serializer.save()
 
         elif (self.request.application):
-            # application is not NULL, then the comment is an comment on an application
-            if (self.application.shelter):
-                pass
+        # application is not NULL, then the comment is an comment on an application
+        # Make sure that the logged in user is allowed to comment on the application
+            logged_in_user = self.request.user
+            application = self.request.application
+        if (logged_in_user== application.user or logged_in_user == application.shelter):
+            serializer.save()
         else:
             raise ValidationError('Either a shelter or application must be provided.')
-        
-        serializer.save()
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.get_queryset()
 
-        # status filter defaults to available if unspecified
-        filters = request.GET
-        if "status" not in filters:
-            queryset = queryset.filter(status=Pet.AVAILABLE)
+    #     # status filter defaults to available if unspecified
+    #     filters = request.GET
+    #     if "status" not in filters:
+    #         queryset = queryset.filter(status=Pet.AVAILABLE)
 
-        # pagination and response
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
+    #     # pagination and response
+    #     page = self.paginate_queryset(queryset)
+    #     if page is not None:
+    #         serializer = self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer.data)
 
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return Response(serializer.data)

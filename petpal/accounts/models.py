@@ -21,9 +21,9 @@ class ShelterProfile(models.Model):
     hours = models.CharField(max_length=400)
 
 class Notification(models.Model):
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE) # shelter: shelter, application, comments; seeker: status update, comments
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE) # shelter: shelter, application, comments; seeker: status update, comments
+    # object_id = models.PositiveIntegerField()
+    # content_object = GenericForeignKey('content_type', 'object_id')
 
     is_read = models.BooleanField(default=False)
 
