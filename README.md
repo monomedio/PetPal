@@ -36,6 +36,7 @@ python3 ./manage.py runserver
 python3 ./manage.py createsuperuser --email admin@example.com --username admin
 # View database schemas (in outer petpal folder)
 python3 ./manage.py dbshell
+.tables
 .schema accounts_user
 .quit
 # Save database into json

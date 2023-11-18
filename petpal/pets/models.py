@@ -71,7 +71,7 @@ class Application(models.Model):
     STATUS_CHOICES = [
         (PENDING, "Pending"),
         (ACCEPTED, "Accepted"),
-        (DENIED, "denied"),
+        (DENIED, "Denied"),
         (WITHDRAWN, "Withdrawn"),
     ]
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="pet")
