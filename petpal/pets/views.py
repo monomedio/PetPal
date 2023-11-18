@@ -285,8 +285,8 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
 
-        if 'shelter_id' in request.data:
-            shelter_id = request.data["shelter_id"]
+        if 'shelter_id' in self.kwargs:
+            shelter_id = self.kwargs["shelter_id"]
             shelter = get_object_or_404(User, id=shelter_id)
             queryset = Comment.objects.filter(shelter=shelter).order_by('-creation_time')
             page = self.paginate_queryset(queryset)
@@ -297,8 +297,8 @@ class CommentViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(queryset, many=True)
             return Response(serializer.data)
 
-        elif 'application_id' in self.request.data:
-            app_id = self.request.data["application_id"]
+        elif 'application_id' in self.kwargs:
+            app_id = self.kwargs["application_id"]
             application = get_object_or_404(Application, id=app_id)
 
             logged_in_user = self.request.user
