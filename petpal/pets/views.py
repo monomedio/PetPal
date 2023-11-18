@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
 from django.core.exceptions import ValidationError
 from accounts.models import User, ShelterProfile
+from rest_framework.pagination import PageNumberPagination
 
 
 class PetImageViewSet(viewsets.ModelViewSet):
@@ -239,12 +240,12 @@ class ApplicationViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(status=query_parms["status"])
 
         return queryset
+    
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated]
-    paginate_by = 5
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -288,7 +289,12 @@ class CommentViewSet(viewsets.ModelViewSet):
             shelter_id = request.data["shelter_id"]
             shelter = get_object_or_404(User, id=shelter_id)
             queryset = Comment.objects.filter(shelter=shelter).order_by('-creation_time')
-            serializer = CommentSerializer(queryset, many=True)
+            page = self.paginate_queryset(queryset)
+            if page is not None:
+                serializer = self.get_serializer(page, many=True)
+                return self.get_paginated_response(serializer.data)
+
+            serializer = self.get_serializer(queryset, many=True)
             return Response(serializer.data)
 
         elif 'application_id' in self.request.data:
@@ -298,18 +304,32 @@ class CommentViewSet(viewsets.ModelViewSet):
             logged_in_user = self.request.user
             if (logged_in_user== application.applicant or logged_in_user == application.shelter):
                 queryset = Comment.objects.filter(application=application).order_by('-creation_time')
-                serializer = CommentSerializer(queryset, many=True)
+            
+                page = self.paginate_queryset(queryset)
+                if page is not None:
+                    serializer = self.get_serializer(page, many=True)
+                    return self.get_paginated_response(serializer.data)
+
+                serializer = self.get_serializer(queryset, many=True)
                 return Response(serializer.data)
             else:
                 return Response('Current user not associated with this application.')
         else:
-            return Response('Shelter id or application id required.')
+            queryset = Comment.objects.all().order_by('-creation_time')
+            page = self.paginate_queryset(queryset)
+            if page is not None:
+                serializer = self.get_serializer(page, many=True)
+                return self.get_paginated_response(serializer.data)
+
+            serializer = self.get_serializer(queryset, many=True)
+            return Response(serializer.data)
+        
             
 class ReplyViewSet(viewsets.ModelViewSet):
     queryset = Reply.objects.all()
     serializer_class = ReplySerializer
     permission_classes = [permissions.IsAuthenticated]
-    paginate_by = 3
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -337,5 +357,11 @@ class ReplyViewSet(viewsets.ModelViewSet):
         review = get_object_or_404(Comment, id=review_id)
         
         queryset = Reply.objects.filter(review=review).order_by('-creation_time')
-        serializer = ReplySerializer(queryset, many=True)
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
