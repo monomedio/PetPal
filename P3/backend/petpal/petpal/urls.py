@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from pets import views
+from blog.views import BlogPostViewSet
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,7 +29,7 @@ router.register(r'pets/(?P<pet_id>[^/.]+)/images', views.PetImageViewSet, basena
 router.register(r'applications/(?P<application_id>[^/.]+)/comments', views.CommentViewSet, basename='comments')
 router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews', views.CommentViewSet, basename='reviews')
 router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews/(?P<review_id>[^/.]+)/replies', views.ReplyViewSet, basename='review-replies')
-
+router.register(r'blog', BlogPostViewSet)
 
 urlpatterns = [
     path('', include(router.urls)), # automatic URL routing
