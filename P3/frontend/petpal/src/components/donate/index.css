@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 50px 0;
+}
+.pet-info {
+    padding: 0 30px;
+    background-color: #eee;
+    margin-right: 20px;
+}
+.pet-info h3 {
+    font-size: 25px;
+    margin: 5px 0;
+}
+.pet-pic {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+
+}
+
+.donate-form {
+    background-color: #fff;
+    border: 1px solid #282c34;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 500px;
+}
+.frequency {
+    background-color: rgb(244, 244, 245);
+    padding: 2px 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.frequency input, .amount input {
+    display: none;
+}
+.frequency label, .amount label {
+    font-weight: bolder;
+    text-align: center;
+    line-height: 30px;
+    width: 80px;
+    border: 1px solid transparent;
+
+}
+
+.frequency input:checked + label, .amount input:checked + label {
+    border-radius: 4px;
+    border: 1px solid rgb(123, 45, 189);
+    background-color: rgb(231, 205, 253);
+}
+.amount {
+    display: flex;
+    flex-wrap: wrap;
+}
+.amount label {
+    width: 150px;
+    height: 65px;
+    line-height: 65px;
+    background-color: #eee;
+    margin: 5px;
+}
+.comment textarea {
+    width: 450px;
+    resize: none;
+    padding: 20px 10px;
+}
