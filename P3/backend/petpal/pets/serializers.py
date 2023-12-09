@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Pet, Application, PetImage, Comment, Reply
+from .models import Pet, Application, PetImage, Comment, Reply, Donate
 
 
 class PetImageSerializer(serializers.ModelSerializer):
@@ -18,6 +18,13 @@ class PetSerializer(serializers.ModelSerializer):
 
     def get_location(self, obj):
         return obj.shelter.shelter_profile.address
+
+
+class DonateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Donate
+        fields = ["amount", "comment", "frequency", "pet_id", "credit_card"]
+
 
 
 class ApplicationSerializer(serializers.ModelSerializer):

@@ -81,3 +81,23 @@ class Application(models.Model):
     comments = GenericRelation(Comment)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Donate(models.Model):
+    ONE_TIME = "one_time"
+    MONTHLY = "monthly"
+    QUARTERLY = "quarterly"
+    YEARLY = "yearly"
+    STATUS_DONATE = [
+        (ONE_TIME, "one_time"),
+        (MONTHLY, "monthly"),
+        (QUARTERLY, "quarterly"),
+        (YEARLY, "yearly"),
+    ]
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    amount = models.PositiveIntegerField()
+    frequency = models.CharField(default=ONE_TIME, max_length=200, choices=STATUS_DONATE, blank=True)
+    comment = models.CharField(max_length=1000)
+    credit_card = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

@@ -1,7 +1,8 @@
-from .models import Pet, Application, PetImage, Comment, Reply
+from .models import Pet, Application, PetImage, Comment, Reply, Donate
 from rest_framework import viewsets, permissions, mixins, status
 from rest_framework.response import Response
-from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer, CommentSerializer, ReplySerializer
+from .serializers import PetSerializer, ApplicationSerializer, PetImageSerializer, CommentSerializer, ReplySerializer, \
+    DonateSerializer
 from rest_framework.filters import OrderingFilter
 from .permissions import IsShelter, ApplicationPermissions, IsOwner
 from django.shortcuts import get_object_or_404
@@ -96,7 +97,7 @@ class PetViewSet(viewsets.ModelViewSet):
         queryset = self.filter_queryset(super().get_queryset())
         if self.request.method == "GET":
             filters = self.request.GET
-            print(filters)
+            print(filters, 'fff')
             # # status filter defaults to available if unspecified
             # if "status" not in filters:
             #     queryset = queryset.filter(status=Pet.AVAILABLE)
@@ -365,3 +366,19 @@ class ReplyViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+
+class DonateViewSet(viewsets.ModelViewSet):
+    queryset = Donate.objects.all()
+    serializer_class = DonateSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [OrderingFilter]
+    ordering_fields = ["amount", "comment", "frequency", "pet_id",  "credit_card",  "created_at", "updated_at"]
+
+    def perform_create(self, serializer):
+        if "pet_id" not in self.request.data:
+            return Response("pet_id is required.", status=400)
+        pet_id = self.request.data["pet_id"]
+        pet = get_object_or_404(Pet, id=pet_id)
+
+        serializer.save(pet=pet)
