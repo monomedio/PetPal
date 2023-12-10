@@ -4,11 +4,16 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Applications from './pages/applications';
 
 const router = createBrowserRouter([
   {
     path: "/donate/:id",
     element: <Donate />,
+  },
+  {
+    path: "/applications/",
+    element: <Applications />,
   },
 ]);
 
