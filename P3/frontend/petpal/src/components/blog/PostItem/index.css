@@ -1,0 +1,24 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #177791;
+    /* width: calc(25% - 14px);  */
+    /* padding-top: calc(25% - 14px);  */
+    box-sizing: border-box;
+    width: calc(25% - 24px); 
+}
+
+.post-title {
+    display: flex;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Roboto Slab;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 45px;
+}
