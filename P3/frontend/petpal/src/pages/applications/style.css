@@ -1,0 +1,214 @@
+/* CSS DEFAULTS */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    font-family: "Roboto", sans-serif;
+
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* CUSTOM CSS */
+:root {
+    --primary-color: #177791;
+    --primary-color-dark: #97dcef;
+    --secondary-color: #e9724c;
+    --secondary-color-dark: #ffbda8;
+    --tertiary-color: #ffc857;
+    --tertiary-color-dark: #ffe7b5;
+    --black: #1e1e1e;
+}
+
+h1 {
+    font-family: "Pacifico", cursive;
+    font-size: 5rem;
+    color: white;
+}
+
+.h1-span {
+    font-family: "Roboto Slab", serif;
+    font-size: 3rem;
+    color: white;
+}
+
+h2,
+h3,
+h4 {
+    font-family: "Roboto Slab", serif;
+    font-weight: bold;
+    color: var(--black);
+    margin: 1rem 0;
+}
+
+.teal {
+    background-color: var(--primary-color);
+}
+
+.orange {
+    background-color: var(--secondary-color);
+}
+
+.yellow {
+    background-color: var(--tertiary-color-dark);
+}
+
+.white {
+    background-color: white;
+}
+
+.grey {
+    background-color: #e8e8e8;
+}
+
+.light-orange {
+    background-color: var(--secondary-color-dark);
+}
+
+.light-blue {
+    background-color: var(--primary-color-dark);
+}
+
+.rounded-item {
+    border-radius: 2rem;
+}
+
+.padding {
+    padding: 2rem;
+}
+
+p {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    margin-top: 2rem;
+}
+
+.button-outline {
+    border-radius: 2rem;
+    border: 1px solid var(--secondary-color);
+    background-color: white;
+
+    color: var(--secondary-color);
+    font-weight: 700;
+    padding: 8px 25px;
+}
+
+.button-outline:hover {
+    filter: brightness(85%);
+}
+
+.button-fill {
+    border-radius: 2rem;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+
+    color: #fff;
+    font-weight: 700;
+    padding: 8px 25px;
+    transition: 0.15s;
+}
+
+.button-fill:hover {
+    filter: brightness(85%);
+}
+
+.button-dark {
+    border-radius: 2rem;
+    border: 1px solid var(--black);
+    background-color: var(--black);
+
+    color: var(--secondary-color-dark);
+    font-weight: 700;
+    padding: 8px 4rem;
+    transition: 0.15s;
+}
+
+.button-dark:hover {
+    filter: brightness(125%);
+}
+
+.container {
+    border-radius: 2rem;
+    padding: 0;
+}
+
+.border-tab {
+    border-top: var(--secondary-color) 1px solid;
+    border-bottom: var(--secondary-color) 1px solid;
+  }
+  
+.chat-container {
+/* height: 300px; */
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.chat-msg {
+color: var(--black);
+border: 1px solid var(--secondary-color);
+border-radius: 30px;
+padding: 0.5rem 1rem;
+margin: 0;
+}
+
+.chat-sent-name {
+color: var(--secondary-color);
+font-size: 0.75rem;
+margin: 0;
+}
+
+.chat-sent-name.left {
+margin-left: 75px;
+}
+
+.chat-sent-name.right {
+margin-right: 75px;
+}
+
+.select-status option[value="Pending"] {
+background-color: var(--primary-color);
+}
+
+.select-status option[value="Approved"] {
+background-color: var(--tertiary-color);
+color: var(--black);
+}
+
+.select-status option[value="Denied"] {
+background-color: var(--secondary-color);
+color: var(--black);
+}
