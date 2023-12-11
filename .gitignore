@@ -8,3 +8,8 @@ petpal/media/pfp/a2_q3a.jpeg
 petpal/sqldiff.exe
 petpal/sqlite3_analyzer.exe
 petpal/sqlite3.exe
+P3/backend/petpal/media/pet_images/6148a32077ccd2bc3d8f2affbb301d4a.JPG
+P3/backend/petpal/media/pet_images/IMG_3337.jpg
+P3/backend/petpal/media/pet_images/IMG_3990.jpg
+P3/backend/petpal/blog/migrations/0002_remove_blogpost_author.py
+P3/backend/petpal/pets/migrations/0002_donate.py
