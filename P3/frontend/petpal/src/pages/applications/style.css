@@ -12,7 +12,7 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100px;
 
     font-family: "Roboto", sans-serif;
 
@@ -159,9 +159,11 @@ p {
     filter: brightness(125%);
 }
 
+
 .container {
     border-radius: 2rem;
     padding: 0;
+    overflow-y: auto;
 }
 
 .border-tab {
@@ -175,6 +177,7 @@ width: 100%;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+padding: 0 12px;
 }
 
 .chat-msg {
@@ -211,4 +214,48 @@ color: var(--black);
 .select-status option[value="Denied"] {
 background-color: var(--secondary-color);
 color: var(--black);
+}
+
+.msg-bar {
+    width: 100%;
+    height: 30%;
+    margin-top: 5px;
+    padding-left: 10px;
+    border-radius: 20px;
+    border-radius: 18px;
+    border: 1px solid #177791;
+    background-color: white;
+    flex-direction: column;
+    background: #fff;
+    align-self: center;
+    justify-self: center;
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+a:visited {
+    text-decoration: none;
+}
+
+h2,
+h3,
+h4 {
+    font-family: "Roboto Slab", serif;
+    font-weight: bold;
+    color: var(--black);
+    margin: 1rem 0;
+}
+
+.row {
+    width: 100%;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 600px) {
+    .container {
+        width: auto;
+        margin: 1rem;
+    }
 }

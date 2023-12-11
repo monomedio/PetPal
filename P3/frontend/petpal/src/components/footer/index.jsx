@@ -4,7 +4,6 @@ import "./style.css";
 
 export default function Footer() {
     return (
-        <footer>
         <nav class="navbar footer-nav">
             <div class="container-fluid justify-content-center">
             <div
@@ -40,7 +39,6 @@ export default function Footer() {
             </div>
             </div>
         </nav>
-        </footer>
     )
 
 }

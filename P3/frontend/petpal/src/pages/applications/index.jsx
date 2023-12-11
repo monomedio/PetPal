@@ -7,11 +7,10 @@ import shelter_pic from "../../assets/images/shelter-images/toronto-humane-socie
 import profile_pic from "../../assets/images/among-us.jpeg";
 import "./style.css";
 
+
 export default function Applications() {
     return (
-        <>
         <body class="light-blue">
-
         <NavBar />
         <div class="my-3 container white rounded-item">
             <div class="row">
@@ -115,7 +114,7 @@ export default function Applications() {
                     type="text"
                     id="chat-message"
                     name="message"
-                    class="form-control login-username p-2 me-2"
+                    class="msg-bar p-2 me-2"
                     placeholder="Type your message here"
                     required
                     />
@@ -125,8 +124,7 @@ export default function Applications() {
             </div>
             </div>
         </div>
-        </body>
         <Footer />
-    </>
+        </body>
     )
 }
