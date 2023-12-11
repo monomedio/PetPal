@@ -6,8 +6,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import PostDetail from './components/blog/PostDetail';
 import EditBlog from './components/blog/EditBlog';
+import Applications from './pages/applications';
+
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
     element: <EditBlog />,
   },
 
+  {
+    path: "/applications/",
+    element: <Applications />,
+  },
 
 ]);
 
