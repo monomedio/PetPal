@@ -8,3 +8,5 @@ petpal/media/pfp/a2_q3a.jpeg
 petpal/sqldiff.exe
 petpal/sqlite3_analyzer.exe
 petpal/sqlite3.exe
+
+./node_modules
