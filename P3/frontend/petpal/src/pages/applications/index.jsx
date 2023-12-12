@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams } from 'react-router-dom';
 import NavBar from "../../components/navbar";
 import Footer from "../../components/footer";
 import duoduo from "../../assets/images/duoduo/duoduo1.jpg";
@@ -6,17 +7,42 @@ import fluffy from "../../assets/images/duoduo/duoduo2.jpg";
 import shelter_pic from "../../assets/images/shelter-images/toronto-humane-society.png";
 import profile_pic from "../../assets/images/among-us.jpeg";
 import "./style.css";
+import { getAllApplications } from "../../api/applications";
 
 export default function Applications() {
-    // const [message, setMessage] = useState('');
+    const { pet_id } = useParams();
+    const authToken = localStorage.getItem('authToken');
+
+    const [applications, setApplications] = useState();
+    const [curr_application, setCurrApplication] = useState();
+
+    const onPageLoad = async () => {
+      try {
+        const res = await getAllApplications(authToken);
+        setApplications(res.data);
+        console.log('Applications fetched:', applications);
+      } catch (error) {
+        console.error('Fetch applications error:', error.message);
+      }
+    };
+    onPageLoad();
 
     return (
         <body class="light-blue">
         <NavBar />
-        <div class="my-3 container white rounded-item">
+        <div class="my-3 container white rounded-item p-0">
             <div class="row">
             <div class="col-12 col-md-3 light-orange h-120 p-0">
                 <h3 class="ms-3">All Applications</h3>
+                {applications === undefined ?
+                    <div class="m-3">You don't have any applications.</div>
+                :
+                applications.map((data, idx) => (
+                    <>
+                    <p key={idx}>{data.pet}</p>
+                    <p key={idx}>{data.status}</p>
+                    </>
+                ))}
                 <a href="./applications.html">
                 <div class="orange d-flex align-items-center w-100">
                     <img
