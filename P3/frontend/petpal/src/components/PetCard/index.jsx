@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {getShelter} from '../../api/shelter-info.js';
-import {getPet, getPetImage} from '../../api/pet-info.js';
+import {getPet, getPetImage} from '../../api/pets.js';
 import "./style.css"
 export const url = 'http://localhost:8000'
 

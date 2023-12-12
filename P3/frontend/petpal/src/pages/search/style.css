@@ -1,0 +1,251 @@
+/* CSS DEFAULTS */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+
+    font-family: "Roboto", sans-serif;
+
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* CUSTOM CSS */
+:root {
+    --primary-color: #177791;
+    --primary-color-dark: #97dcef;
+    --secondary-color: #e9724c;
+    --secondary-color-dark: #ffbda8;
+    --tertiary-color: #ffc857;
+    --tertiary-color-dark: #ffe7b5;
+    --black: #1e1e1e;
+}
+
+h1 {
+    font-family: "Pacifico", cursive;
+    font-size: 5rem;
+    color: white;
+}
+
+.h1-span {
+    font-family: "Roboto Slab", serif;
+    font-size: 3rem;
+    color: white;
+}
+
+h2,
+h3,
+h4 {
+    font-family: "Roboto Slab", serif;
+    font-weight: bold;
+    color: var(--black);
+    margin: 1rem 0;
+}
+
+.teal {
+    background-color: var(--primary-color);
+}
+
+.orange {
+    background-color: var(--secondary-color);
+}
+
+.yellow {
+    background-color: var(--tertiary-color-dark);
+}
+
+.white {
+    background-color: white;
+}
+
+.grey {
+    background-color: #e8e8e8;
+}
+
+.light-orange {
+    background-color: var(--secondary-color-dark);
+}
+
+.light-blue {
+    background-color: var(--primary-color-dark);
+}
+
+.rounded-item {
+    border-radius: 2rem;
+}
+
+.padding {
+    padding: 2rem;
+}
+
+p {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    margin-top: 2rem;
+}
+
+.button-outline {
+    border-radius: 2rem;
+    border: 1px solid var(--secondary-color);
+    background-color: white;
+
+    color: var(--secondary-color);
+    font-weight: 700;
+    padding: 8px 25px;
+}
+
+.button-outline:hover {
+    filter: brightness(85%);
+}
+
+.button-fill {
+    border-radius: 2rem;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+
+    color: #fff;
+    font-weight: 700;
+    padding: 8px 25px;
+    transition: 0.15s;
+}
+
+.button-fill:hover {
+    filter: brightness(85%);
+}
+
+.button-dark {
+    border-radius: 2rem;
+    border: 1px solid var(--black);
+    background-color: var(--black);
+
+    color: var(--secondary-color-dark);
+    font-weight: 700;
+    padding: 8px 4rem;
+    transition: 0.15s;
+}
+
+.button-dark:hover {
+    filter: brightness(125%);
+}
+
+.container {
+    border-radius: 2rem;
+    padding: 12px;
+    overflow-y: auto;
+}
+
+.search-title {
+    font-size: 45px;
+    font-family: "Pacifico";
+    /* font-weight: 700; */
+    color: var(--primary-color);
+}
+
+.available-nearby-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.search-page-container {
+    background-color: #fff;
+}
+
+#search-bar {
+    border: 1px solid rgb(210, 209, 211);
+}
+
+.search-btn {
+    --bs-btn-bg: var(--primary-color);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: var(--primary-color-dark);
+    --bs-btn-hover-color: #faf9f6;
+    --bs-btn-border-color: var(--primary-color);
+    --bs-btn-hover-border-color: var(--primary-color-dark);
+}
+
+.pet-card-container {
+    gap: 1rem;
+}
+
+.pet-card {
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.pet-card:hover {
+    outline: 2px solid var(--primary-color);
+}
+
+.pet-card-img {
+    /* overflow: hidden; */
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.bi.bi-geo-alt-fill {
+    color: var(--primary-color);
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.filters-applied {
+    color: grey;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.no-filters {
+    color: grey;
+    font-style: italics;
+    font-size: 14px;
+}
+
+.toast {
+    background-color: var(--primary-color-dark);
+}
+
+.toast-body {
+    color: var(--primary-color);
+    font-size: 14px;
+}

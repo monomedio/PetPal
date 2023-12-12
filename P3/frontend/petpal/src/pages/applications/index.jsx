@@ -7,8 +7,9 @@ import shelter_pic from "../../assets/images/shelter-images/toronto-humane-socie
 import profile_pic from "../../assets/images/among-us.jpeg";
 import "./style.css";
 
-
 export default function Applications() {
+    // const [message, setMessage] = useState('');
+
     return (
         <body class="light-blue">
         <NavBar />
