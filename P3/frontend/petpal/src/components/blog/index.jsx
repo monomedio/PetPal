@@ -1,17 +1,15 @@
 // import {useCallback, useEffect, useState} from 'react';
-// import { useParams } from 'react-router-dom'
 // import "./index.css"
 
 import PostsGrid from "./Table";
-import PostItem from "./PostItem"
 import './index.css'
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom"; 
 
 function BlogList() {
     const navigate = useNavigate();
-    const [posts, setPosts] = useState([]);   
+    const [posts, setPosts] = useState([]); 
 
     useEffect(() => {
         fetch('http://localhost:8000/blog/')
@@ -30,17 +28,13 @@ function BlogList() {
     };
 
     return (
-        <div>
+        <div className="window-containter">
             <h1 className="blog-title">PetPal Blogs</h1>
-
             <PostsGrid posts={posts} onPostClick={handlePostClick} />
-
-        
-            <button onClick={() => navigate("/blog/upload")}>New Post</button>
         </div>
         ); 
     }
     
-    export default BlogList;
+export default BlogList;
     
 

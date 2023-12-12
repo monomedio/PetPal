@@ -4,8 +4,13 @@ function PostItem({ post, onClick }) {
     console.log(post);
     return (
         <div className="box" onClick={() => onClick(post.id)}>
-            <h3 className='post-title'>{post.title}</h3>
-            <p>{post.content}</p>
+            <div className='post-title-item'>{post.title}</div>
+            <div className='post-subtitle-item'>{
+                post.content.length > 70 
+                ? post.content.slice(0, post.content.slice(0, 70).lastIndexOf(' ') + 1) + '. . .' 
+                : post.content
+            }</div>
+            <div className='post-image-item'>{post.image && <img src={post.image} alt={post.title}/>}</div>
         </div>
     );
 }

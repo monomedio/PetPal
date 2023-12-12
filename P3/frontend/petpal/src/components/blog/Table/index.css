@@ -1,0 +1,16 @@
+.new-post-btn {
+    border-radius: 18px;
+    border: 1px solid #e9724c;
+    background-color: #e9724c;
+    color: #fff;
+    font-weight: 700;
+    width: 100%;
+    height: 60px;
+    margin-left: auto;
+    padding: 2%;
+}
+.new-post-btn:hover{
+    border: 1px solid #e9724c;
+    background-color: #fff;
+    color: #e9724c;
+}
