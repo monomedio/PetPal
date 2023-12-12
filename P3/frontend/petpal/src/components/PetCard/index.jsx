@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect, useState, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import {getShelter} from '../../api/shelter-info.js';
+import { Link } from 'react-router-dom';
 import {getPet, getPetImage} from '../../api/pets.js';
 import "./style.css"
 export const url = 'http://localhost:8000'
@@ -69,32 +68,34 @@ const PetCard = ({id, authToken}) => {
                     <div class="row g-0">
                         <div class="col-6">
                             <img class="w-100"
-                                src="../assets/images/duoduo/duoduo1.jpg" />
+                                src={images[0]?.image} />
                         </div>
                         <div class="col-6 text-center">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center mt-5">
-                                    <p class="body-bold m-0">Name:&nbsp</p>
-                                    <p class="important-p m-0">Duo Duo</p>
+                                    <p class="body-bold m-0">Name: &nbsp;</p>
+                                    <p class="important-p m-0">{data?.name}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Gender:&nbsp</p>
-                                    <p class="important-p m-0">Female</p>
+                                    <p class="body-bold m-0">Gender:&nbsp;</p>
+                                    <p class="important-p m-0">{data?.gender}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Breed:&nbsp</p>
-                                    <p class="important-p m-0">Ragamuffin</p>
+                                    <p class="body-bold m-0">Breed:&nbsp;</p>
+                                    <p class="important-p m-0">{data?.breed}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Age:&nbsp</p>
-                                    <p class="important-p m-0">6 years</p>
+                                    <p class="body-bold m-0">Age:&nbsp;</p>
+                                    <p class="important-p m-0">{data?.age}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Status:&nbsp</p>
-                                    <p class="important-p m-0">Available</p>
+                                    <p class="body-bold m-0">Status:&nbsp;</p>
+                                    <p class="important-p m-0">{data?.status}</p>
                                 </div>
                                 <br></br>
-                                <a href="..\pages\pet-detail-page.html" class="button-fill">Learn More</a>
+                                <Link to={`/pets/${id}`}>
+                                    <a href="" class="button-fill">Learn More</a>
+                                </Link>
                             </div>
                         </div>
                     </div>
