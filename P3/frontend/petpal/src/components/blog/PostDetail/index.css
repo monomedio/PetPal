@@ -29,8 +29,7 @@
     margin: 2%;
 }
 .post-image img  {
-    width: 500px;  /* Set the width */
-    /* height: 800px; Set the height */
+    width: 500px; 
     object-fit: cover; 
 }
 
