@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.window-containter{
+    display: grid;
+    /* margin: 2%; */
+    background-color: #97dcef;
+}
+.posts-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto; 
+}
+
+.posts-collection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; 
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 10px;
+    margin: 2% 0;
+}
+
+.blog-title {
+    font-size: 120px;
+    font-family: "Pacifico";
+    /* margin-bottom: 30px; */
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+}

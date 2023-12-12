@@ -1,0 +1,56 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border: 1px solid #177791;
+    background-color: #177791;
+    width: 25%;
+    cursor: pointer;
+    border-radius: 18px;
+    padding: 1%;
+}
+
+.box:hover {
+    background-color: white;
+    color: #177791;
+}
+
+.post-title-item {
+    font-family: Roboto Slab;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color:white;
+    margin: 1%;
+    padding-bottom: 3%;
+}
+
+.box:hover .post-title-item {
+    color: #177791;
+}
+
+.post-subtitle-item {
+    font-family: Roboto Slab;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: white;
+    margin: 1%;
+    padding-bottom: 3%;
+}
+
+.box:hover .post-subtitle-item {
+    color: #177791;
+}
+
+.post-image-item img {
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+    margin: 2%;
+    object-fit: cover;
+    
+}

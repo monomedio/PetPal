@@ -1,0 +1,23 @@
+.preview-image img {
+    width: 100%;
+    max-width: 200px;
+    padding: 3%;
+}
+
+.upload-edit-btn {
+    border-radius: 18px;
+    border: 1px solid #e9724c;
+    background-color: #e9724c;
+    color: #fff;
+    font-weight: 700;
+    width: 20%;
+    height: 60px;
+    font-size: 25px;
+    font-family: "Roboto";
+    margin-bottom: 8%;
+}
+.upload-edit-btn:hover{
+    border: 1px solid #e9724c;
+    background-color: #fff;
+    color: #e9724c;
+}

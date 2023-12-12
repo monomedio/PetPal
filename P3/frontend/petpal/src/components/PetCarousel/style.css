@@ -1,0 +1,520 @@
+/* DEFAULTS TO MAKE CSS AND YOUR LIFE EASIER */
+/* https://www.joshwcomeau.com/css/custom-css-reset/ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  font-family: "Roboto", sans-serif;
+
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* CUSTOM CSS */
+
+:root {
+  --primary-color: #177791;
+  --primary-color-dark: #97dcef;
+  --secondary-color: #e9724c;
+}
+
+.navbar {
+  background-color: #fff;
+  /* --bs-navbar-padding-x: 0; */
+}
+
+.offcanvas-title {
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+
+  color: var(--primary-color);
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+a:visited {
+  text-decoration: none;
+}
+
+#header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 0 106px 0 106px;
+}
+
+#header-logo,
+#footer-logo {
+  width: 118px;
+}
+
+#header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.nav-link:hover {
+  color: var(--primary-color-dark);
+}
+
+.nav-link-icon:hover {
+  color: var(--secondary-color);
+}
+
+.nav-link-icon.dropdown-toggle::after {
+  display: none !important;
+}
+
+.navbar-nav .nav-link.show {
+  --bs-navbar-active-color: var(--primary-color-dark);
+}
+
+.divider {
+  /* font-weight: 700; */
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.bi.bi-bell,
+.bi.bi-bell-fill {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+.bi.bi-bell:hover,
+.bi.bi-bell-fill:hover {
+  filter: brightness(175%);
+}
+
+.bi.bi-file-earmark-person-fill,
+.bi.bi-search-heart-fill {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.no-notifications {
+  font-style: italic;
+  color: grey;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.notification-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin: 1rem;
+  }
+
+.time-elapsed {
+    color: var(--primary-color);
+    white-space: nowrap;
+    font-size: 10px;
+    margin-top: 1rem;
+}
+
+#notification-menu,
+#profile-menu {
+  background-color: #fff;
+}
+
+#notification-menu {
+  --bs-dropdown-min-width: 300px;
+}
+
+#notification-menu li:hover p {
+  color: var(--primary-color-dark);
+}
+
+.profile-button {
+  gap: 0.5rem;
+  text-overflow: ellipsis;
+  background: inherit;
+  /* font-size: 1rem; */
+  font-weight: 700;
+  border: 0;
+  /* color: grey; */
+}
+
+#profile-button:hover {
+  color: var(--primary-color-dark);
+}
+
+#profile-pic {
+  height: 40px;
+  border-radius: 50%;
+}
+
+.dropdown-menu .dropdown-item {
+  font-weight: 700;
+  /* --bs-dropdown-link-active-color: var(--primary-color); */
+  --bs-dropdown-link-active-bg: var(--primary-color-dark);
+  --bs-dropdown-link-hover-color: #fff;
+  --bs-dropdown-link-hover-bg: var(--primary-color-dark);
+}
+
+.dropdown-menu li:last-child .dropdown-item {
+  --bs-dropdown-link-color: grey;
+}
+
+.hr {
+  border-color: var(--primary-color);
+}
+
+.button-outline {
+  border-radius: 18px;
+  border: 1px solid var(--secondary-color);
+  background-color: white;
+
+  color: var(--secondary-color);
+  font-weight: 700;
+  padding: 6.5px 25px;
+}
+
+.button-fill {
+  border-radius: 18px;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+
+  color: #fff;
+  font-weight: 700;
+  padding: 6.5px 25px;
+  transition: 0.15s;
+}
+
+.button-fill:hover {
+  filter: brightness(85%);
+}
+
+.button-dark {
+  border-radius: 18px;
+  background-color: #1e1e1e;
+
+  color: #ffbda8;
+  font-weight: 700;
+  padding: 6.5px 25px;
+}
+
+.button-dark:hover {
+  filter: brightness(125%);
+}
+
+.button-greyed-out {
+  border-radius: 2rem;
+  border: 1px solid var(--black);
+  background-color: darkgray;
+
+  color: white;
+  font-weight: 700;
+  padding: 6.5px 25px !important;
+  margin: 0;
+  cursor: default;
+}
+
+.button-greyed-out:hover {
+  border-radius: 2rem;
+  border: 1px solid var(--black);
+  background-color: darkgray;
+
+  color: white;
+  font-weight: 700;
+  padding: 6.5px 25px !important;
+  margin: 0;
+  cursor: default;
+}
+
+.button-pending {
+  border-radius: 2rem;
+  background-color: var(--secondary-color);
+
+  color: white;
+  font-weight: 700;
+  padding: 8px 2rem;
+  transition: 0.15s;
+  cursor: default;
+}
+
+.button-pending:hover {
+  border-radius: 2rem;
+  background-color: var(--secondary-color);
+
+  color: white;
+  font-weight: 700;
+  padding: 8px 2rem;
+  transition: 0.15s;
+  cursor: default;
+}
+
+
+
+.search-bar {
+  border: 1px var(--primary-color) solid;
+  background: white;
+  border-radius: 20px;
+  width: 14rem;
+  height: 2rem;
+}
+
+.search-width {
+  width: 300px;
+}
+
+.footer-nav {
+  background: var(--primary-color);
+}
+
+#footer-logo {
+  filter: brightness(0) invert(1);
+}
+
+.footer-nav-item {
+  font-size: 1rem;
+  color: #fff;
+}
+
+#copyright {
+  color: var(--primary-color-dark);
+  text-align: center;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
+.teal {
+  background-color: var(--primary-color);
+}
+
+.container {
+  border-radius: 2rem;
+}
+
+/* Pet details page */
+.circle-image {
+  height: 18vw;
+  width: 18vw;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  object-fit: cover;
+}
+
+.padding-v {
+  padding: 2rem 0;
+}
+
+.padding-h {
+  padding: 0 100px;
+}
+
+.margin-v {
+  margin: 2rem 0;
+}
+
+.margin-h {
+  margin: 0 100px;
+}
+
+.heading-slab {
+  font-size: 40px;
+  font-family: "Roboto Slab";
+  font-weight: 900;
+  word-wrap: break-word;
+}
+
+.heading-roboto {
+  font-size: 40px;
+  font-family: "Roboto";
+  font-weight: 900;
+  word-wrap: break-word;
+}
+
+.important-p {
+  font-size: 16px;
+  font-family: "Roboto";
+  font-weight: S 400;
+}
+
+a.important-p {
+  font-size: 16px;
+  font-family: "Roboto";
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.carousel-item img {
+  width: calc(100% / 4);
+  height: 22rem;
+  border-radius: 2rem;
+  object-fit: cover;
+}
+
+.rounded-item {
+  border-radius: 2rem;
+}
+
+.light-yellow-box {
+  background-color: #ffe7b5;
+}
+
+#apply {
+  width: fit-content;
+}
+
+/* Media queries */
+@media (min-width: 992px) {
+    .nav-login {
+      border-radius: 18px;
+      border: 1px solid var(--secondary-color);
+      background-color: var(--secondary-color);
+  
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 6.5px 0;
+      --bs-navbar-nav-link-padding-x: 25px;
+      transition: 0s;
+    }
+  
+    .nav-login:hover {
+      color: #fff;
+      filter: brightness(85%);
+      /* transition: 0.15s; */
+    }
+  
+    .nav-signup {
+      border-radius: 18px;
+      border: 1px solid var(--secondary-color);
+      background-color: white;
+  
+      color: var(--secondary-color);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 6.5px 0;
+      --bs-navbar-nav-link-padding-x: 25px;
+      transition: 0s;
+    }
+  
+    .nav-signup:hover {
+      color: var(--secondary-color);
+      filter: brightness(85%);
+    }
+  
+    .navbar {
+      --bs-navbar-padding-x: 94px;
+    }
+  
+    .footer-nav {
+      --bs-navbar-padding-y: 30px;
+    }
+  
+    .nav-link {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  
+    .nav-link:hover {
+      color: var(--primary-color-dark);
+    }
+  
+    .carousel-item.active-next {
+      display: flex;
+    }
+  
+    #pet-listings-carousel-sm{
+      display: none;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .rounded-item-circle{
+      width: 100px;
+    }
+  
+    #pet-listings-carousel-lg{
+      display: none;
+    }
+  
+  }
+  
+  @media (max-width: 576px) {
+    .rounded-item-circle{
+      width: 100px;
+    }
+  
+    #pet-images-lg{
+      display: none;
+    }
+  
+    .heading-slab{
+      font-size: 2rem;
+    }
+  
+  }
+  
+  @media (min-width: 576px) {
+    .rounded-item-circle{
+      width: 100px;
+    }
+  
+    #pet-images-sm{
+      display: none;
+    }
+  
+  }
+  
