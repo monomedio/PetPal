@@ -8,6 +8,7 @@
     width: 25%;
     cursor: pointer;
     border-radius: 18px;
+    padding: 1%;
 }
 
 .box:hover {
@@ -21,6 +22,13 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    color:white;
+    margin: 1%;
+    padding-bottom: 3%;
+}
+
+.box:hover .post-title-item {
+    color: #177791;
 }
 
 .post-subtitle-item {
@@ -29,13 +37,20 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    /* margin-top: 45px; */
+    color: white;
+    margin: 1%;
+    padding-bottom: 3%;
+}
+
+.box:hover .post-subtitle-item {
+    color: #177791;
 }
 
 .post-image-item img {
     width: 100%;
     max-width: 300px;
     margin: auto;
-    margin-bottom: 2%;
+    margin: 2%;
     object-fit: cover;
+    
 }

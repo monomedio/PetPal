@@ -75,7 +75,7 @@ function EditBlog() {
                 <div>
                     <label>
                         <div className='label-font'>Content:</div>
-                        <input className="content-input" rows="4" type="text" value={postData.content} onChange={(e) => setPostData({...postData, content: e.target.value})}/>
+                        <textarea className="content-input" rows="4" type="text" value={postData.content} onChange={(e) => setPostData({...postData, content: e.target.value})}/>
                     </label>
                 </div>
 
@@ -89,7 +89,7 @@ function EditBlog() {
                     </label>
                 </div>
 
-                <button type="submit">Edit Post</button>
+                <button className='upload-edit-btn' type="submit">Edit Post</button>
             </form>
         </div>
     );
