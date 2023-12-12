@@ -1,0 +1,18 @@
+.footer-nav {
+    background: var(--primary-color);
+}
+
+#footer-logo {
+    filter: brightness(0) invert(1);
+}
+
+.footer-nav-item {
+    font-size: 1rem;
+    color: #fff;
+}
+
+#copyright {
+    color: var(--primary-color-dark);
+    text-align: center;
+    margin: 0;
+}
