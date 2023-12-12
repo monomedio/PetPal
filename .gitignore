@@ -13,3 +13,5 @@ P3/backend/petpal/media/pet_images/IMG_3337.jpg
 P3/backend/petpal/media/pet_images/IMG_3990.jpg
 P3/backend/petpal/blog/migrations/0002_remove_blogpost_author.py
 P3/backend/petpal/pets/migrations/0002_donate.py
+node_modules/.package-lock.json
+package-lock.json

@@ -52,12 +52,12 @@ const PetIntro = ({id, authToken}) => {
             <div className="row">
                 <div className="col-12 col-sm">
                     {images.length > 0 && (
-                        <img className="circle-image mx-auto" src={images[0].image} alt="Pet Image" />
+                        <img className="rounded-circle" src={images[0]?.image} alt="Pet Image" />
                     )}
                     </div>
-                <div className="col-12 col-sm-8">
-                    <h1 className="text-white heading-slab">Meet {data.name}</h1>
-                    <p className="important-p text-white">{data.description}</p>
+                <div className="col-12 col-sm-8 ml-4">
+                    <h1 className="text-white heading-slab">Meet {data?.name}</h1>
+                    <p className="important-p text-white">{data?.description}</p>
                     <a className="button-fill text-center" id="apply" href="./adopt.html">Apply to Adopt</a>
                 </div>
             </div>
