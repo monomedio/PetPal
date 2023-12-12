@@ -23,3 +23,16 @@ export async function getPetImage(id, authToken) {
         }
         ).then(res => res.json())
 }
+
+export async function getAllPets(authToken) {
+    return fetch(
+        `${url}/pets/`,
+        {
+            headers: {
+                Authorization: `Bearer ${authToken}`,
+                'Content-Type': 'application/json',
+            },
+        }
+        ).then(res => res.json())
+}
+
