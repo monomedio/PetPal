@@ -16,6 +16,7 @@ function UploadBlog() {
         console.log(postData.id)
         event.preventDefault()
         const apiUrl = 'http://localhost:8000/blog/';
+        const authToken = localStorage.getItem('authToken');
 
         const formData = new FormData();
         formData.append('title', postData.title);
@@ -31,10 +32,10 @@ function UploadBlog() {
  
         fetch(apiUrl, {
             method: 'POST',
-            // headers: {
-            //     'Content-Type': 'multipart/form-data',
-            // },
-            body: formData
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
         })
         .then(response => {
             if (!response.ok) {

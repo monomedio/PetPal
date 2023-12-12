@@ -32,9 +32,13 @@ function EditBlog() {
         if (postData.image) {
             formData.append('image', postData.image);
         }
+        const authToken = localStorage.getItem('authToken');
         fetch(url, {
             method: 'PATCH',
-            body: formData
+            body: formData, 
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
         })
         .then(response => {
             if (!response.ok) {

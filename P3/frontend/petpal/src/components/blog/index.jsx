@@ -10,9 +10,14 @@ import { useNavigate } from "react-router-dom";
 function BlogList() {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]); 
+    const authToken = localStorage.getItem('authToken');
 
     useEffect(() => {
-        fetch('http://localhost:8000/blog/')
+        fetch('http://localhost:8000/blog/', {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        })
         .then(response => response.json())
         .then(data => {
                 setPosts(data.results);
