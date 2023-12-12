@@ -6,9 +6,14 @@ function PostDetail() {
     const { postId } = useParams();
     const [ post, setPost] = useState(null);
     const navigate = useNavigate();
+    const authToken = localStorage.getItem('authToken');
 
     useEffect(() => {
-        fetch(`http://localhost:8000/blog/${postId}`)
+        fetch(`http://localhost:8000/blog/${postId}`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        })
         .then(response => response.json())
         .then(
             data => setPost(data))

@@ -12,7 +12,7 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all()
     # .order_by('-created_at')
     serializer_class = BlogPostSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     pagination_class = LargeResultsSetPagination
 
     # def perform_create(self, serializer):
