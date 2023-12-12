@@ -57,7 +57,7 @@ const PetCarousel = ({id, authToken, variant}) => {
         }, [getData]);
 
         return (
-            <div id={id} className={`carousel slide margin-v ${variant === 'lg' ? 'mx-3' : ''}`} data-bs-ride="carousel">
+          <div id={id} className={`carousel slide margin-v ${variant === 'lg' ? 'carousel-lg mx-3' : ''} ${variant === 'lg' ? 'lg' : 'sm'}`} data-bs-ride="carousel">
               <div className="carousel-indicators">
                 {images && images.length > 0 && images.map((image, index) => (
                     <button
