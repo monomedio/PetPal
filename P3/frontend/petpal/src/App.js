@@ -10,6 +10,7 @@ import {
 import PostDetail from './components/blog/PostDetail';
 import EditBlog from './components/blog/EditBlog';
 import Applications from './pages/applications';
+import PetDetails from './pages/pet-details';
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
   {
     path: "/applications/",
     element: <Applications />,
+  },
+
+  {
+    path: "/pets/:id",
+    element: <PetDetails />,
   },
 
 ]);
