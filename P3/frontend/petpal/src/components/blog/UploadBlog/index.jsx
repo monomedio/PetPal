@@ -8,7 +8,7 @@ import uploadImage from '../../../assets/images/blog/upload-image.svg';// Adjust
 function UploadBlog() { 
     const navigate = useNavigate();
     
-    const [postData, setPostData] = useState({ title: '', content: '', image: null});
+    const [postData, setPostData] = useState({ title: '', content: '', image: null, imageFile: null});
 
     const [ successMessage, setSuccessMessage] = useState('');
 
@@ -20,8 +20,12 @@ function UploadBlog() {
         const formData = new FormData();
         formData.append('title', postData.title);
         formData.append('content', postData.content);
-        if (postData.image) {
-            formData.append('image', postData.image);
+        console.log('Image to append:', postData.imageFile);
+        // if (postData.image) {
+        //     formData.append('image', postData.image);
+        // }
+        if (postData.imageFile) {
+            formData.append('image', postData.imageFile);
         }
 
  
@@ -49,13 +53,21 @@ function UploadBlog() {
         });
     }
 
+    // const handleImage = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         const fileUrl = URL.createObjectURL(file);
+    //         setPostData({ ...postData, image: fileUrl });
+    //         // setSuccessMessage("File uploaded successfully!");
+
+    //     }
+    // }
+
     const handleImage = (event) => {
         const file = event.target.files[0];
         if (file) {
             const fileUrl = URL.createObjectURL(file);
-            setPostData({ ...postData, image: fileUrl });
-            // setSuccessMessage("File uploaded successfully!");
-
+            setPostData({ ...postData, image: fileUrl, imageFile: file });
         }
     }
 

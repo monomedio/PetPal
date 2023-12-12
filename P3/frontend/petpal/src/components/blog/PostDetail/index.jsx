@@ -25,7 +25,9 @@ function PostDetail() {
                     <button className="edit-btn" onClick={() => navigate(`/blog/edit/${postId}`)}>Edit Blog</button>
                     <div className='post-container'>
                         <div className='post-image'> {post.image && <img src={post.image} alt={post.title}/>} </div>
-                        <div className='post-content'>{post.content}</div>
+                        <pre>
+                            <div className='post-content'>{post.content}</div>
+                        </pre>
                     </div>
                 </>
             )}
