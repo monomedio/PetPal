@@ -1,31 +1,28 @@
 import React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {getPet, getPetImage, getAllPets} from '../../api/pet-info.js';
+import {getPet, getPetImage, getShelterPets} from '../../api/pet-info.js';
 import {getShelter} from '../../api/shelter-info.js';
 import PetCard from '../PetCard';
 import "./style.css"
 export const url = 'http://localhost:8000'
 
-const PetCarousel = ({id, authToken, variant}) => {
+const ListingCarousel = ({id, authToken, variant}) => {
     const [shelterData, setShelterData] = useState();
-    const [petsList, setPetsList] = useState([]);
+    const [petsList, setPetsList] = useState();
 
     const getData = useCallback(async () => {
-        const shelterData = await getShelter(id, authToken);
-        setShelterData(shelterData);
-        const allPetsList = await getAllPets(authToken);
-        console.log(allPetsList);
+        try {
+            const shelterData = await getShelter(id, authToken);
+            setShelterData(shelterData);
     
-        if (Array.isArray(allPetsList)) {
-            const filteredPetsList = allPetsList.filter(pet => pet.shelter === shelterData);
-
-            console.log(filteredPetsList);
-            setPetsList(filteredPetsList);
-        } else {
-            console.error("Error: getAllPets did not return an array", allPetsList);
-    }
-    }, [id])
+            const petsList = await getShelterPets(2, authToken);
+            console.log(petsList.results);
+            setPetsList(petsList.results);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }, [id]);
 
 
     useEffect(() => {
@@ -43,34 +40,34 @@ const PetCarousel = ({id, authToken, variant}) => {
         return () => {
             document.body.removeChild(script);
         }
-        }, [getData]);
+    }, [getData]);
 
-        return (
-            <div id="pet-listings-carousel-lg" className="carousel slide my-md-auto mt-md-3 mx-3" data-bs-ride="carousel">
-            <div className="carousel-indicators">
-              {petsList.map((pet, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  data-bs-target="#pet-listings-carousel-lg"
-                  data-bs-slide-to={index}
-                  className={index === 0 ? 'active' : ''}
-                  aria-current={index === 0 ? 'true' : 'false'}
-                  aria-label={`Slide ${index + 1}`}
-                ></button>
-              ))}
-            </div>
-            <div className="carousel-inner ml-3">
-              {petsList.map((pet, index) => (
-                <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                  <div className="col-12 row">
-                    <PetCard {...pet} />
-                  </div>
+    return (
+        <div id="pet-listings-carousel-lg" className="carousel slide my-md-auto mt-md-3 mx-3" data-bs-ride="carousel">
+        <div className="carousel-indicators">
+            {petsList?.map((pet, index) => (
+            <button
+                key={index}
+                type="button"
+                data-bs-target="#pet-listings-carousel-lg"
+                data-bs-slide-to={index}
+                className={index === 0 ? 'active' : ''}
+                aria-current={index === 0 ? 'true' : 'false'}
+                aria-label={`Slide ${index + 1}`}
+            ></button>
+            ))}
+        </div>
+        <div className="carousel-inner ml-3">
+            {petsList?.map((pet, index) => (
+            <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                <div className="col-12 row">
+                <PetCard id={index + 1} authToken={authToken}/>
                 </div>
-              ))}
             </div>
-          </div>
-        );
+            ))}
+        </div>
+        </div>
+    );
 };
 
-export default PetCarousel;
+export default ListingCarousel;
