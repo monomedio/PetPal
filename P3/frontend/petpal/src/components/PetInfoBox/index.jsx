@@ -31,20 +31,6 @@ const PetInfoBox = ({id, authToken}) => {
         }
     }, [getData]);
 
-            // {
-    //     "id": 1,
-    //     "location": "Street1",
-    //     "name": "Clifford",
-    //     "breed": "Giant Vizsla",
-    //     "age": 3,
-    //     "size": 21,
-    //     "color": "Red",
-    //     "gender": "male",
-    //     "description": "A big red dog.",
-    //     "status": "available",
-    //     "created_at": "2023-12-11T07:28:24.033072Z",
-    //     "updated_at": "2023-12-11T07:28:24.033072Z"
-    // }
 
         return (
             <div id="pet-details" className="container light-yellow-box mb-4">

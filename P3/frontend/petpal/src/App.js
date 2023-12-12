@@ -12,6 +12,7 @@ import EditBlog from './components/blog/EditBlog';
 import Applications from './pages/applications';
 import PetDetails from './pages/pet-details';
 import Login from './pages/login-page';
+import ShelterDetails from './pages/shelter-details';
 
 
 const router = createBrowserRouter([
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+
+  {
+    path: "/shelters/:id",
+    element: <ShelterDetails />,
   },
 
 ]);
