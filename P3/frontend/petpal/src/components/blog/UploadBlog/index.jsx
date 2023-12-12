@@ -1,36 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './index.css';
+import uploadImage from '../../../assets/images/blog/upload-image.svg';// Adjust the path as necessary
+
 
 
 function UploadBlog() { 
     const navigate = useNavigate();
     
-    const [ title, setTitle] = useState('');
-    const [ content, setContent] = useState('');
+    const [postData, setPostData] = useState({ title: '', content: '', image: null});
+
     const [ successMessage, setSuccessMessage] = useState('');
 
     const handleSubmit = event => {
+        console.log(postData.id)
         event.preventDefault()
         const apiUrl = 'http://localhost:8000/blog/';
 
+        const formData = new FormData();
+        formData.append('title', postData.title);
+        formData.append('content', postData.content);
+        if (postData.image) {
+            formData.append('image', postData.image);
+        }
+
+ 
         fetch(apiUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ title, content})
+            // headers: {
+            //     'Content-Type': 'multipart/form-data',
+            // },
+            body: formData
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                return response.text().then(text => { throw new Error('Error: ' + text) });
             }
             return response.json();
         })
         .then(data => {
             console.log('Success:', data);
-            setTitle('');
-            setContent('');
-            setSuccessMessage('Blog post uploaded successfully!');
+            setPostData({ title: '', content: '', image: null});
+            // setSuccessMessage('Blog post uploaded successfully!');
             navigate('/blog');
         })
         .catch(error => {
@@ -38,28 +49,48 @@ function UploadBlog() {
         });
     }
 
+    const handleImage = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const fileUrl = URL.createObjectURL(file);
+            setPostData({ ...postData, image: fileUrl });
+            // setSuccessMessage("File uploaded successfully!");
+
+        }
+    }
+
     
     return (
-        <div>
-            <h1>Upload a Blog Post</h1>
+        <div className='window-containter'>
+            <div className='post-title'>Upload a Blog Post</div>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
-                        Title:
-                        <input type="text" value={title}onChange={(e) => setTitle(e.target.value)}/>
+                        <div className='label-font'>Title:</div>
+                        <input className="title-input" type="text" value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})}/>
                     </label>
                 </div>
 
                 <div>
                     <label>
-                        Content:
-                        <input type="text" value={content}onChange={(e) => setContent(e.target.value)}/>
+                        <div className='label-font'>Content:</div>
+                        <textarea className="content-input" rows="4" type="text" value={postData.content} onChange={(e) => setPostData({...postData, content: e.target.value})}/>
                     </label>
                 </div>
 
-                <button type="submit">Upload Post</button>
+                <div className='containter'>
+                    <div className='label-font'>Upload a Photo:</div>
+              
+                    <label htmlFor="file-upload" className='add-photo'>
+                        <img src={uploadImage} alt="Upload" className='upload-icon'/>
+                        <input className="image-input" id="file-upload" type="file" accept=".jpg, .jpeg, .png" onChange={handleImage}/>
+                        {/* {successMessage && <div className="success-message">{successMessage}</div>}  */}
+                        <div className='preview-image'>{postData.image && <img src={postData.image} alt={postData.title}/>}</div>
+                    </label>
+                </div>
+
+                <button className='upload-btn' type="submit">Upload Post</button>
             </form>
-            {successMessage && <div className="success-message">{successMessage}</div>} 
         </div>
     );
 }
