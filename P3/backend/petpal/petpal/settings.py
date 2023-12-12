@@ -166,6 +166,7 @@ SIMPLE_JWT = {
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "media/"
 
+# CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = ['http://*.127.0.0.1', 'http://localhost:3000']
