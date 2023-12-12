@@ -13,6 +13,7 @@ import Applications from './pages/applications';
 import PetDetails from './pages/pet-details';
 import Login from './pages/login-page';
 import ShelterDetails from './pages/shelter-details';
+import Search from './pages/search';
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
   {
     path: "/applications/",
     element: <Applications />,
+  },
+
+  {
+    path: "/pets/",
+    element: <Search />,
   },
 
   {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import {getPet, getPetImage} from '../../api/pet-info.js';
+import {getPet, getPetImage} from '../../api/pets.js';
 import "./style.css"
 export const url = 'http://localhost:8000'
 
