@@ -15,6 +15,7 @@ const ListingCarousel = ({id, authToken, variant}) => {
         try {
             const shelterData = await getShelter(id, authToken);
             setShelterData(shelterData);
+            console.log(shelterData);
     
             const petsList = await getShelterPets(2, authToken);
             console.log(petsList.results);
@@ -43,7 +44,11 @@ const ListingCarousel = ({id, authToken, variant}) => {
     }, [getData]);
 
     return (
-        <div id="pet-listings-carousel-lg" className="carousel slide my-md-auto mt-md-3 mx-3" data-bs-ride="carousel">
+        <>
+        <div class="text-center mt-4">
+            <h1 class="text-black heading-slab">Current Listings:</h1>
+        </div>
+        <div id="pet-listings-carousel-sm" className="carousel slide my-md-auto mt-md-3 mx-3" data-bs-ride="carousel">
         <div className="carousel-indicators">
             {petsList?.map((pet, index) => (
             <button
@@ -67,6 +72,35 @@ const ListingCarousel = ({id, authToken, variant}) => {
             ))}
         </div>
         </div>
+        <div id="pet-listings-carousel-lg" className="carousel slide my-md-auto mt-md-3 mx-3" data-bs-ride="carousel">
+        <div className="carousel-indicators">
+            {petsList?.map((pet, index) => (
+            <button
+                key={index}
+                type="button"
+                data-bs-target="#pet-listings-carousel-lg"
+                data-bs-slide-to={index}
+                className={index === 0 ? 'active' : ''}
+                aria-current={index === 0 ? 'true' : 'false'}
+                aria-label={`Slide ${index + 1}`}
+            ></button>
+            ))}
+        </div>
+        <div className="carousel-inner ml-3">
+            {petsList?.map((pet, index) => (
+            <div key={index} className={`carousel-item ${index % 3 === 0 ? 'active' : ''}`}>
+                <div className="col-12 row">
+                {[0, 1, 2].map(innerIndex => (
+                    <div key={innerIndex} className="col-4">
+                    <PetCard id={(index + innerIndex) % petsList.length + 1} authToken={authToken} />
+                    </div>
+                ))}
+                </div>
+            </div>
+            ))}
+        </div>
+        </div>
+      </>
     );
 };
 
