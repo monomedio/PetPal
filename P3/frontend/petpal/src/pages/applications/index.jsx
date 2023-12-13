@@ -6,6 +6,7 @@ import duoduo from "../../assets/images/duoduo/duoduo1.jpg";
 import fluffy from "../../assets/images/duoduo/duoduo2.jpg";
 import shelter_pic from "../../assets/images/shelter-images/toronto-humane-society.png";
 import profile_pic from "../../assets/images/among-us.jpeg";
+import placeholder from "../../assets/images/pet_placeholder.jpg";
 import "./style.css";
 import { getAllApplications } from "../../api/applications";
 
@@ -41,23 +42,24 @@ export default function Applications() {
             <div class="row">
                 <div class="col-12 col-md-3 light-orange h-120 p-0">
                     <h3 class="ms-3">All Applications</h3>
-                    {applications === undefined || applications.count === 0 ?
+                    {curr_application === undefined ?
                         <div class="m-3">You don't have any applications.</div>
                     :
-                    applications.results?.map((data) => (
+                    // applications.map((data) => (
                         <a href="./applications.html">
                             <div class="orange d-flex align-items-center w-100">
                                 <img
-                                src={data.pet.images[0]}
+                                src={placeholder}
                                 alt="Profile pic"
                                 class="rounded-circle m-2"
                                 width="50px"
                                 height="50px"
                                 />
-                                <p class="text-black m-0">Application for Duo Duo</p>
+                                <p class="text-black m-0">Application for Linda</p>
                             </div>
                         </a>
-                    ))}
+                    // ))
+                    }
                 </div>
                 <div class="col-12 col-md-9 h-100 p-0">
                     {curr_application === undefined ?

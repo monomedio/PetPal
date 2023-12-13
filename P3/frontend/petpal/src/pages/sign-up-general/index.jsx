@@ -5,7 +5,6 @@ import Footer from "../../components/footer";
 import seeker from "../../assets/images/sign-up-seeker.png";
 import shelter from "../../assets/images/sign-up-shelter.png";
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style.css";
 
 const SignUp = () => {
