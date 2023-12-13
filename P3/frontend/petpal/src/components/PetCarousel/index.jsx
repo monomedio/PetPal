@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {getPet, getPetImage} from '../../api/pets.js';
 import "./style.css"
+import placeholder from "../../assets/images/pet_placeholder.jpg";
 export const url = 'http://localhost:8000'
 
 const PetCarousel = ({id, authToken, variant}) => {
@@ -15,7 +16,11 @@ const PetCarousel = ({id, authToken, variant}) => {
         console.log('Data:', data);
         console.log('Images:', images);
         setData(data)
+        if (images === "This pet has no images.") {
+          setImages(undefined)
+        } else {
         setImages(images)
+        }
     }, [id])
 
     const generateCarouselItems = () => {
@@ -35,7 +40,7 @@ const PetCarousel = ({id, authToken, variant}) => {
               )}
             </div>
           </div>
-        ));
+        ))
       };
 
 
@@ -57,6 +62,7 @@ const PetCarousel = ({id, authToken, variant}) => {
         }, [getData]);
 
         return (
+          images !== undefined ? 
           <div id={id} className={`carousel slide margin-v ${variant === 'lg' ? 'carousel-lg mx-3' : ''} ${variant === 'lg' ? 'lg' : 'sm'}`} data-bs-ride="carousel">
               <div className="carousel-indicators">
                 {images && images.length > 0 && images.map((image, index) => (
@@ -85,7 +91,8 @@ const PetCarousel = ({id, authToken, variant}) => {
                   </button>
                 </>
               )}
-            </div>
+            </div>:
+            <div class="m-3"></div>
           );
 
         // return (

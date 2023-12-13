@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import {getPet, getPetImage} from '../../api/pets.js';
 import "./style.css"
+import placeholder from "../../assets/images/pet_placeholder.jpg";
 export const url = 'http://localhost:8000'
 
 const PetIntro = ({id, authToken}) => {
@@ -15,6 +16,11 @@ const PetIntro = ({id, authToken}) => {
         console.log('Images:', images);
         setData(data)
         setImages(images)
+        if (images === "This pet has no images.") {
+            setImages([undefined])
+          } else {
+          setImages(images)
+        }
     }, [id])
 
     // {
@@ -52,13 +58,15 @@ const PetIntro = ({id, authToken}) => {
             <div className="row">
                 <div className="col-12 col-sm">
                     {images.length > 0 && (
-                        <img className="rounded-circle" src={images[0]?.image} alt="Pet Image" />
+                        <img className="rounded-circle w-75" 
+                        src={images[0] !== undefined?images[0].image:placeholder} 
+                        alt="Pet Image" />
                     )}
                     </div>
                 <div className="col-12 col-sm-8 ml-4">
                     <h1 className="text-white heading-slab">Meet {data?.name}</h1>
                     <p className="important-p text-white">{data?.description}</p>
-                    <a className="button-fill text-center" id="apply" href="./adopt.html">Apply to Adopt</a>
+                    <a className="button-fill text-center" id="apply" href={'/adopt/' + data?.id}>Apply to Adopt</a>
                 </div>
             </div>
         </div>

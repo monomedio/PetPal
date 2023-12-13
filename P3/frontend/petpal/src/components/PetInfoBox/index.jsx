@@ -33,13 +33,10 @@ const PetInfoBox = ({id, authToken}) => {
 
 
         return (
-            <div id="pet-details" className="container light-yellow-box mb-4 p-3">
-                <div>
-                    <h1 className="text-black heading-slab mb-3 text-center my-3">
-                    More Pet Information:
-                    </h1>
-                </div>
-                <div className="row my-4">
+            <div id="pet-details" className="d-flex flex-column container text-black light-yellow-box mb-4">
+                <h1 className="text-black heading-slab mb-3 text-center">More Pet Information:</h1>
+
+                <div className="row m-2">
                     <div className="col important-p text-black">
                         <p className="text-black">Breed: {data?.breed}</p>
                         <p className="text-black">Sex: {data?.gender} </p>
@@ -50,7 +47,7 @@ const PetInfoBox = ({id, authToken}) => {
                     <div className="col important-p text-black">
                         <div className="d-flex">
                             <div className="important-p">Shelter:</div>
-                            <a className="important-p teal-text" href="../pages/shelter-detail-page.html"> {data?.shelter?.shelter_name}</a>
+                            <a className="important-p text-black" href="../pages/shelter-detail-page.html"> {data?.shelter?.user.shelter_name}</a>
                         </div>
                         <p></p>
                         <p className="text-black">Address: {data?.shelter?.address}</p>
@@ -61,7 +58,7 @@ const PetInfoBox = ({id, authToken}) => {
                         </div>
                     </div>
                     <div className="text-center">
-                        <a className="button-fill text-center" id="apply" href="./adopt.html">Apply to Adopt</a>
+                        <a className="button-fill text-center" id="apply" href={'/adopt/' + data?.id}>Apply to Adopt</a>
                     </div>
                 </div>
             </div>
