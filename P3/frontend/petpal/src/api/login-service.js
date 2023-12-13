@@ -19,7 +19,7 @@ export const login = async (username, password) => {
     // Store the access token in localStorage
     localStorage.setItem(TOKEN_KEY, access);
   } catch (error) {
-    console.error('Error during login:', error);
+    throw new Error('Error during login:', error);
     // Handle login failure if needed
   }
 };

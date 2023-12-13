@@ -11,10 +11,11 @@ import PostDetail from './components/blog/PostDetail';
 import EditBlog from './components/blog/EditBlog';
 import Applications from './pages/applications';
 import PetDetails from './pages/pet-details';
-import Login from './pages/login-page';
+import Login from './pages/login';
 import ShelterDetails from './pages/shelter-details';
 import Search from './pages/search';
-
+import SignUpGeneral from './pages/sign-up-general';
+import SignUpSeeker from './pages/sign-up-seeker';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,16 @@ const router = createBrowserRouter([
   {
     path: "/shelters/:id",
     element: <ShelterDetails />,
+  },
+
+  {
+    path: "/signup",
+    element: <SignUpGeneral />,
+  },
+
+  {
+    path: "/signup-seeker",
+    element: <SignUpSeeker />,
   },
 
 ]);
