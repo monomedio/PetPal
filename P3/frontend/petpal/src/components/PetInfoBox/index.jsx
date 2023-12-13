@@ -33,7 +33,7 @@ const PetInfoBox = ({id, authToken}) => {
 
 
         return (
-            <div id="pet-details" className="container light-yellow-box mb-4 p-3">
+            <div id="pet-details" className="container light-yellow-box mb-4 p-3 d-flex flex-column">
                 <div>
                     <h1 className="text-black heading-slab mb-3 text-center my-3">
                     More Pet Information:

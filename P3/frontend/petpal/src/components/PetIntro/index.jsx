@@ -48,7 +48,7 @@ const PetIntro = ({id, authToken}) => {
     }, [getData]);
 
     return (
-        <div id="pet-intro" className="container teal rounded-item p-5 mt-2">
+        <div id="pet-intro" className="container teal rounded-item p-5 mt-2 d-flex flex-column">
             <div className="row">
                 <div className="col-12 col-sm">
                     {images.length > 0 && (
@@ -57,7 +57,7 @@ const PetIntro = ({id, authToken}) => {
                     </div>
                 <div className="col-12 col-sm-8 ml-4">
                     <h1 className="text-white heading-slab">Meet {data?.name}</h1>
-                    <p className="important-p text-white">{data?.description}</p>
+                    <p className="important-p text-white py-4">{data?.description}</p>
                     <a className="button-fill text-center" id="apply" href="./adopt.html">Apply to Adopt</a>
                 </div>
             </div>
