@@ -1,36 +1,42 @@
-import {useCallback, useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom'
-import {donatePet, getPet, getPetImage} from '../../api';
+// import {useCallback, useEffect, useState} from 'react';
+// import { useParams } from 'react-router-dom'
+import {donatePet} from '../../api';
 import "./index.css"
-
+import dog from '../../images/dog.jpg'
 export default function Donate() {
 
-    const [data, setData] = useState();
-    const [images, setImages] = useState();
-    const { id } = useParams();
+    // const [data, setData] = useState();
+    // const [images, setImages] = useState();
+    // const { id } = useParams();
 
 
-    const getData = useCallback(async () => {
-        const data = await getPet(id);
-        const images = await getPetImage(id);
-        setData(data)
-        setImages(images)
-    }, [id])
+    // const getData = useCallback(async () => {
+    //     const data = await getPet(id);
+    //     const images = await getPetImage(id);
+    //     setData(data)
+    //     setImages(images)
+    // }, [id])
 
     async function submitForm(evt) {
         evt.preventDefault();
         evt.stopPropagation();
         const formData = new FormData(evt.target)
-        console.log(formData.get('amount'))
-        formData.set('pet_id', Number(id))
+        // formData.set('pet_id', Number(id))
         if (formData.get('other-amount')) {
+            if (isNaN(Number(formData.get('other-amount'))) || Number(formData.get('other-amount')) < 0) {
+                alert('other amount error')
+                return;
+            }
             formData.set('amount', formData.get('other-amount'))
             formData.delete('other-amount')
         }
+        if (!formData.get('frequency') || !formData.get('amount')) {
+            return;
+        }
         const credit_card = window.prompt('please entre the credit card');
-        if (credit_card && /^\d+$/.test(credit_card)) {
+        if (credit_card && /^\d{16}$/.test(credit_card)) {
             formData.set('credit_card', credit_card)
-            donatePet(id, Object.fromEntries(formData.entries()))
+            donatePet(Object.fromEntries(formData.entries()))
                 .then(res => {
                     console.log(res)
                     alert('thanks, donate success!');
@@ -42,18 +48,14 @@ export default function Donate() {
 
     }
 
-    useEffect(() => {
-        getData();
-    }, [getData])
+    // useEffect(() => {
+    //     getData();
+    // }, [getData])
 
     return <div className="container">
         <div className="pet-info">
-            {
-                data ? <>
-                    <h3>{data.name}</h3>
-                    <img src={images[0].image} alt="" className="pet-pic"/>
-                </> : <h3>loading...</h3>
-            }
+            <h3>DONATE</h3>
+            <img src={dog} alt="" className="pet-pic"/>
         </div>
         <form className="donate-form" onSubmit={submitForm} >
             <h3>Frequency</h3>
