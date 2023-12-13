@@ -16,6 +16,8 @@ import ShelterDetails from './pages/shelter-details';
 import Search from './pages/search';
 import SignUpGeneral from './pages/sign-up-general';
 import SignUpSeeker from './pages/sign-up-seeker';
+import AdoptForm from './pages/adopt-form';
+
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,11 @@ const router = createBrowserRouter([
   {
     path: "/applications/",
     element: <Applications />,
+  },
+
+  {
+    path: "/adopt/:pet_id",
+    element: <AdoptForm />,
   },
 
   {
