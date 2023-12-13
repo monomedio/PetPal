@@ -51,9 +51,9 @@ input[type="file"] {
 
 }
 
-.add-photo {
-    width: 20%;
-    height: 20%;
+.add-photo-blog {
+    width: 15%;
+    height: 15%;
     border: 1px dashed #177791;
     border-radius: 18px;
     display: flex;
@@ -63,16 +63,8 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.add-photo:hover {
-    width: 20%;
-    height: 20%;
-    border: 1px dashed #177791;
+.add-photo-blog:hover {
     background-color: white;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8%;
 }
 
 .upload-btn {

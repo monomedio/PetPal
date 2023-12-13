@@ -18,13 +18,13 @@ function BlogList() {
                 'Authorization': `Bearer ${authToken}`
             }
         })
-        .then(response => {
-            if (response.status === 401) {
-                navigate(`/login/`);
-            }
-            else {
-                response.json()}
-            })
+        .then(response => 
+            // if (response.status === 401) {
+            //     navigate(`/login/`);
+            // }
+            // else {
+                response.json()
+            )
         .then(data => {
                 setPosts(data.results);
             })
