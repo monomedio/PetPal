@@ -27,7 +27,11 @@ function PostDetail() {
             {post && (
                 <>
                     <div className='post-title'>{post.title}</div>
-                    <button className="edit-btn" onClick={() => navigate(`/blog/edit/${postId}`)}>Edit Blog</button>
+                    <div className='post-author'>Written by: {post.author}</div>
+                    <div>
+                        <button className="edit-btn" onClick={() => navigate('/blog/')}>Back to PetPal Blogs</button>
+                        <button className="edit-btn" onClick={() => navigate(`/blog/edit/${postId}`)}>Edit Blog</button>
+                    </div>
                     <div className='post-container'>
                         <div className='post-image'> {post.image && <img src={post.image} alt={post.title}/>} </div>
                         <pre>
