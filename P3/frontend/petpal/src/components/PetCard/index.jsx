@@ -73,24 +73,24 @@ const PetCard = ({id, authToken}) => {
                         <div class="col-6 text-center">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center mt-5">
-                                    <p class="body-bold m-0">Name: &nbsp;</p>
-                                    <p class="important-p m-0">{data?.name}</p>
+                                    <p class="body-bold m-0 text-black">Name: &nbsp;</p>
+                                    <p class="important-p m-0 text-black">{data?.name}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Gender:&nbsp;</p>
-                                    <p class="important-p m-0">{data?.gender}</p>
+                                    <p class="body-bold m-0 text-black">Gender:&nbsp;</p>
+                                    <p class="important-p m-0 text-black">{data?.gender}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Breed:&nbsp;</p>
-                                    <p class="important-p m-0">{data?.breed}</p>
+                                    <p class="body-bold m-0 text-black">Breed:&nbsp;</p>
+                                    <p class="important-p m-0 text-black">{data?.breed}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Age:&nbsp;</p>
-                                    <p class="important-p m-0">{data?.age}</p>
+                                    <p class="body-bold m-0 text-black">Age:&nbsp;</p>
+                                    <p class="important-p m-0 text-black">{data?.age}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <p class="body-bold m-0">Status:&nbsp;</p>
-                                    <p class="important-p m-0">{data?.status}</p>
+                                    <p class="body-bold m-0 text-black">Status:&nbsp;</p>
+                                    <p class="important-p m-0 text-black">{data?.status}</p>
                                 </div>
                                 <br></br>
                                 <Link to={`/pets/${id}`}>

@@ -33,16 +33,19 @@ const PetInfoBox = ({id, authToken}) => {
 
 
         return (
-            <div id="pet-details" className="container light-yellow-box mb-4">
-                <h1 className="text-black heading-slab mb-3 text-center">More Pet Information:</h1>
-
-                <div className="row">
+            <div id="pet-details" className="container light-yellow-box mb-4 p-3">
+                <div>
+                    <h1 className="text-black heading-slab mb-3 text-center my-3">
+                    More Pet Information:
+                    </h1>
+                </div>
+                <div className="row my-4">
                     <div className="col important-p text-black">
-                        <p>Breed: {data?.breed}</p>
-                        <p>Sex: {data?.gender} </p>
-                        <p>Colour: {data?.color}</p>
-                        <p>Age: {data?.age} years</p>
-                        <p>Size: {data?.size} kg</p>
+                        <p className="text-black">Breed: {data?.breed}</p>
+                        <p className="text-black">Sex: {data?.gender} </p>
+                        <p className="text-black">Colour: {data?.color}</p>
+                        <p className="text-black">Age: {data?.age} years</p>
+                        <p className="text-black">Size: {data?.size} kg</p>
                     </div>
                     <div className="col important-p text-black">
                         <div className="d-flex">
@@ -50,11 +53,11 @@ const PetInfoBox = ({id, authToken}) => {
                             <a className="important-p teal-text" href="../pages/shelter-detail-page.html"> {data?.shelter?.shelter_name}</a>
                         </div>
                         <p></p>
-                        <p>Address: {data?.shelter?.address}</p>
-                        <p>Contact:</p>
-                        <p>Date Published: {data?.created_at}</p>
+                        <p className="text-black">Address: {data?.shelter?.address}</p>
+                        <p className="text-black">Contact:</p>
+                        <p className="text-black">Date Published: {data?.created_at}</p>
                         <div className="justify-content-right">
-                            <img className="mx-auto" src="../assets/images/dark-yellow-pawprint.svg" alt=""></img>
+                            <img className="mx-auto" src="../src/assets/images/dark-yellow-pawprint.svg" alt=""></img>
                         </div>
                     </div>
                     <div className="text-center">

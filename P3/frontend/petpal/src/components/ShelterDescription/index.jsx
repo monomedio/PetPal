@@ -47,10 +47,6 @@ const ShelterDescription = ({id, authToken}) => {
             <div className="row pt-3">
                 <div className="col-12 col-md-8 col-xl-9 mx-3">
                     <div className="d-flex align-items-center">
-                        <img className="" src="../assets/images/back-arrow.svg"></img>
-                        <a className ="important-p text-black" href="../pages/pet-detail-page.html">Duo Duo</a>
-                        <div className="important-p">/</div>
-                        <a className ="important-p text-black" href="../pages/shelter-detail-page.html">Toronto Humane Society</a>
                     </div>
                 </div>
                 <div className="col mx-3">
@@ -60,27 +56,26 @@ const ShelterDescription = ({id, authToken}) => {
                     </div>
                 </div>
             </div>
-            <div id="shelter-description" className="container bg-white rounded-item my-2">
+            <div id="shelter-description" className="container bg-white rounded-item my-2 p-4">
                 <div className="row w-100 mx-4">
                     <div className="col">
                         <h1 className="text-black heading-slab"> {data?.user?.shelter_name} </h1>
-                        <br></br>
-                        <p className="body-bold">About the Organization:</p>
+                        <p className=" text-black body-bold">About the Organization:</p>
                         <div className="d-flex">
-                            <p className="body-bold m-0">Address: &nbsp; </p>
-                            <p className="important-p m-0">{data?.address}</p>
+                            <p className="text-black body-bold m-0">Address: &nbsp; </p>
+                            <p className="text-black important-p m-0">{data?.address}</p>
                         </div>
                         <div className="d-flex">
-                            <p className="body-bold m-0">Telephone: &nbsp; </p>
-                            <p className="important-p m-0">{data?.user?.phone}</p>
+                            <p className="text-black body-bold m-0">Telephone: &nbsp; </p>
+                            <p className="text-black important-p m-0">{data?.user?.phone}</p>
                         </div>
                         <div className="d-flex">
-                            <p className="body-bold m-0">Email: &nbsp; </p>
-                            <p className="important-p m-0">{data?.user?.email}</p>
+                            <p className="text-black body-bold m-0">Email: &nbsp; </p>
+                            <p className="text-black important-p m-0">{data?.user?.email}</p>
                         </div>
                         <div className="d-flex">
-                            <p className="body-bold m-0">Charity Registration Number: &nbsp; </p>
-                            <p className="important-p m-0">{data?.charity_id}</p>
+                            <p className="text-black body-bold m-0">Charity Registration Number: &nbsp; </p>
+                            <p className="text-black important-p m-0">{data?.charity_id}</p>
                         </div>
                     </div>
                     <div className="col">
