@@ -30,7 +30,7 @@ class DonateSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ['pet', 'applicant', 'status', 'shelter']
+        fields = ['id', 'pk', 'pet', 'applicant', 'status', 'shelter']
         read_only_fields = ['pet', 'applicant', 'shelter']
 
 

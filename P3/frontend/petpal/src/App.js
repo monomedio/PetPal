@@ -14,6 +14,7 @@ import PetDetails from './pages/pet-details';
 import Login from './pages/login-page';
 import ShelterDetails from './pages/shelter-details';
 import Search from './pages/search';
+import AdoptForm from './pages/adopt-form';
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
   {
     path: "/applications/",
     element: <Applications />,
+  },
+
+  {
+    path: "/adopt/:pet_id",
+    element: <AdoptForm />,
   },
 
   {
