@@ -11,3 +11,15 @@ export async function getShelter(id, authToken) {
         }
         ).then(res => res.json())
 }
+
+export async function getShelterReviews(id, authToken) {
+    return fetch(
+        `${url}/shelter/${id}/reviews/`,
+        {
+            headers: {
+                Authorization: `Bearer ${authToken}`,
+                'Content-Type': 'application/json',
+            },
+        }
+        ).then(res => res.json())
+}

@@ -54,7 +54,7 @@ const PetInfoBox = ({id, authToken}) => {
                         <p className="text-black">Contact:</p>
                         <p className="text-black">Date Published: {data?.created_at}</p>
                         <div className="justify-content-right">
-                            <img className="mx-auto" src="../assets/images/dark-yellow-pawprint.svg" alt=""></img>
+                            <img className="mx-auto" src="../src/assets/images/dark-yellow-pawprint.svg" alt=""></img>
                         </div>
                     </div>
                     <div className="text-center">
