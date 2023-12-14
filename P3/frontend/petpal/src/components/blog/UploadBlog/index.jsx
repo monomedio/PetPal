@@ -94,7 +94,7 @@ function UploadBlog() {
                 <div className='containter'>
                     <div className='label-font'>Upload a Photo:</div>
               
-                    <label htmlFor="file-upload" className='add-photo'>
+                    <label htmlFor="file-upload" className='add-photo-blog'>
                         <img src={uploadImage} alt="Upload" className='upload-icon'/>
                         <input className="image-input" id="file-upload" type="file" accept=".jpg, .jpeg, .png" onChange={handleImage}/>
                         {/* {successMessage && <div className="success-message">{successMessage}</div>}  */}

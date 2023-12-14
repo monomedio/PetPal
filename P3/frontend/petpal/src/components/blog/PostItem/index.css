@@ -46,6 +46,21 @@
     color: #177791;
 }
 
+.post-author-item {
+    font-family: Roboto Slab;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: white;
+    margin: 1%;
+    padding-bottom: 3%;
+}
+
+.box:hover .post-author-item {
+    color: #177791;
+}
+
 .post-image-item img {
     width: 100%;
     max-width: 300px;

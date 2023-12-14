@@ -4,19 +4,28 @@ import uploadImage from '../../../assets/images/blog/upload-image.svg';
 import './index.css';
 
 
+
 function EditBlog() {
 
     const { postId } = useParams();
     const navigate = useNavigate();
     const [postData, setPostData] = useState({ title: '', content: '', image: null});
-
+    const authToken = localStorage.getItem('authToken');
 
     const [ successMessage, setSuccessMessage] = useState('');
 
     const url = `http://localhost:8000/blog/${postId}/`;
+
+    
+    
     useEffect(() => {
-        fetch(url)
-        .then(response => response.json())
+        fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        })
+        .then(response => 
+            response.json())
         .then(
             data => setPostData(data))
         .catch(error => console.error('Error:', error));
@@ -29,10 +38,9 @@ function EditBlog() {
         const formData = new FormData();
         formData.append('title', postData.title);
         formData.append('content', postData.content);
-        if (postData.image) {
+        if (postData.image && postData.image instanceof File) {
             formData.append('image', postData.image);
         }
-        const authToken = localStorage.getItem('authToken');
         fetch(url, {
             method: 'PATCH',
             body: formData, 
@@ -58,12 +66,17 @@ function EditBlog() {
     const handleImage = (event) => {
         const file = event.target.files[0];
         if (file) {
-            const fileUrl = URL.createObjectURL(file);
-            setPostData({ ...postData, image: fileUrl });
+            // console.log(file)
+            // const fileUrl = URL.createObjectURL(file);
+            // console.log(fileUrl)
+            setPostData({ ...postData, image: file });
             setSuccessMessage("File uploaded successfully!");
         }
     }
 
+
+
+    
 
     return (
         <div className='window-containter'>
@@ -85,13 +98,16 @@ function EditBlog() {
 
                 <div className='containter'>
                     <div className='label-font'>Upload a Photo:</div>
-                    <label htmlFor="file-upload" className='add-photo'>
+                    <label htmlFor="file-upload" className='add-photo-blog'>
                         <img src={uploadImage} alt="Upload" className='upload-icon'/>
                         <input className="image-input" id="file-upload" type="file" accept=".jpg, .jpeg, .png" onChange={handleImage}/>
                         {/* {successMessage && <div className="success-message">{successMessage}</div>}  */}
                         <div className='preview-image'>{postData.image && <img src={postData.image} alt={postData.title}/>}</div>
                     </label>
                 </div>
+
+                {/* {postData.author} */}
+                
 
                 <button className='upload-edit-btn' type="submit">Edit Post</button>
             </form>
