@@ -19,6 +19,7 @@ from django.urls import include, path
 from rest_framework import routers
 from pets import views
 from blog.views import BlogPostViewSet
+from blog.views import ReplyCreateViewSet
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,6 +31,7 @@ router.register(r'applications/(?P<application_id>[^/.]+)/comments', views.Comme
 router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews', views.CommentViewSet, basename='reviews')
 router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews/(?P<review_id>[^/.]+)/replies', views.ReplyViewSet, basename='review-replies')
 router.register(r'blog', BlogPostViewSet)
+router.register(r'blog/(?P<postId>\d+)/replies', ReplyCreateViewSet, basename='blog-replies')
 
 urlpatterns = [
     path('', include(router.urls)), # automatic URL routing

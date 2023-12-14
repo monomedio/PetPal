@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .models import BlogPost
-from .serializers import BlogPostSerializer
+from .models import BlogPost, Reply
+from .serializers import BlogPostSerializer, ReplySerializer
 from .pagination import LargeResultsSetPagination
 
 from rest_framework import viewsets, permissions
@@ -24,3 +24,24 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+class ReplyCreateViewSet(viewsets.ModelViewSet):
+    serializer_class = ReplySerializer
+    queryset = Reply.objects.order_by('-created_at')
+
+    def get_queryset(self):
+
+        queryset = Reply.objects.order_by('-created_at')
+        post_id = self.kwargs.get('postId')
+
+        if post_id is not None:
+            queryset = queryset.filter(blog_post=post_id)
+
+        return queryset
+
+    def perform_create(self, serializer):
+        blog_post = BlogPost.objects.get(id=self.kwargs['postId'])
+        if self.request.user.is_authenticated:
+            serializer.save(author=self.request.user, blog_post=blog_post)
+        else:
+            serializer.save(author=None, blog_post=blog_post)
