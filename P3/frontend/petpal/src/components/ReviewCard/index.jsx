@@ -3,6 +3,8 @@ import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {getShelter} from '../../api/shelter-info.js';
 import star from "../../assets/images/yellow-star.svg";
+import pfp from "../../assets/images/pfp-placeholder.png";
+
 import "./style.css"
 export const url = 'http://localhost:8000'
 
@@ -36,7 +38,7 @@ const ReviewCard = ({name, rating, body, repliesCount}) => {
           <div className="card-body">
             <div className="row">
               <div className="col-12 col-md-4">
-                <img className="rounded-item-circle" src="..\assets\images\among-us.jpeg" alt={name} />
+                <img className="rounded-item-circle" src={pfp} alt='profile pic' />
               </div>
               <div className="col-8">
                 <p className="d-flex justify-content-left body-bold m-2 text-black">Reviewer: {name}</p>

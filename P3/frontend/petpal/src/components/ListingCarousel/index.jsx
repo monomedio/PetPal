@@ -17,7 +17,7 @@ const ListingCarousel = ({id, authToken, variant}) => {
             setShelterData(shelterData);
             console.log(shelterData);
     
-            const petsList = await getShelterPets(2, authToken);
+            const petsList = await getShelterPets(id, authToken);
             console.log(petsList.results);
             setPetsList(petsList.results);
         } catch (error) {
@@ -27,7 +27,6 @@ const ListingCarousel = ({id, authToken, variant}) => {
 
 
     useEffect(() => {
-        // Run script on component mount
         const script = document.createElement('script');
       
         script.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js";

@@ -14,7 +14,7 @@ const Reviews = ({id, authToken}) => {
             const reviewsList = await getShelterReviews(id, authToken);
             setReviewsList(reviewsList?.results);
             console.log(`Reviews: ${reviewsList?.results}`);
-            console.log(`Review: ${reviewsList?.results[0].commenter}`);
+            console.log(`Review: ${reviewsList?.results[0]?.commenter}`);
     
         } catch (error) {
             console.error('Error fetching data:', error);
