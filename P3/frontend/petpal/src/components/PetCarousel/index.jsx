@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {getPet, getPetImage} from '../../api/pets.js';
 import "./style.css"
 import placeholder from "../../assets/images/pet_placeholder.jpg";
+import left from "../../assets/images/left-paw.svg";
+import right from "../../assets/images/right-paw.svg";
 export const url = 'http://localhost:8000'
 
 const PetCarousel = ({id, authToken, variant}) => {
@@ -82,11 +84,11 @@ const PetCarousel = ({id, authToken, variant}) => {
               {variant === 'lg' && (
                 <>
                   <button className="carousel-control-prev" type="button" data-bs-target={`#${id}`} data-bs-slide="prev">
-                    <img src="../assets/images/left-paw.svg" alt="Previous" />
+                    <img src={left} alt="Previous" />
                     <span className="visually-hidden">Previous</span>
                   </button>
                   <button className="carousel-control-next" type="button" data-bs-target={`#${id}`} data-bs-slide="next">
-                    <img className="img-fluid" src="../assets/images/right-paw.svg" alt="Next" />
+                    <img className="img-fluid" src={right} alt="Next" />
                     <span className="visually-hidden">Next</span>
                   </button>
                 </>

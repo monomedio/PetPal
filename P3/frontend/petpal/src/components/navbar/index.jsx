@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import logo from "../../assets/images/petpal-logo.svg"
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
 
@@ -61,6 +62,8 @@ export default function NavBar() {
                 <ul
                 class="navbar-nav ps-3 ps-lg-0 justify-content-lg-end align-items-lg-center"
                 >
+
+                <Link to='/signup'>
                 <li class="nav-item px-lg-3">
                     <a
                     class="nav-link nav-signup"
@@ -68,9 +71,14 @@ export default function NavBar() {
                     href="sign-up-general.html"
                     >Sign Up</a>
                 </li>
+                </Link>
+
+                <Link to='/login'>
                 <li class="nav-item">
-                    <a class="nav-link nav-login" href="./login/">Login</a>
+                    <a class="nav-link nav-login" href="">Login</a>
                 </li>
+                </Link>
+
                 <li class="nav-item"></li>
                 </ul>
             </div>

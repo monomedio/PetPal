@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {getShelter} from '../../api/shelter-info.js';
 import "./style.css"
+import search from "../../assets/images/search-icon.svg";
 export const url = 'http://localhost:8000'
 
 const ShelterDescription = ({id, authToken}) => {
@@ -52,7 +53,7 @@ const ShelterDescription = ({id, authToken}) => {
                 <div className="col mx-3">
                     <div className="float-right input-group">
                         <input type="search" className="form-control rounded-item search-bar" placeholder="Search for Pets"/>
-                        <img className="d-inline" src="../assets/images/search-icon.svg"></img>
+                        <img className="d-inline" src={search}></img>
                     </div>
                 </div>
             </div>

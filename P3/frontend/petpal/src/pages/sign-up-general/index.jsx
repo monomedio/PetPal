@@ -28,10 +28,10 @@ const SignUp = () => {
     return (
         <>
         <NavBar />
-        <div className="container">
-            <div className="row">
+        <div className="container d-flex flex-column">
+            <div className="row ">
             <div className=" col-md-6 mt-3">
-                <div className="container light-blue rounded-item py-5 text-center">
+                <div className="container light-blue rounded-item py-5 text-center d-flex flex-column">
                 <div className="row">
                     <div className="col-md-12">
                     <p className="text-black">Sign up as a</p>
@@ -41,7 +41,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="row">
-                    <div className="col">
+                    <div className="col d-flex flex-column">
                     <img
                         className="mx-auto mt-md-4"
                         src={seeker}
@@ -64,7 +64,7 @@ const SignUp = () => {
             </div>
 
             <div className=" col-md-6 mt-3">
-                <div className="container yellow rounded-item py-5 text-center">
+                <div className="container yellow rounded-item py-5 text-center d-flex flex-column">
                 <div className="row">
                     <div className="col-md-12">
                     <p className="text-black">Sign up as a</p>
