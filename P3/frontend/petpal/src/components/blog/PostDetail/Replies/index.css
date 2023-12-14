@@ -1,0 +1,33 @@
+
+.replies-container{
+    display: grid;
+    text-align: center;
+}
+
+.reply {
+    border: 1px solid #e9724c;
+    border-radius: 18px;
+    margin: 1%;
+}
+
+.reply-author {
+    font-family: Roboto Slab;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: black;
+    margin: 1%;
+    padding-bottom: 3%;
+}
+
+.reply-date {
+    font-family: Roboto Slab;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: black;
+    margin: 1%;
+    padding-bottom: 3%;
+}

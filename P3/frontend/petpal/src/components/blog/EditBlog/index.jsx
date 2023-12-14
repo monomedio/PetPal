@@ -11,6 +11,7 @@ function EditBlog() {
     const navigate = useNavigate();
     const [postData, setPostData] = useState({ title: '', content: '', image: null});
     const authToken = localStorage.getItem('authToken');
+    const currUser = localStorage.getItem('username');
 
     const [ successMessage, setSuccessMessage] = useState('');
 
@@ -106,10 +107,9 @@ function EditBlog() {
                     </label>
                 </div>
 
-                {/* {postData.author} */}
-                
 
-                <button className='upload-edit-btn' type="submit">Edit Post</button>
+                {<button className='upload-edit-btn' type="submit">Edit Post</button>}
+                
             </form>
         </div>
     );

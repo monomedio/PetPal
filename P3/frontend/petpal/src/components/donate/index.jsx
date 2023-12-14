@@ -2,7 +2,7 @@
 // import { useParams } from 'react-router-dom'
 import {donatePet} from '../../api';
 import "./index.css"
-import dog from '../../images/dog.jpg'
+import dog from './dog.jpg'
 export default function Donate() {
 
     // const [data, setData] = useState();
