@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from requests import Response
 
 from .models import BlogPost, Reply
 from .serializers import BlogPostSerializer, ReplySerializer
 from .pagination import LargeResultsSetPagination
 
 from rest_framework import viewsets, permissions
+from rest_framework.views import APIView
 # Create your views here.
 
 
@@ -16,7 +18,8 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
-    queryset = BlogPost.objects.all()
+
+    # queryset = BlogPost.objects.all()
     # .order_by('-created_at')
     serializer_class = BlogPostSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
@@ -24,6 +27,13 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+    
+    def get_queryset(self):
+        queryset = BlogPost.objects.all()
+        query = self.request.query_params.get('q', None)
+        if query is not None:
+            queryset = queryset.filter(title__icontains=query)
+        return queryset
 
 class ReplyCreateViewSet(viewsets.ModelViewSet):
     serializer_class = ReplySerializer

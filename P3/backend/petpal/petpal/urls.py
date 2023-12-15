@@ -30,7 +30,7 @@ router.register(r'pets/(?P<pet_id>[^/.]+)/images', views.PetImageViewSet, basena
 router.register(r'applications/(?P<application_id>[^/.]+)/comments', views.CommentViewSet, basename='comments')
 router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews', views.CommentViewSet, basename='reviews')
 router.register(r'shelter/(?P<shelter_id>[^/.]+)/reviews/(?P<review_id>[^/.]+)/replies', views.ReplyViewSet, basename='review-replies')
-router.register(r'blog', BlogPostViewSet)
+router.register(r'blog', BlogPostViewSet, basename='blog')
 router.register(r'blog/(?P<postId>\d+)/replies', ReplyCreateViewSet, basename='blog-replies')
 
 urlpatterns = [

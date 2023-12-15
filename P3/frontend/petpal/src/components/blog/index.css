@@ -28,3 +28,35 @@
     margin-bottom: 2%;
     text-align: center;
 }
+
+.pagination {
+    list-style-type: none;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination > li {
+    padding: 0.6rem 0.8rem;
+    border: 1px #e9724c solid;
+}
+
+.pagination li:hover {
+    background-color: #ffe7b5;
+    cursor: pointer;
+}
+.pagination li.active {
+    font-weight: bold;
+    color: white; 
+    background-color: #e9724c;
+    pointer-events: none;
+}
+
+.search {
+    border-radius: 18px;
+    border: 1px #e9724c solid;
+    padding-left: 1%;
+    width: 50%;
+    margin-top: 2%;
+}
