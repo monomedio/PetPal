@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto Slab');
-.window-containter{
-    display: grid;
+.container-fluid{
+    /* display: grid; */
     background-color: #97dcef;
-    text-align: center;
+    /* text-align: center; */
 }
+
 
 pre {
     white-space: pre-wrap; 
@@ -20,7 +21,6 @@ pre {
     font-weight: 100;
     font-family: Roboto Slab;
     color: black;
-    margin-top: 5px;
 }
 
 .post-content {
@@ -28,7 +28,7 @@ pre {
     color: black;
     font-family: "Roboto";
     text-align: left;
-    padding: 2%;
+    padding: 0 2%;
 }
 
 .post-author {
@@ -44,13 +44,14 @@ pre {
 
 
 
-
+/* 
 .post-image {
     margin: 2%;
-}
+} */
 .post-image img  {
     width: 500px; 
-    object-fit: cover; 
+    object-fit: cover;
+    /* margin: 2%;  */
 }
 
 .edit-btn {
@@ -59,10 +60,11 @@ pre {
     background-color: #e9724c;
     color: #fff;
     font-weight: 700;
-    width: 10%;
+    width: 30%;
+    min-width: 150px;
     height: 60px;
-    margin-left: auto;
-    margin-right: 2%;
+    /* margin-left: auto;
+    margin-right: 2%; */
 }
 .edit-btn:hover{
     border: 1px solid #e9724c;
@@ -70,5 +72,10 @@ pre {
     color: #e9724c;
 }
 
+@media (max-width: 630px) {
+    .post-title {
+        font-size: 20vw;
+    }
+}
 
 

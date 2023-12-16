@@ -2,6 +2,7 @@
 // import "./index.css"
 
 import PostsGrid from "./Table";
+import Footer from "../../components/footer";
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -49,15 +50,15 @@ function BlogList() {
 
 
     return (
+        <body>
 
-        <div className="window-containter">
-            <h1 className="blog-title">PetPal Blogs</h1>
+        
 
-            <div>
-                <label>
-                    Search for a Blog:
-                </label>
-                <input className="search" type="text" id="search" value={query.search} onChange={event => setQuery({ search: event.target.value, page: 1 })} />
+        <div className="container-fluid">
+            <div className="blog-title">PetPal Blogs</div>
+
+            <div className="col text-center">
+                <input className="search" type="text" id="search" placeholder="Search for a Blog" value={query.search} onChange={event => setQuery({ search: event.target.value, page: 1 })} />
             </div>
 
             <PostsGrid posts={posts} onPostClick={handlePostClick} />
@@ -83,8 +84,9 @@ function BlogList() {
                 )}
             </ul>
         </div>
-
         
+        <Footer />
+        </body>
         ); 
     }
     

@@ -11,16 +11,16 @@
     width: 600px;
     height: 50px;
     padding-left: 4%;
-    margin-bottom: 8%;
+    margin-bottom: 5%;
 }
 
 .content-input {
     border-radius: 18px;
     border: 1px solid #e9724c;
     width: 800px;
-    height: 300px;
+    height: 245px;
     padding-left: 4%;
-    margin-bottom: 8%;
+    margin-bottom: 5%;
     resize: vertical;
     
 }
@@ -44,7 +44,7 @@ input[type="file"] {
 
 .upload-icon {
     padding: 2%;
-    margin: 5px;
+    margin: 4px;
     width: 50%;
     height: 50%;
     cursor: pointer;
@@ -52,14 +52,14 @@ input[type="file"] {
 }
 
 .add-photo-blog {
-    width: 15%;
-    height: 15%;
+    width: 380px;
+    height: 200px;
     border: 1px dashed #177791;
     border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8%;
+    margin-bottom: 2%;
     cursor: pointer;
 }
 
@@ -77,11 +77,44 @@ input[type="file"] {
     height: 60px;
     font-size: 25px;
     font-family: "Roboto";
-    margin-bottom: 8%;
+    margin-bottom: 1%;
 }
+
 .upload-btn:hover{
     border: 1px solid #e9724c;
     background-color: #fff;
     color: #e9724c;
+}
+
+@media (max-width: 630px) {
+    .title-input {
+        width: 60vw;
+        height: 50px;
+        padding-left: 4%;
+        margin-bottom: 5%;
+    }
+
+    .content-input {
+        width: 80vw;
+        height: 60vh;
+        padding-top: 4%;
+        padding-left: 4%;
+        margin-bottom: 5%;
+        resize: vertical;  
+    }
+
+    .add-photo-blog {
+        margin-bottom: 5%;
+    }
+
+
+    .upload-btn {
+        font-weight: 700;
+        width: 40%;
+        height: 60px;
+        font-size: 25px;
+        font-family: "Roboto";
+        margin-bottom: 5%;
+    }
 }
 

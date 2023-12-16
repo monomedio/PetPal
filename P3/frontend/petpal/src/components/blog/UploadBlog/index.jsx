@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
 import uploadImage from '../../../assets/images/blog/upload-image.svg';// Adjust the path as necessary
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function UploadBlog() { 
@@ -75,16 +75,16 @@ function UploadBlog() {
     
     return (
         <div className='window-containter'>
-            <div className='post-title'>Upload a Blog Post</div>
+            <div className='post-title text-center'>Upload a Blog Post</div>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className='text-center'>
                     <label>
                         <div className='label-font'>Title:</div>
                         <input className="title-input" type="text" value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})}/>
                     </label>
                 </div>
 
-                <div>
+                <div className='text-center'>
                     <label>
                         <div className='label-font'>Content:</div>
                         <textarea className="content-input" rows="4" type="text" value={postData.content} onChange={(e) => setPostData({...postData, content: e.target.value})}/>
@@ -93,16 +93,16 @@ function UploadBlog() {
 
                 <div className='containter'>
                     <div className='label-font'>Upload a Photo:</div>
-              
+    
                     <label htmlFor="file-upload" className='add-photo-blog'>
                         <img src={uploadImage} alt="Upload" className='upload-icon'/>
                         <input className="image-input" id="file-upload" type="file" accept=".jpg, .jpeg, .png" onChange={handleImage}/>
                         {/* {successMessage && <div className="success-message">{successMessage}</div>}  */}
                         <div className='preview-image'>{postData.image && <img src={postData.image} alt={postData.title}/>}</div>
                     </label>
+                <button className='upload-btn' type="submit">Upload Post</button>
                 </div>
 
-                <button className='upload-btn' type="submit">Upload Post</button>
             </form>
         </div>
     );

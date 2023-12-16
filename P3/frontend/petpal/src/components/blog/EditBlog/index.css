@@ -1,3 +1,4 @@
+
 .preview-image img {
     width: 100%;
     max-width: 200px;
@@ -20,4 +21,10 @@
     border: 1px solid #e9724c;
     background-color: #fff;
     color: #e9724c;
+}
+
+@media (max-width: 630px){
+    .upload-edit-btn {
+        width: 40%;
+    }
 }

@@ -1,24 +1,43 @@
 
 .replies-container{
     display: grid;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .reply {
+    display: flex;
     border: 1px solid #e9724c;
     border-radius: 18px;
+    width: 90%;
+    /* margin: 1%; */
+    /* padding: 1%; */
+    align-items: center;
+    justify-content: center;
+}
+.auth-date {
     margin: 1%;
 }
 
-.reply-author {
+.reply-title {
     font-family: Roboto Slab;
-    font-size: 25px;
+    font-size: 50px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     color: black;
-    margin: 1%;
-    padding-bottom: 3%;
+    margin: 2%;
+}
+
+.reply-author {
+    font-family: Roboto Slab;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: black;
+    /* padding: 1%; */
+    /* margin: 1%; */
+    margin: 5%;
 }
 
 .reply-date {
@@ -28,6 +47,21 @@
     font-weight: 500;
     line-height: normal;
     color: black;
-    margin: 1%;
-    padding-bottom: 3%;
+    padding: 1%;
+    /* margin: 1%;
+    padding-bottom: 3%; */
+}
+
+.reply-font {
+    font-family: Roboto Slab;
+    font-size: 20px;
+    margin-bottom: 1%;
+    color: #e9724c;
+}
+
+.reply-content {
+    font-family: Roboto Slab;
+    font-size: 18px;
+    text-align: left;
+    padding: 1%;
 }

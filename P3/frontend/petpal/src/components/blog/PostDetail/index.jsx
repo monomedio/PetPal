@@ -29,28 +29,48 @@ function PostDetail() {
 
 
     return (
-        <div className='window-containter'>
+        <div >
             {post && (
                 <>
-                    <div className='post-title'>{post.title}</div>
-                    <div className='post-author'>Written by: {post.author}</div>
-                    <div>
-                        <button className="edit-btn" onClick={() => navigate('/blog/')}>Back to PetPal Blogs</button>
-                        {(post.author === currUser) &&
-                            <button className="edit-btn" onClick={() => navigate(`/blog/edit/${postId}`)}>Edit Blog</button>
-                        }   
-                    </div>
-                    <div className='post-container'>
-                        <div className='post-image'> {post.image && <img src={post.image} alt={post.title}/>} </div>
-                        <pre>
-                            <div className='post-content'>{post.content}</div>
-                        </pre>
-                    </div>
-                    <div>
-                        <Replies postId={postId} authToken={authToken} newReply={newReply} setNewReply={setNewReply}/>
-                    </div>
-                    <div>
-                        <RepliesForm postId={postId} authToken={authToken} newReply={newReply} setNewReply={setNewReply}/>
+                    <div className='container-fluid'>
+
+                        {/* <div className='row'> */}
+                            {/* <div className=''>   */}
+                                <div className='post-title text-center'>{post.title}</div>
+                            {/* </div> */}
+
+                            <div className='col-12 text-center'>
+                                <div className='post-author'>Written by: {post.author}</div>
+                            </div>
+                        {/* </div> */}
+
+                        <div className='row p-2'>
+                            <div className='col text-start'>
+                                <button className="edit-btn" onClick={() => navigate('/blog/')}> &lt; Back to PetPal Blogs</button>
+                            </div>
+    
+                            <div className='col text-end'>
+                                {(post.author === currUser) &&
+                                    <button className="edit-btn" onClick={() => navigate(`/blog/edit/${postId}`)}>Edit Blog</button>
+                                }   
+                            </div>
+                        </div>
+                        
+                        <div className='row'>
+                            <div className='post-image col-auto'> 
+                                {post.image && <img className='mx-auto' src={post.image} alt={post.title}/>} 
+                            </div>
+                            <div className='col-md'>
+                                <pre className='post-content'>{post.content}</pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <Replies postId={postId} authToken={authToken} newReply={newReply} setNewReply={setNewReply}/>
+                        </div>
+                        <div>
+                            <RepliesForm postId={postId} authToken={authToken} newReply={newReply} setNewReply={setNewReply}/>
+                        </div>
                     </div>
                     
                 </>
