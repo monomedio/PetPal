@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./index.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RepliesForm(props) {
 
@@ -41,15 +43,22 @@ function RepliesForm(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <textarea
-                value={props.content}
-                onChange={(e) => setPostContent(e.target.value)}
-                placeholder="Write your reply here..."
-                required
-            />
-            <button type="submit">Post Reply</button>
-        </form>
+        <div className="replies-container">
+            
+                <form onSubmit={handleSubmit}>
+                    <div className="reply-form">
+                        <textarea
+                            value={props.content}
+                            className="reply-input"
+                            onChange={(e) => setPostContent(e.target.value)}
+                            placeholder="Write your reply here..."
+                            required
+                        />
+                        <button className="reply-post-btn" type="submit" >Post Reply</button>
+                    </div>
+                </form>
+            
+        </div>
     );
 }
 

@@ -1,0 +1,48 @@
+.replies-container{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.reply-form {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.reply-input {
+    font-family: Roboto Slab;
+    border-radius: 18px;
+    border: 1px solid #e9724c;
+    width: 60vw;
+    height: 5vw;
+    padding-left: 1%;
+    padding-top: 1%;
+    margin-bottom: 5%;
+    margin: 2%;
+    resize: vertical;
+
+}
+
+.reply-post-btn {
+    border-radius: 18px;
+    border: 1px solid #e9724c;
+    background-color: #e9724c;
+    color: #fff;
+    font-weight: 700;
+    width: 12vw;
+    height: 3vw;
+    font-size: 25px;
+    font-family: "Roboto";
+    margin: 0 2%;
+}
+
+.reply-post-btn:hover{
+    border: 1px solid #e9724c;
+    background-color: #fff;
+    color: #e9724c;
+}

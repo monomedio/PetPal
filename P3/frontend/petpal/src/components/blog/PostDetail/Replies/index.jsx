@@ -38,10 +38,13 @@ function Replies({ postId, authToken, newReply }) {
 
     return (
         <div className="replies-container">
+            <div className='reply-title'>
+                Replies:
+            </div>
             {replies.length > 0 ? (
                 replies.map((reply, index) => (
-                    <div key={index} className="container row">
-                        <div className="col-6">
+                    <div key={index} className="reply">
+                        <div className='auth-date'>
                             {/* <div className='col-6'> */}
                                 <div className='reply-author'>{reply.author}</div>
                             {/* </div> */}
@@ -49,11 +52,11 @@ function Replies({ postId, authToken, newReply }) {
                                 <div className='reply-date'>{formatDateString(reply.created_at)}</div>
                             {/* </div> */}
                         </div>
-                        <div className="reply-content col-6">{reply.content}</div>
+                        <div className="reply-content">{reply.content}</div>
                     </div>
                 ))
             ) : (
-                <div>There are no replies yet. Please leave your thoughts!</div>
+                <div className='reply-font'>There are no replies yet. Please leave your thoughts!</div>
             
             )}
         {currentPage > 1 && <button onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import uploadImage from '../../../assets/images/blog/upload-image.svg';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -68,9 +69,9 @@ function EditBlog() {
         const file = event.target.files[0];
         if (file) {
             // console.log(file)
-            // const fileUrl = URL.createObjectURL(file);
+            const fileUrl = URL.createObjectURL(file);
             // console.log(fileUrl)
-            setPostData({ ...postData, image: file });
+            setPostData({ ...postData, image: fileUrl });
             setSuccessMessage("File uploaded successfully!");
         }
     }
@@ -80,8 +81,9 @@ function EditBlog() {
     
 
     return (
-        <div className='window-containter'>
+        <div className='container-fluid text-center'>
             <div className='post-title'>Edit Your Blog</div>
+            {currUser}
             <form onSubmit={formSubmit}>
                 <div>
                     <label>

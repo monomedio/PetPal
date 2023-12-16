@@ -10,7 +10,6 @@ function PostsGrid({ posts, onPostClick }) {
     return (
         <div className="posts-container">
             <div>
-                Cell 1
                 <button className = "new-post-btn" onClick={() => navigate("/blog/upload")}>New Post</button>
             </div>
             <div className="posts-collection">
