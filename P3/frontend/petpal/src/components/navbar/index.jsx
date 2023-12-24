@@ -63,6 +63,16 @@ export default function NavBar() {
                 class="navbar-nav ps-3 ps-lg-0 justify-content-lg-end align-items-lg-center"
                 >
 
+                <Link to='/blog'>
+                    <li class="nav-item px-lg-3">
+                        <a
+                        class="nav-link nav-signup"
+                        aria-current="page"
+                        // href="sign-up-general.html"
+                        >Blog</a>
+                    </li>
+                </Link>
+
                 <Link to='/signup'>
                 <li class="nav-item px-lg-3">
                     <a

@@ -3,6 +3,7 @@
 
 import PostsGrid from "./Table";
 import Footer from "../../components/footer";
+import NavBar from "../../components/navbar";
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -24,13 +25,14 @@ function BlogList() {
             }
         }
         )
-        .then(response => 
-            // if (response.status === 401) {
-            //     navigate(`/login/`);
-            // }
+        .then(response => {
+            if (response.status === 401) {
+                navigate(`/login/`);
+                return;
+            }
             // else {
-                response.json()
-            )
+                return response.json()
+        })
         .then(data => {
                 setPosts(data.results);
                 setTotalPages(data.count);
@@ -50,12 +52,17 @@ function BlogList() {
 
 
     return (
+        <>
+        <NavBar />
         <body>
 
         
 
         <div className="container-fluid">
             <div className="blog-title">PetPal Blogs</div>
+            {/* <div>
+            {localStorage.getItem('usename')}
+            </div> */}
 
             <div className="col text-center">
                 <input className="search" type="text" id="search" placeholder="Search for a Blog" value={query.search} onChange={event => setQuery({ search: event.target.value, page: 1 })} />
@@ -87,6 +94,7 @@ function BlogList() {
         
         <Footer />
         </body>
+        </>
         ); 
     }
     
