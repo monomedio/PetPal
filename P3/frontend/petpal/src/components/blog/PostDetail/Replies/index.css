@@ -11,8 +11,9 @@
     width: 90%;
     /* margin: 1%; */
     /* padding: 1%; */
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;;
 }
 .auth-date {
     margin: 1%;

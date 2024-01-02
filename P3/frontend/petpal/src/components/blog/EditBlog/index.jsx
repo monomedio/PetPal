@@ -65,17 +65,24 @@ function EditBlog() {
         });
     }
 
+    // const handleImage = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         console.log(file)
+    //         const fileUrl = URL.createObjectURL(file);
+    //         console.log(fileUrl)
+    //         // console.log("old", postData.image);
+    //         setPostData({ ...postData, image: fileUrl });
+    //         console.log("new", postData.image);
+    //     }
+    // }
     const handleImage = (event) => {
         const file = event.target.files[0];
         if (file) {
-            // console.log(file)
-            const fileUrl = URL.createObjectURL(file);
-            // console.log(fileUrl)
-            setPostData({ ...postData, image: fileUrl });
-            setSuccessMessage("File uploaded successfully!");
+            setPostData({ ...postData, image: file });
         }
-    }
-
+    };
+    
 
 
     
@@ -83,7 +90,7 @@ function EditBlog() {
     return (
         <div className='container-fluid text-center'>
             <div className='post-title'>Edit Your Blog</div>
-            {currUser}
+            {/* {currUser} */}
             <form onSubmit={formSubmit}>
                 <div>
                     <label>
@@ -105,7 +112,13 @@ function EditBlog() {
                         <img src={uploadImage} alt="Upload" className='upload-icon'/>
                         <input className="image-input" id="file-upload" type="file" accept=".jpg, .jpeg, .png" onChange={handleImage}/>
                         {/* {successMessage && <div className="success-message">{successMessage}</div>}  */}
-                        <div className='preview-image'>{postData.image && <img src={postData.image} alt={postData.title}/>}</div>
+                        {/* <div className='preview-image'>{postData.image && <img src={postData.image} alt={postData.title}/>}</div> */}
+                        <div className='preview-image'>
+                            {postData.image && (typeof postData.image === 'string' 
+                                ? <img src={postData.image} alt={postData.title}/>
+                                : <img src={URL.createObjectURL(postData.image)} alt={postData.title}/>)
+                            }
+                        </div>
                     </label>
                 </div>
 

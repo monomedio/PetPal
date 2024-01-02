@@ -58,6 +58,7 @@ function PostDetail() {
                         
                         <div className='row'>
                             <div className='post-image col-auto'> 
+                                {console.log("this is image", post.image)}
                                 {post.image && <img className='mx-auto' src={post.image} alt={post.title}/>} 
                             </div>
                             <div className='col-md'>

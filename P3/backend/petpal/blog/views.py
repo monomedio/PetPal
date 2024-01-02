@@ -31,8 +31,15 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = BlogPost.objects.all()
         query = self.request.query_params.get('q', None)
+        author_username = self.request.query_params.get('author', None)
+
         if query is not None:
             queryset = queryset.filter(title__icontains=query)
+        if author_username is not None:
+            queryset = queryset.filter(author__username=author_username)
+        
+        queryset = queryset.order_by('-created_at')
+
         return queryset
 
 class ReplyCreateViewSet(viewsets.ModelViewSet):
