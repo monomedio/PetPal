@@ -66,3 +66,18 @@
     text-align: left;
     padding: 1%;
 }
+@media (max-width: 630px) {
+    .reply-author {
+        font-size: 12px; 
+    }
+
+    .reply-date {
+        font-size: 10px;
+    }
+
+    .reply-content {
+        font-size: 15px;
+        padding: 3%;
+
+    }
+}

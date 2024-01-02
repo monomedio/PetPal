@@ -46,3 +46,14 @@
     background-color: #fff;
     color: #e9724c;
 }
+
+@media (max-width: 630px) {
+    .reply-input {
+        height: 15vw;
+    }
+    .reply-post-btn {
+        height: 10vw;
+        width: 23vw;
+        font-size: 13px;
+    }
+}
